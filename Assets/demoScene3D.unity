@@ -174,8 +174,7 @@ GameObject:
   - component: {fileID: 81}
   - component: {fileID: 96}
   - component: {fileID: 78}
-  - component: {fileID: 95}
-  - component: {fileID: 15}
+  - component: {fileID: 106}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -202,39 +201,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &15
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec96d06fc52213a4b86e23ec327800f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stereoMaterial: {fileID: 2100000, guid: 854bd5fa5367544278650926af9a3271, type: 2}
-  format3D: 0
-  anaglyphOptions: 1
-  sideBySideOptions: 0
-  interlaceRows: 1080
-  checkerboardColumns: 1920
-  checkerboardRows: 1080
-  interaxial: 0.25
-  zeroParallax: 6
-  fieldOfView: 60
-  GuiVisible: 1
-  ToggleGuiKey: 9
-  ToggleToeInKey: 112
-  LeftRightKey: 121
-  LeftOnlyKey: 117
-  RightOnlyKey: 105
-  RightLeftKey: 111
-  trackObjKey: 116
-  cameraMethod: 0
-  cameraSelect: 0
-  cameraAspect: 1.33
-  saveCustomAspect: 0
 --- !u!1 &20
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,40 +878,6 @@ CharacterController:
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &95
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 90757615f53a143449d97c2dad0f99c1,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6378012d8068b4bc59c6c1570dccaf63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stereoMaterial: {fileID: 2100000, guid: 854bd5fa5367544278650926af9a3271, type: 2}
-  format3D: 0
-  anaglyphOptions: 1
-  sideBySideOptions: 0
-  interlaceRows: 1080
-  checkerboardColumns: 1920
-  checkerboardRows: 1080
-  interaxial: 0.25
-  zeroParallax: 6
-  fieldOfView: 60
-  GuiVisible: 1
-  ToggleGuiKey: 9
-  ToggleToeInKey: 112
-  LeftRightKey: 121
-  LeftOnlyKey: 117
-  RightOnlyKey: 105
-  RightLeftKey: 111
-  trackObjKey: 116
-  cameraMethod: 0
-  cameraSelect: 0
-  cameraAspect: 1.33
-  saveCustomAspect: 0
 --- !u!114 &96
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,3 +1386,36 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99a83e910d98c4c268204b9c206b0f1a, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec96d06fc52213a4b86e23ec327800f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stereoMaterial: {fileID: 2100000, guid: 854bd5fa5367544278650926af9a3271, type: 2}
+  format3D: 0
+  anaglyphOptions: 1
+  sideBySideOptions: 0
+  interlaceRows: 1080
+  checkerboardColumns: 1920
+  checkerboardRows: 1080
+  interaxial: 0.25
+  zeroParallax: 6
+  fieldOfView: 60
+  GuiVisible: 1
+  ToggleGuiKey: 9
+  ToggleToeInKey: 112
+  LeftRightKey: 121
+  LeftOnlyKey: 117
+  RightOnlyKey: 105
+  RightLeftKey: 111
+  trackObjKey: 116
+  cameraMethod: 0
+  cameraSelect: 0
+  cameraAspect: 1.33
+  saveCustomAspect: 0
