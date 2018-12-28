@@ -170,7 +170,6 @@ GameObject:
   m_Component:
   - component: {fileID: 30}
   - component: {fileID: 44}
-  - component: {fileID: 79}
   - component: {fileID: 81}
   - component: {fileID: 96}
   - component: {fileID: 78}
@@ -209,7 +208,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 13}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca13d938ce2234d459ebf1fd0fb15bcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 6378012d8068b4bc59c6c1570dccaf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stereoMaterial: {fileID: 2100000, guid: 854bd5fa5367544278650926af9a3271, type: 2}
@@ -837,14 +836,6 @@ MeshCollider:
 AudioListener:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 8100000, guid: 90757615f53a143449d97c2dad0f99c1,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13}
-  m_Enabled: 1
---- !u!92 &79
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9200000, guid: 90757615f53a143449d97c2dad0f99c1,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 13}
