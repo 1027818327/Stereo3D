@@ -226,26 +226,27 @@ public class CharacterMotorSliding : object
 [UnityEngine.AddComponentMenu("Character/Character Motor")]
 public partial class CharacterMotor : MonoBehaviour
 {
-    public bool canControl;
-    public bool useFixedUpdate;
+    public bool canControl = true;
+    public bool useFixedUpdate = true;
     [System.NonSerialized]
     public Vector3 inputMoveDirection;
     [System.NonSerialized]
     public bool inputJump;
-    public CharacterMotorMovement movement;
-    public CharacterMotorJumping jumping;
-    public CharacterMotorMovingPlatform movingPlatform;
-    public CharacterMotorSliding sliding;
+    public CharacterMotorMovement movement = new CharacterMotorMovement();
+    public CharacterMotorJumping jumping = new CharacterMotorJumping();
+    public CharacterMotorMovingPlatform movingPlatform = new CharacterMotorMovingPlatform();
+    public CharacterMotorSliding sliding = new CharacterMotorSliding();
     [System.NonSerialized]
-    public bool grounded;
+    public bool grounded = true;
     [System.NonSerialized]
     public Vector3 groundNormal;
     private Vector3 lastGroundNormal;
     private Transform tr;
     private CharacterController controller;
-    public virtual void Awake()
+
+    public void Awake()
     {
-        this.controller = (CharacterController) this.GetComponent(typeof(CharacterController));
+        this.controller = this.GetComponent<CharacterController>();
         this.tr = this.transform;
     }
 
@@ -345,7 +346,7 @@ public partial class CharacterMotor : MonoBehaviour
         }
     }
 
-    public virtual void FixedUpdate()
+    public void FixedUpdate()
     {
         if (this.movingPlatform.enabled)
         {
@@ -370,7 +371,7 @@ public partial class CharacterMotor : MonoBehaviour
         }
     }
 
-    public virtual void Update()
+    public void Update()
     {
         if (!this.useFixedUpdate)
         {
@@ -551,7 +552,7 @@ public partial class CharacterMotor : MonoBehaviour
         return this.groundNormal.y > 0.01f;
     }
 
-    public virtual float GetMaxAcceleration(bool grounded)
+    public float GetMaxAcceleration(bool grounded)
     {
         if (grounded)
         {
@@ -563,47 +564,47 @@ public partial class CharacterMotor : MonoBehaviour
         }
     }
 
-    public virtual float CalculateJumpVerticalSpeed(float targetJumpHeight)
+    public float CalculateJumpVerticalSpeed(float targetJumpHeight)
     {
         return Mathf.Sqrt((2 * targetJumpHeight) * this.movement.gravity);
     }
 
-    public virtual bool IsJumping()
+    public bool IsJumping()
     {
         return this.jumping.jumping;
     }
 
-    public virtual bool IsSliding()
+    public bool IsSliding()
     {
         return (this.grounded && this.sliding.enabled) && this.TooSteep();
     }
 
-    public virtual bool IsTouchingCeiling()
+    public bool IsTouchingCeiling()
     {
         return (this.movement.collisionFlags & CollisionFlags.CollidedAbove) != (CollisionFlags) 0;
     }
 
-    public virtual bool IsGrounded()
+    public bool IsGrounded()
     {
         return this.grounded;
     }
 
-    public virtual bool TooSteep()
+    public bool TooSteep()
     {
         return this.groundNormal.y <= Mathf.Cos(this.controller.slopeLimit * Mathf.Deg2Rad);
     }
 
-    public virtual Vector3 GetDirection()
+    public Vector3 GetDirection()
     {
         return this.inputMoveDirection;
     }
 
-    public virtual void SetControllable(bool controllable)
+    public void SetControllable(bool controllable)
     {
         this.canControl = controllable;
     }
 
-    public virtual float MaxSpeedInDirection(Vector3 desiredMovementDirection)
+    public float MaxSpeedInDirection(Vector3 desiredMovementDirection)
     {
         if (desiredMovementDirection == Vector3.zero)
         {
@@ -618,26 +619,11 @@ public partial class CharacterMotor : MonoBehaviour
         }
     }
 
-    public virtual void SetVelocity(Vector3 velocity)
+    public void SetVelocity(Vector3 velocity)
     {
         this.grounded = false;
         this.movement.velocity = velocity;
         this.movement.frameVelocity = Vector3.zero;
         this.SendMessage("OnExternalVelocity");
     }
-
-    public CharacterMotor()
-    {
-        this.canControl = true;
-        this.useFixedUpdate = true;
-        this.inputMoveDirection = Vector3.zero;
-        this.movement = new CharacterMotorMovement();
-        this.jumping = new CharacterMotorJumping();
-        this.movingPlatform = new CharacterMotorMovingPlatform();
-        this.sliding = new CharacterMotorSliding();
-        this.grounded = true;
-        this.groundNormal = Vector3.zero;
-        this.lastGroundNormal = Vector3.zero;
-    }
-
 }

@@ -4,14 +4,15 @@ using System.Collections;
 [System.Serializable]
 public partial class DragRigidbody : MonoBehaviour
 {
-    public float spring;
-    public float damper;
-    public float drag;
-    public float angularDrag;
-    public float distance;
-    public bool attachToCenterOfMass;
+    public float spring = 50.0f;
+    public float damper = 5.0f;
+    public float drag = 10.0f;
+    public float angularDrag = 5.0f;
+    public float distance = 0.2f;
+    public bool attachToCenterOfMass = false;
     private SpringJoint springJoint;
-    public virtual void Update()
+
+    public void Update()
     {
         RaycastHit hit = default(RaycastHit);
          // Make sure the user pressed the mouse down
@@ -33,7 +34,7 @@ public partial class DragRigidbody : MonoBehaviour
         if (!this.springJoint)
         {
             GameObject go = new GameObject("Rigidbody dragger");
-            Rigidbody body = go.AddComponent<Rigidbody>() as Rigidbody;
+            Rigidbody body = go.AddComponent<Rigidbody>();
             this.springJoint = go.AddComponent<SpringJoint>();
             body.isKinematic = true;
         }
@@ -55,7 +56,7 @@ public partial class DragRigidbody : MonoBehaviour
         this.StartCoroutine("DragObject", hit.distance);
     }
 
-    public virtual IEnumerator DragObject(float distance)
+    public IEnumerator DragObject(float distance)
     {
         float oldDrag = this.springJoint.connectedBody.drag;
         float oldAngularDrag = this.springJoint.connectedBody.angularDrag;
@@ -76,25 +77,16 @@ public partial class DragRigidbody : MonoBehaviour
         }
     }
 
-    public virtual Camera FindCamera()
+    public Camera FindCamera()
     {
-        if (this.GetComponent<Camera>())
+        var tempCamera = GetComponent<Camera>();
+        if (tempCamera)
         {
-            return this.GetComponent<Camera>();
+            return tempCamera;
         }
         else
         {
             return Camera.main;
         }
     }
-
-    public DragRigidbody()
-    {
-        this.spring = 50f;
-        this.damper = 5f;
-        this.drag = 10f;
-        this.angularDrag = 5f;
-        this.distance = 0.2f;
-    }
-
 }

@@ -18,12 +18,12 @@ using System.Collections;
 public partial class FPSInputController : MonoBehaviour
 {
     private CharacterMotor motor;
-    public virtual void Awake()
+    public void Awake()
     {
-        this.motor = (CharacterMotor) this.GetComponent(typeof(CharacterMotor));
+        this.motor = this.GetComponent<CharacterMotor>();
     }
 
-    public virtual void Update()
+    public void Update()
     {
         Vector3 directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (directionVector != Vector3.zero)
