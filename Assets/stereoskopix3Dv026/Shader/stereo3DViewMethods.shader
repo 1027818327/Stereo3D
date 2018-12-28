@@ -169,20 +169,11 @@ SubShader {
 		uniform sampler2D	_RightTex;
 
 		float4 frag( v2f_img IN ) : COLOR0 {
-//			float3 left = tex2D( _LeftTex, IN.uv ).rgb;		// Sample scene texture
-//			float3 right = tex2D( _RightTex, IN.uv ).rgb;	// Sample scene texture
+			float3 left = tex2D( _LeftTex, IN.uv ).rgb;		// Sample scene texture
+			float3 right = tex2D( _RightTex, IN.uv ).rgb;	// Sample scene texture
 			
-//			int x = fmod(floor( IN.uv.x*_Weave_X) + floor(IN.uv.y*_Weave_Y),2) < 1;					
-//			return float4( lerp( left, right, x ), 0.0 );
-			float4 left = tex2D( _LeftTex, IN.uv );		// Sample scene texture
-			float4 right = tex2D( _RightTex, IN.uv );	// Sample scene texture
-			int x =0;
-			if(IN.uv.x>=0.5&&IN.uv.x<0.75)
-				x =  fmod( ((IN.uv.x-0.5)*_Weave_X),2)<1;
-			else if(IN.uv.x>=0.75)
-				x =  fmod( ((IN.uv.x-0.75)*_Weave_X),2)<1;
-			else x =  fmod( (IN.uv.x*_Weave_X),2)<1;
-			return float4( lerp( left, right, x ));//, 0.0 );
+			int x = fmod(floor( IN.uv.x*_Weave_X) + floor(IN.uv.y*_Weave_Y),2) < 1;					
+			return float4( lerp( left, right, x ), 0.0 );
 		}
 		ENDCG
 	}

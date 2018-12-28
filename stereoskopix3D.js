@@ -49,8 +49,8 @@
 
 private var leftCamRT;   
 private var rightCamRT;
-private var leftCam;
-private var rightCam;
+private var leftCam:GameObject;
+private var rightCam:GameObject;
 
 public var stereoMaterial : Material;
 
@@ -112,11 +112,11 @@ function Start () {
 	leftCam = new GameObject ("leftCam", Camera);
 	rightCam = new GameObject ("rightCam", Camera);
 
-	leftCam.camera.CopyFrom (GetComponent.<Camera>());
-	rightCam.camera.CopyFrom (GetComponent.<Camera>());
+	leftCam.GetComponent.<Camera>().CopyFrom (GetComponent.<Camera>());
+	rightCam.GetComponent.<Camera>().CopyFrom (GetComponent.<Camera>());
 	
-	leftCam.camera.renderingPath = GetComponent.<Camera>().renderingPath;
-	rightCam.camera.renderingPath = GetComponent.<Camera>().renderingPath;
+	leftCam.GetComponent.<Camera>().renderingPath = GetComponent.<Camera>().renderingPath;
+	rightCam.GetComponent.<Camera>().renderingPath = GetComponent.<Camera>().renderingPath;
 	
 	fieldOfView = GetComponent.<Camera>().fieldOfView;
 	if (saveCustomAspect) {
@@ -131,14 +131,14 @@ function Start () {
 	leftCamRT = new RenderTexture (Screen.width, Screen.height, 24);
 	rightCamRT = new RenderTexture (Screen.width, Screen.height, 24);
 	
-	leftCam.camera.targetTexture = leftCamRT;
-	rightCam.camera.targetTexture = rightCamRT;
+	leftCam.GetComponent.<Camera>().targetTexture = leftCamRT;
+	rightCam.GetComponent.<Camera>().targetTexture = rightCamRT;
 	  
 	stereoMaterial.SetTexture ("_LeftTex", leftCamRT);
 	stereoMaterial.SetTexture ("_RightTex", rightCamRT);
 	
-	leftCam.camera.depth = GetComponent.<Camera>().depth -2;
-	rightCam.camera.depth = GetComponent.<Camera>().depth -1;
+	leftCam.GetComponent.<Camera>().depth = GetComponent.<Camera>().depth -2;
+	rightCam.GetComponent.<Camera>().depth = GetComponent.<Camera>().depth -1;
 	
 	UpdateView();
    
@@ -216,16 +216,17 @@ function LerpZero(start:float, end:float, speed: float) {
 		yield;
 	}
 }
-
+var newZero;
 function convergeOnObject() {
 	var hit: RaycastHit;
-	var ray : Ray = leftCam.camera.ScreenPointToRay (Input.mousePosition);	// converge to clicked point
+	var ray : Ray = leftCam.GetComponent.<Camera>().ScreenPointToRay (Input.mousePosition);	// converge to clicked point
 	if (Physics.Raycast (ray, hit, 100.0)) {
 		trackObject = hit.collider.gameObject;
 		//zeroParallax = Vector3.Distance(transform.position,hit.collider.gameObject.transform.position); // converge to center of object
 		newZero = hit.distance;
 		return newZero;
 	}
+	return 0;
 }
 
 function convergeTrackObject() {
@@ -272,8 +273,8 @@ function UpdateView() {
 			break;
 	}
 	if (cameraMethod == method3D.ToedIn) {
-		leftCam.camera.projectionMatrix = GetComponent.<Camera>().projectionMatrix;
-		rightCam.camera.projectionMatrix = GetComponent.<Camera>().projectionMatrix;
+		leftCam.GetComponent.<Camera>().projectionMatrix = GetComponent.<Camera>().projectionMatrix;
+		rightCam.GetComponent.<Camera>().projectionMatrix = GetComponent.<Camera>().projectionMatrix;
 		leftCam.transform.LookAt (transform.position + (transform.TransformDirection (Vector3.forward) * zeroParallax));
 		rightCam.transform.LookAt (transform.position + (transform.TransformDirection (Vector3.forward) * zeroParallax));
 	} else {
@@ -281,20 +282,20 @@ function UpdateView() {
 	    rightCam.transform.rotation = transform.rotation;
 	    switch (cameraSelect) {
 			case cams3D.LeftRight:
-				leftCam.camera.projectionMatrix = projectionMatrix(true);
-				rightCam.camera.projectionMatrix = projectionMatrix(false);
+				leftCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(true);
+				rightCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(false);
 				break;
 			case cams3D.LeftOnly:
-				leftCam.camera.projectionMatrix = projectionMatrix(true);
-				rightCam.camera.projectionMatrix = projectionMatrix(true);
+				leftCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(true);
+				rightCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(true);
 				break;
 			case cams3D.RightOnly:
-				leftCam.camera.projectionMatrix = projectionMatrix(false);
-				rightCam.camera.projectionMatrix = projectionMatrix(false);
+				leftCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(false);
+				rightCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(false);
 				break;
 			case cams3D.RightLeft:
-				leftCam.camera.projectionMatrix = projectionMatrix(false);
-				rightCam.camera.projectionMatrix = projectionMatrix(true);
+				leftCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(false);
+				rightCam.GetComponent.<Camera>().projectionMatrix = projectionMatrix(true);
 				break;
 		}
 	}
@@ -330,9 +331,9 @@ function OnRenderImage (source:RenderTexture, destination:RenderTexture) {
 function OnGUI () {
    	if (GuiVisible) {
     	windowRect = GUILayout.Window (0, windowRect, DoWindow, "Stereoskopix 3D Controls");
-    	if (mouseLookScript) mouseLookScript.suppress = true;
+//    	if (mouseLookScript) mouseLookScript.suppress = true;
 	} else {
-		if (mouseLookScript) mouseLookScript.suppress = false;
+//		if (mouseLookScript) mouseLookScript.suppress = false;
 	}
 }
 
@@ -377,7 +378,7 @@ function DoWindow (windowID : int) {
 			GUILayout.BeginHorizontal();
 				GUILayout.Space(15);
 				GUILayout.Label ("Rows",GUILayout.MinWidth(60));
-				interlaceString = System.Convert.ToString(interlaceRows);
+				var interlaceString = System.Convert.ToString(interlaceRows);
 				interlaceString = GUILayout.TextField (interlaceString,4,GUILayout.MaxWidth(50));
 				interlaceRows = System.Convert.ToDouble(interlaceString);
 				if (GUI.changed) {
@@ -399,7 +400,7 @@ function DoWindow (windowID : int) {
 			GUILayout.BeginHorizontal();
 				GUILayout.Space(15);
 				GUILayout.Label ("Columns",GUILayout.MinWidth(60));
-				checkerString = System.Convert.ToString(checkerboardColumns);
+				var checkerString = System.Convert.ToString(checkerboardColumns);
 				checkerString = GUILayout.TextField (checkerString,4,GUILayout.MaxWidth(50));
 				checkerboardColumns = System.Convert.ToDouble(checkerString);
 				GUILayout.Label ("Rows");
