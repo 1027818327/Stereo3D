@@ -4,6 +4,8 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+*.mp4
+*.mov
 
 # Visual Studio cache directory
 .vs/
