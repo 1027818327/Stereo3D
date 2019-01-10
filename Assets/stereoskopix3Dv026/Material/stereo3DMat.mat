@@ -31,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Weave_X: 1920
+    - _Weave_X: 1
     - _Weave_Y: 1080
     m_Colors:
     - _Balance_Left_B: {r: 0, g: 0, b: 0, a: 0}

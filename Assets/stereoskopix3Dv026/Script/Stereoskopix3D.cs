@@ -94,7 +94,7 @@ namespace Stereo3D
 
         public void Start()
         {
-            camStrings = new string[] 
+            camStrings = new string[]
             {
                 "Left/Right ["+LeftRightKey+"]",
                 "LeftOnly [" +LeftOnlyKey+"]",
@@ -282,7 +282,7 @@ namespace Stereo3D
         {
             var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
             //if(vec.x>0 && vec.x<1 && vec.y>0 && vec.y<1 && vec.z>0) { // alternate to bounds - just check object center
-            if (GeometryUtility.TestPlanesAABB(planes, trackObject.GetComponent< Collider > ().bounds))
+            if (GeometryUtility.TestPlanesAABB(planes, trackObject.GetComponent<Collider>().bounds))
             {
                 //Debug.Log(trackObject.name+" is ON CAMERA");
                 RaycastHit hit;
@@ -379,7 +379,8 @@ namespace Stereo3D
                     break;
                 case mode3D.SideBySide:
                 case mode3D.OverUnder:
-                    for (int i = 1; i <= 2; i++) {
+                    for (int i = 1; i <= 2; i++)
+                    {
                         stereoMaterial.SetPass(i);
                         DrawQuad(i);
                     }
