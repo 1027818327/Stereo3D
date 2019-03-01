@@ -1,67 +1,18 @@
 using UnityEngine;
 using System.Collections;
 
-/*
-.-------------------------------------------------------------------
-|  Unity Stereoskopix 3D v027
-|-------------------------------------------------------------------
-|  This all started when TheLorax began this thread:
-|  http://forum.unity3d.com/threads/11775 
-|-------------------------------------------------------------------
-|  There were numerous contributions to the thread from 
-|  aNTeNNa trEE, InfiniteAlec, Jonathan Czeck, monark and others.
-|-------------------------------------------------------------------
-|  checco77 of Esimple Studios wrapped the whole thing up
-|  in a script & packaged it with a shader, materials, etc. 
-|  http://forum.unity3d.com/threads/60961 
-|  Esimple included a copyright & license:
-|  Copyright (c) 2010, Esimple Studios All Rights Reserved.
-|  License: Distributed under the GNU GENERAL PUBLIC LICENSE (GPL) 
-| ------------------------------------------------------------------
-|  I tweaked everything, added options for Side-by-Side, Over-Under,
-|  Swap Left/Right, etc, along with a GUI interface: 
-|  http://forum.unity3d.com/threads/63874 
-|-------------------------------------------------------------------
-|  Wolfram then pointed me to shaders for interlaced/checkerboard display.
-|-------------------------------------------------------------------
-|  In this version (v026), I added Wolfram's additional display modes,
-|  moved Esimple's anaglyph options into the script (so that only one
-|  material is needed), and reorganized the GUI.
-|-------------------------------------------------------------------
-|  The package consists of
-|  1) this script ('stereoskopix3D.js')
-|  2) a shader ('stereo3DViewMethods.shader') 
-|  3) a material ('stereo3DMat')
-|  4) a demo scene ('demoScene3D.scene') - WASD or arrow keys travel, 
-|     L button grab objects, L button lookaround when GUI hidden.
-|-------------------------------------------------------------------
-|  Instructions: (NOTE: REQUIRES UNITY PRO) 
-|  1. Drag this script onto your camera.
-|  2. Drag 'stereoMat' into the 'Stereo Materials' field.
-|  3. Hit 'Play'. 
-|  4. Adjust parameters with the GUI controls, press the tab key to toggle.
-|  5. To save settings from the GUI, copy them down, hit 'Stop',
-|     and enter the new settings in the camera inspector.
-'-------------------------------------------------------------------
-|  Perry Hoberman <hoberman (at) bway.net
-|-------------------------------------------------------------------
-*/
-
 namespace Stereo3D
 {
     [System.Serializable]
     [UnityEngine.RequireComponent(typeof(Camera))]
-    [UnityEngine.AddComponentMenu("Stereoskopix/Stereoskopix3D")]
-    public class Stereoskopix3D : MonoBehaviour
+    public class Polarize : MonoBehaviour
     {
         private RenderTexture leftCamRT;
         private RenderTexture rightCamRT;
         private GameObject leftCam;
         private GameObject rightCam;
         public Material stereoMaterial;
-        private string[] modeStrings = new string[] { "Anaglyph", "Side By Side", "Over Under", "Interlace", "Checkerboard" };
-        public mode3D format3D = mode3D.Anaglyph;
-        private string[] anaStrings = new string[] { "Gray", "Half Color", "Color", "Optimized", "Magenta" };
+        public mode3D format3D = mode3D.SideBySide;
         public anaType anaglyphOptions = anaType.HalfColor;
         private string[] sbsStrings = new string[] { "Squeezed", "Unsqueezed" };
         public modeSBS sideBySideOptions = modeSBS.Squeezed;
@@ -92,6 +43,10 @@ namespace Stereo3D
         private bool toggleTrackObj = false;
         private GameObject trackObject;
 
+        private Camera mMainCamera;
+        private Camera mLeftCamera;
+        private Camera mRightCamera;
+
         public void Start()
         {
             camStrings = new string[]
@@ -111,24 +66,27 @@ namespace Stereo3D
             leftCam = new GameObject("leftCam", typeof(Camera));
             rightCam = new GameObject("rightCam", typeof(Camera));
 
-            Camera tempCamera = GetComponent<Camera>();
-            Camera tempLeftCamera = leftCam.GetComponent<Camera>();
-            Camera tempRightCamera = rightCam.GetComponent<Camera>();
+            mMainCamera = GetComponent<Camera>();
+            mLeftCamera = leftCam.GetComponent<Camera>();
+            mRightCamera = rightCam.GetComponent<Camera>();
 
-            tempLeftCamera.CopyFrom(tempCamera);
-            tempRightCamera.CopyFrom(tempCamera);
+            mLeftCamera.CopyFrom(mMainCamera);
+            mRightCamera.CopyFrom(mMainCamera);
 
-            tempLeftCamera.renderingPath = tempCamera.renderingPath;
-            tempRightCamera.renderingPath = tempCamera.renderingPath;
+            mLeftCamera.allowMSAA = false;
+            mRightCamera.allowMSAA = false;
 
-            fieldOfView = tempCamera.fieldOfView;
+            mLeftCamera.renderingPath = mMainCamera.renderingPath;
+            mRightCamera.renderingPath = mMainCamera.renderingPath;
+
+            fieldOfView = mMainCamera.fieldOfView;
             if (saveCustomAspect)
             {
-                tempCamera.aspect = cameraAspect;
+                mMainCamera.aspect = cameraAspect;
             }
             else
             {
-                cameraAspect = tempCamera.aspect;
+                cameraAspect = mMainCamera.aspect;
             }
 
             //leftCam.AddComponent<GUILayer>();
@@ -137,25 +95,29 @@ namespace Stereo3D
             leftCamRT = new RenderTexture(Screen.width, Screen.height, 24);
             rightCamRT = new RenderTexture(Screen.width, Screen.height, 24);
 
-            tempLeftCamera.targetTexture = leftCamRT;
-            tempRightCamera.targetTexture = rightCamRT;
+            mLeftCamera.targetTexture = leftCamRT;
+            mRightCamera.targetTexture = rightCamRT;
 
             stereoMaterial.SetTexture("_LeftTex", leftCamRT);
             stereoMaterial.SetTexture("_RightTex", rightCamRT);
 
-            tempLeftCamera.depth = tempCamera.depth - 2;
-            tempRightCamera.depth = tempCamera.depth - 1;
+            mLeftCamera.depth = mMainCamera.depth - 2;
+            mRightCamera.depth = mMainCamera.depth - 1;
 
             UpdateView();
 
             leftCam.transform.parent = transform;
             rightCam.transform.parent = transform;
 
-            tempCamera.cullingMask = 0;
-            tempCamera.backgroundColor = new Color(0, 0, 0, 0);
-            tempCamera.clearFlags = CameraClearFlags.Nothing;
+            mMainCamera.cullingMask = 0;
+            mMainCamera.backgroundColor = new Color(0, 0, 0, 0);
+            mMainCamera.clearFlags = CameraClearFlags.Nothing;
 
-            mouseLookScript = tempCamera.GetComponent<MouseLookButton>(); // deactivate MouseLookButton script (if it exists) when GUI visible	
+            mouseLookScript = mMainCamera.GetComponent<MouseLookButton>(); // deactivate MouseLookButton script (if it exists) when GUI visible	
+            if (format3D == mode3D.Anaglyph)
+            {
+                SetAnaglyphType();
+            }
         }
 
         public void Update()
@@ -241,7 +203,6 @@ namespace Stereo3D
                     zeroParallax += 0.01f;
                 }
             }
-
             if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftAlt))
             {
                 toParallax = convergeOnObject();
@@ -268,7 +229,7 @@ namespace Stereo3D
         public float convergeOnObject()
         {
             RaycastHit hit;
-            Ray ray = leftCam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);   // converge to clicked point
+            Ray ray = mLeftCamera.ScreenPointToRay(Input.mousePosition);   // converge to clicked point
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 trackObject = hit.collider.gameObject;
@@ -335,9 +296,8 @@ namespace Stereo3D
             }
             if (cameraMethod == method3D.ToedIn)
             {
-                Camera tempCamera = GetComponent<Camera>();
-                leftCam.GetComponent<Camera>().projectionMatrix = tempCamera.projectionMatrix;
-                rightCam.GetComponent<Camera>().projectionMatrix = tempCamera.projectionMatrix;
+                mLeftCamera.projectionMatrix = mMainCamera.projectionMatrix;
+                mRightCamera.projectionMatrix = mMainCamera.projectionMatrix;
                 leftCam.transform.LookAt(transform.position + (transform.TransformDirection(Vector3.forward) * zeroParallax));
                 rightCam.transform.LookAt(transform.position + (transform.TransformDirection(Vector3.forward) * zeroParallax));
             }
@@ -348,20 +308,20 @@ namespace Stereo3D
                 switch (cameraSelect)
                 {
                     case cams3D.LeftRight:
-                        leftCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(true);
-                        rightCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(false);
+                        mLeftCamera.projectionMatrix = projectionMatrix(true);
+                        mRightCamera.projectionMatrix = projectionMatrix(false);
                         break;
                     case cams3D.LeftOnly:
-                        leftCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(true);
-                        rightCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(true);
+                        mLeftCamera.projectionMatrix = projectionMatrix(true);
+                        mRightCamera.projectionMatrix = projectionMatrix(true);
                         break;
                     case cams3D.RightOnly:
-                        leftCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(false);
-                        rightCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(false);
+                        mLeftCamera.projectionMatrix = projectionMatrix(false);
+                        mRightCamera.projectionMatrix = projectionMatrix(false);
                         break;
                     case cams3D.RightLeft:
-                        leftCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(false);
-                        rightCam.GetComponent<Camera>().projectionMatrix = projectionMatrix(true);
+                        mLeftCamera.projectionMatrix = projectionMatrix(false);
+                        mRightCamera.projectionMatrix = projectionMatrix(true);
                         break;
                 }
             }
@@ -396,7 +356,6 @@ namespace Stereo3D
             }
             GL.PopMatrix();
         }
-
         public void OnGUI()
         {
             if (GuiVisible)
@@ -413,94 +372,27 @@ namespace Stereo3D
         public void DoWindow(int windowID)
         {
             GUILayout.BeginHorizontal();
+
             GUILayout.BeginVertical();
-            GUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-            GUILayout.Label("Mode");
-            GUILayout.FlexibleSpace();
-            GUILayout.EndHorizontal();
-            format3D = (mode3D)GUILayout.SelectionGrid((int)format3D, modeStrings, 1, GUILayout.MaxWidth(100));
-            if (GUI.changed)
-            {
-                if (format3D == mode3D.Interlace)
-                {
-                    SetWeave(0);
-                }
-                else if (format3D == mode3D.Checkerboard)
-                {
-                    SetWeave(1);
-                }
-            }
-            GUILayout.EndVertical();
-            GUILayout.BeginVertical();
-            GUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-            GUILayout.Label("Options");
-            GUILayout.FlexibleSpace();
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(15);
-            anaglyphOptions = (anaType)GUILayout.Toolbar((int)anaglyphOptions, anaStrings, GUILayout.MaxWidth(500));
-            if (GUI.changed)
-            {
-                SetAnaglyphType();
-            }
-            GUILayout.EndHorizontal();
+
             GUILayout.BeginHorizontal();
             GUILayout.Space(15);
             sideBySideOptions = (modeSBS)GUILayout.Toolbar((int)sideBySideOptions, sbsStrings, GUILayout.MaxWidth(200));
             GUILayout.EndHorizontal();
+
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUILayout.Label("[Alt-Click on Object to Converge]");
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
             GUILayout.Space(15);
-            GUILayout.Label("Rows", GUILayout.MinWidth(60));
-            string interlaceString = System.Convert.ToString(interlaceRows);
-            interlaceString = GUILayout.TextField(interlaceString, 4, GUILayout.MaxWidth(50));
-            interlaceRows = System.Convert.ToInt32(interlaceString);
-            if (GUI.changed)
-            {
-                if (format3D == mode3D.Interlace)
-                {
-                    SetWeave(0);
-                }
-            }
-            if (GUILayout.Button("-"))
-            {
-                interlaceRows -= 1;
-                SetWeave(0);
-            }
-            if (GUILayout.Button("+"))
-            {
-                interlaceRows += 1;
-                SetWeave(0);
-            }
+            
             GUILayout.FlexibleSpace();
             toggleTrackObj = GUILayout.Toggle(toggleTrackObj, "Track Object [T]");
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
             GUILayout.Space(15);
-            GUILayout.Label("Columns", GUILayout.MinWidth(60));
-            string checkerString = System.Convert.ToString(checkerboardColumns);
-            checkerString = GUILayout.TextField(checkerString, 4, GUILayout.MaxWidth(50));
-            checkerboardColumns = System.Convert.ToInt32(checkerString);
-            GUILayout.Label("Rows");
-            checkerString = System.Convert.ToString(checkerboardRows);
-            checkerString = GUILayout.TextField(checkerString, 4, GUILayout.MaxWidth(50));
-            checkerboardRows = System.Convert.ToInt32(checkerString);
-            if (GUI.changed)
-            {
-                if (format3D == mode3D.Checkerboard)
-                {
-                    SetWeave(1);
-                }
-            }
-            if (GUILayout.Button("enter"))
-            {
-                GUI.FocusControl("focus");
-            }
+            
             GUILayout.FlexibleSpace();
             GUILayout.Label("  [" + ToggleGuiKey + " toggles controls]");
             GUILayout.EndHorizontal();
@@ -535,8 +427,7 @@ namespace Stereo3D
             GUILayout.Label("Field of View", GUILayout.MinWidth(120));
             fieldOfView = GUILayout.HorizontalSlider(fieldOfView, 1.0f, 180.0f, GUILayout.MaxWidth(300));
 
-            Camera tempCamera = GetComponent<Camera>();
-            tempCamera.fieldOfView = fieldOfView;
+            mMainCamera.fieldOfView = fieldOfView;
             GUILayout.Label(" " + fieldOfView);
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
@@ -544,18 +435,17 @@ namespace Stereo3D
             GUILayout.Label("Aspect Ratio", GUILayout.MinWidth(120));
             if (GUILayout.Button("Reset"))
             {
-                tempCamera.ResetAspect();
-                cameraAspect = tempCamera.aspect;
+                mMainCamera.ResetAspect();
+                cameraAspect = mMainCamera.aspect;
             }
             cameraAspect = GUILayout.HorizontalSlider(cameraAspect, 0.1f, 4.0f, GUILayout.MaxWidth(250));
-            tempCamera.aspect = cameraAspect;
+            mMainCamera.aspect = cameraAspect;
             GUILayout.Label(" " + cameraAspect);
             GUILayout.FlexibleSpace();
             GUI.SetNextControlName("focus");
             dummy = GUILayout.Toggle(dummy, "");
 
             GUILayout.EndHorizontal();
-
             GUI.DragWindow();
         }
 
@@ -596,12 +486,21 @@ namespace Stereo3D
             }
             else if (anaType == anaType.FullColor)
             {
+                /*
                 this.stereoMaterial.SetVector("_Balance_Left_R", new Vector4((float)1, (float)0, (float)0, (float)0));
                 this.stereoMaterial.SetVector("_Balance_Left_G", new Vector4((float)0, (float)0, (float)0, (float)0));
                 this.stereoMaterial.SetVector("_Balance_Left_B", new Vector4((float)0, (float)0, (float)0, (float)0));
                 this.stereoMaterial.SetVector("_Balance_Right_R", new Vector4((float)0, (float)0, (float)0, (float)0));
                 this.stereoMaterial.SetVector("_Balance_Right_G", new Vector4((float)0, (float)1, (float)0, (float)0));
                 this.stereoMaterial.SetVector("_Balance_Right_B", new Vector4((float)0, (float)0, (float)1, (float)0));
+                */
+
+                this.stereoMaterial.SetVector("_Balance_Left_R", new Vector4((float)0.5f, (float)0, (float)0, (float)0));
+                this.stereoMaterial.SetVector("_Balance_Left_G", new Vector4((float)0, (float)0.5f, (float)0, (float)0));
+                this.stereoMaterial.SetVector("_Balance_Left_B", new Vector4((float)0, (float)0, (float)0.5f, (float)0));
+                this.stereoMaterial.SetVector("_Balance_Right_R", new Vector4((float)0.5f, (float)0, (float)0, (float)0));
+                this.stereoMaterial.SetVector("_Balance_Right_G", new Vector4((float)0, (float)0.5f, (float)0, (float)0));
+                this.stereoMaterial.SetVector("_Balance_Right_B", new Vector4((float)0, (float)0, (float)0.5f, (float)0));
             }
             else if (anaType == anaType.Optimized)
             {
@@ -748,22 +647,21 @@ namespace Stereo3D
             float a;
             float b;
             float FOVrad;
-            Camera tempCamera = GetComponent<Camera>();
-            float aspect = tempCamera.aspect;
+            float aspect = mMainCamera.aspect;
             float tempAspect;
             if (sideBySideOptions == modeSBS.Unsqueezed && format3D == mode3D.SideBySide)
             {
-                FOVrad = tempCamera.fieldOfView / 90.0f * Mathf.PI;
+                FOVrad = mMainCamera.fieldOfView / 90.0f * Mathf.PI;
                 tempAspect = aspect / 2;
             }
             else
             {
-                FOVrad = tempCamera.fieldOfView / 180.0f * Mathf.PI;
+                FOVrad = mMainCamera.fieldOfView / 180.0f * Mathf.PI;
                 tempAspect = aspect;
             }
 
-            a = tempCamera.nearClipPlane * Mathf.Tan(FOVrad * 0.5f);
-            b = tempCamera.nearClipPlane / (zeroParallax + tempCamera.nearClipPlane);
+            a = mMainCamera.nearClipPlane * Mathf.Tan(FOVrad * 0.5f);
+            b = mMainCamera.nearClipPlane / (zeroParallax + mMainCamera.nearClipPlane);
 
             if (isLeftCam)
             {
@@ -776,7 +674,7 @@ namespace Stereo3D
                 right = tempAspect * a - (interaxial / 2) * b;
             }
 
-            return PerspectiveOffCenter(left, right, -a, a, tempCamera.nearClipPlane, tempCamera.farClipPlane);
+            return PerspectiveOffCenter(left, right, -a, a, mMainCamera.nearClipPlane, mMainCamera.farClipPlane);
         }
 
         #region µ¥/Ë«Ïà»úÇÐ»»
