@@ -188,18 +188,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 34094228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1246691573}
-        m_MethodName: ClickBtn
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\u5E95\u90E8\u6309\u94AE"
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &34094228
@@ -795,18 +784,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 726991718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1246691573}
-        m_MethodName: ClickBtn
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\u5DE6\u90E8\u6309\u94AE"
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &726991718
@@ -917,18 +895,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1018688746}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1246691573}
-        m_MethodName: ClickBtn
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\u53F3\u90E8\u6309\u94AE"
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1018688746
@@ -975,7 +942,6 @@ GameObject:
   - component: {fileID: 1246691571}
   - component: {fileID: 1246691570}
   - component: {fileID: 1246691569}
-  - component: {fileID: 1246691573}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1048,7 +1014,7 @@ RectTransform:
   m_GameObject: {fileID: 1246691568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 0.10841421, y: 0.10841421, z: 0.10841421}
+  m_LocalScale: {x: 0.108, y: 0.108, z: 0.108}
   m_Children:
   - {fileID: 34094226}
   - {fileID: 1497209217}
@@ -1063,17 +1029,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1246691573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1246691568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e8c3f0604c6b44428770cd35c4ff085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1497209216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,18 +1104,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1497209219}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1246691573}
-        m_MethodName: ClickBtn
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\u9876\u90E8\u6309\u94AE"
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1497209219
@@ -1333,18 +1277,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1721638204}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1246691573}
-        m_MethodName: ClickBtn
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\u4E2D\u95F4\u6309\u94AE"
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1721638204
@@ -1481,7 +1414,7 @@ RectTransform:
   m_GameObject: {fileID: 1805471399}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 0.10841421, y: 0.10841421, z: 0.10841421}
+  m_LocalScale: {x: 0.108, y: 0.108, z: 0.108}
   m_Children:
   - {fileID: 248063917}
   m_Father: {fileID: 344336131}
@@ -1503,7 +1436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e31510f20fee943926b4627cf2e458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShowCursor: 1
+  mShowCursor: 0
   mMouseTrans: {fileID: 248063917}
 --- !u!114 &1805471403
 MonoBehaviour:

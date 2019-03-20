@@ -5,7 +5,7 @@
  *  Copyright (c) KeJun All rights reserved.
  * -----------------------------------------------------------
  *		描述: 
- *      创建者：DESKTOP-1050N1H\luoyikun
+ *      创建者：陈伟超
  *      创建时间: 2019/03/20 12:31:29
  *  
  */
@@ -14,7 +14,7 @@
 
 using UnityEngine;
 
-namespace Assets.Demo
+namespace Stereo3D
 {
     public class MouseCtrl : MonoBehaviour
     {
