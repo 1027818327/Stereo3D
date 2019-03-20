@@ -110,6 +110,7 @@ namespace Stereo3D
             rightCam.transform.parent = transform;
 
             mMainCamera.cullingMask = 0;
+            //mMainCamera.cullingMask = (1 << LayerMask.NameToLayer("UI"));
             mMainCamera.backgroundColor = new Color(0, 0, 0, 0);
             mMainCamera.clearFlags = CameraClearFlags.Nothing;
 

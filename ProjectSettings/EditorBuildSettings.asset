@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/demoScene3D_C#.unity
-    guid: 085644a7e9027ec40922fcded2a43e8a
+    path: Assets/Demo/Test.unity
+    guid: a175b228816732842bb65edc6c94cf3d

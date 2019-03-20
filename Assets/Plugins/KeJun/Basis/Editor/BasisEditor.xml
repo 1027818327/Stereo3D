@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BasisEditor</name>
+    </assembly>
+    <members>
+        <member name="T:Framework.Unity.Editor.AutoBuilder">
+            <summary>
+            自动构建脚本
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.DefineManager">
+            Editor Wizard for easily managing global defines in Unity
+            Place in Assets/Editor folder, or if you choose to place elsewhere 
+            be sure to also modify the DEF_MANAGER_PATH constant.
+            @khenkel
+        </member>
+        <member name="M:Framework.Unity.Editor.DefineManager.OpenDefManager">
+            <summary>
+            打开宏定义窗口
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.ExportPackage">
+            <summary>
+            导出资源包辅助类
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.FindMissingScripts">
+            <summary>
+            查询丢失脚本的类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.FindMissingScripts.ShowWindow">
+            <summary>
+            打开查询丢失脚本窗口
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.FindMissingScripts.OnGUI">
+            <summary>
+            GUI方法
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.FindMissingScriptsRecursively">
+            <summary>
+            递归查询丢失脚本的类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.FindMissingScriptsRecursively.ShowWindow">
+            <summary>
+            打开查询丢失脚本窗口
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.FindMissingScriptsRecursively.OnGUI">
+            <summary>
+            GUI
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.FindMissMeshs">
+            <summary>
+            查询丢失网格的类
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.FindReferences">
+            <summary>
+            查询资源引用其他资源的类
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.FinishCompiling">
+            <summary>
+            编译脚本监听
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.KeywordReplace">
+            <summary>
+            代码替换工具
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.KeywordReplace.OnWillCreateAsset(System.String)">
+            <summary>
+            当在Unity编辑器创建资源时
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="T:Framework.Unity.Editor.MeshEditor">
+            <summary>
+            网格工具类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.MeshEditor.AddBoxCollider(UnityEngine.GameObject)">
+            <summary>
+            给物体添加碰撞体
+            </summary>
+            <param name="varObj"></param>
+        </member>
+        <member name="T:Framework.Unity.Editor.MultiLanguageEditor">
+            <summary>
+            多语言编辑器脚本
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.OpenFolder">
+            <summary>
+            打开文件夹相关的实用函数。
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.OpenFolder.OpenFolderTemporaryCachePath">
+            <summary>
+            打开 Temporary Cache Path 文件夹。
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.OpenFolder.OpenFolderPersistentDataPath">
+            <summary>
+            打开 Persistent Data Path 文件夹。
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.OpenFolder.OpenFolderStreamingAssetsPath">
+            <summary>
+            打开 Streaming Assets Path 文件夹。
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.OpenFolder.OpenFolderDataPath">
+            <summary>
+            打开 Data Path 文件夹。
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.OpenFolder.OpenUnityFolder">
+            <summary>
+            打开 Unity安装目录。
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Editor.OpenFolder.OpenUnityTemplateScripsFolder">
+            <summary>
+            打开 Unity模板脚本目录。
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.TemplateFolderEditor">
+            <summary>
+            模板文件夹编辑器脚本
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Editor.TemplateFolderEditor.mModuleFolder">
+            <summary>
+            要创建的模块文件夹
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Editor.TemplateFolderEditor.mPath">
+            <summary>
+            创建的路径
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Editor.TemplateScripts">
+            <summary>
+            模板脚本类，拷贝模板脚本到unity安装路径
+            </summary>
+        </member>
+        <member name="T:EnumLabelDrawer">
+            <summary>
+            处理Header标记的枚举
+            </summary>
+        </member>
+        <member name="M:EnumLabelDrawer.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)">
+            <summary>
+            OnGUI
+            </summary>
+            <param name="position"></param>
+            <param name="property"></param>
+            <param name="label"></param>
+        </member>
+        <member name="T:TextureDetails">
+            <summary>
+            贴图详情类
+            </summary>
+        </member>
+        <member name="F:TextureDetails.isCubeMap">
+            <summary>
+            是否是立方体贴图
+            </summary>
+        </member>
+        <member name="F:TextureDetails.memSizeKB">
+            <summary>
+            内存大小
+            </summary>
+        </member>
+        <member name="F:TextureDetails.texture">
+            <summary>
+            贴图
+            </summary>
+        </member>
+        <member name="F:TextureDetails.format">
+            <summary>
+            贴图格式
+            </summary>
+        </member>
+        <member name="F:TextureDetails.mipMapCount">
+            <summary>
+            mipMapCount
+            </summary>
+        </member>
+        <member name="F:TextureDetails.FoundInMaterials">
+            <summary>
+            查找的材质列表
+            </summary>
+        </member>
+        <member name="F:TextureDetails.FoundInRenderers">
+            <summary>
+            查找的渲染器列表
+            </summary>
+        </member>
+        <member name="F:TextureDetails.FoundInAnimators">
+            <summary>
+            查找的Animators
+            </summary>
+        </member>
+        <member name="F:TextureDetails.FoundInScripts">
+            <summary>
+            查找的脚本列表
+            </summary>
+        </member>
+        <member name="F:TextureDetails.FoundInGraphics">
+            <summary>
+            查找的UI列表
+            </summary>
+        </member>
+        <member name="F:TextureDetails.FoundInButtons">
+            <summary>
+            查找的按钮列表
+            </summary>
+        </member>
+        <member name="F:TextureDetails.isSky">
+            <summary>
+            是否是天空盒
+            </summary>
+        </member>
+        <member name="F:TextureDetails.instance">
+            <summary>
+            是否实例化
+            </summary>
+        </member>
+        <member name="F:TextureDetails.isgui">
+            <summary>
+            是否gui
+            </summary>
+        </member>
+        <member name="M:TextureDetails.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:TextureDetails.Equals(TextureDetails)">
+            <summary>
+            是否与其他TextureDetails对象相同
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TextureDetails.GetHashCode">
+            <summary>
+            重写GetHashCode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TextureDetails.Equals(System.Object)">
+            <summary>
+            是否与object相等
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MaterialDetails">
+            <summary>
+            材质详情类
+            </summary>
+        </member>
+        <member name="F:MaterialDetails.material">
+            <summary>
+            材质
+            </summary>
+        </member>
+        <member name="F:MaterialDetails.FoundInRenderers">
+            <summary>
+            查找的渲染器列表
+            </summary>
+        </member>
+        <member name="F:MaterialDetails.FoundInGraphics">
+            <summary>
+            查找的UI列表
+            </summary>
+        </member>
+        <member name="F:MaterialDetails.instance">
+            <summary>
+            是否实例化
+            </summary>
+        </member>
+        <member name="F:MaterialDetails.isgui">
+            <summary>
+            是否gui
+            </summary>
+        </member>
+        <member name="F:MaterialDetails.isSky">
+            <summary>
+            是否是天空盒
+            </summary>
+        </member>
+        <member name="M:MaterialDetails.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:MeshDetails">
+            <summary>
+            网格详情类
+            </summary>
+        </member>
+        <member name="F:MeshDetails.mesh">
+            <summary>
+            网格
+            </summary>
+        </member>
+        <member name="F:MeshDetails.FoundInMeshFilters">
+            <summary>
+            查找的网格过滤器列表
+            </summary>
+        </member>
+        <member name="F:MeshDetails.FoundInSkinnedMeshRenderer">
+            <summary>
+            查找的皮肤网格渲染器列表
+            </summary>
+        </member>
+        <member name="F:MeshDetails.instance">
+            <summary>
+            是否实例化
+            </summary>
+        </member>
+        <member name="M:MeshDetails.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:MissingGraphic">
+            <summary>
+            丢失图形类
+            </summary>
+        </member>
+        <member name="F:MissingGraphic.Object">
+            <summary>
+            物体
+            </summary>
+        </member>
+        <member name="F:MissingGraphic.type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:MissingGraphic.name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="T:ResourceChecker">
+            <summary>
+            资源检查类
+            </summary>
+        </member>
+    </members>
+</doc>

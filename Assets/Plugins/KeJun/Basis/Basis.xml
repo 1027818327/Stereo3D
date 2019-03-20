@@ -1,0 +1,4638 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Basis</name>
+    </assembly>
+    <members>
+        <member name="T:Framework.Event.EventData">
+            <summary>
+            事件数据类
+            </summary>
+        </member>
+        <member name="T:Framework.Event.EventDataEx`1">
+            <summary>
+            事件数据类的扩展
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Framework.Event.EventDataEx`1.#ctor(`0)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="varData"></param>
+        </member>
+        <member name="M:Framework.Event.EventDataEx`1.GetData">
+            <summary>
+            获取数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Event.OnNotificationDelegate">
+            <summary>
+            C#在类定义外可以声明方法的签名（Delegate，代理或委托），但是不能声明真正的方法。
+            </summary>
+            <param name="note"></param>
+        </member>
+        <member name="T:Framework.Event.EventManager">
+            <summary>
+            事件管理类
+            </summary>
+        </member>
+        <member name="M:Framework.Event.EventManager.AddEventListener(System.UInt32,Framework.Event.OnNotificationDelegate)">
+            <summary>
+            添加监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.RemoveEventListener(System.UInt32,Framework.Event.OnNotificationDelegate)">
+            <summary>
+            移除监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.RemoveEventListener(System.UInt32)">
+            <summary>
+            移除某一类型所有的监听事件
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.DispatchEvent(System.UInt32,Framework.Event.EventData)">
+            <summary>
+            派发事件有数据
+            </summary>
+            <param name="type"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.DispatchEvent(System.UInt32)">
+            <summary>
+            派发事件无数据
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.HasEventListener(System.UInt32)">
+            <summary>
+            查找是否有当前类型事件监听
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Event.EventManager.AddEventListener(System.String,Framework.Event.OnNotificationDelegate)">
+            <summary>
+            添加监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.RemoveEventListener(System.String,Framework.Event.OnNotificationDelegate)">
+            <summary>
+            移除监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.RemoveEventListener(System.String)">
+            <summary>
+            移除某一类型所有的监听事件
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.DispatchEvent(System.String,Framework.Event.EventData)">
+            <summary>
+            派发事件有数据
+            </summary>
+            <param name="type"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.DispatchEvent(System.String)">
+            <summary>
+            派发事件无数据
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.EventManager.HasEventListener(System.String)">
+            <summary>
+            查找是否有当前类型事件监听
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Event.LogicEventType">
+            <summary>
+            公共逻辑事件类型类
+            </summary>
+        </member>
+        <member name="F:Framework.Event.LogicEventType.AppStart">
+            <summary>
+            // App开始
+            </summary>
+        </member>
+        <member name="F:Framework.Event.LogicEventType.SwitchAppState">
+            <summary>
+            切换App状态完成
+            </summary>
+        </member>
+        <member name="F:Framework.Event.LogicEventType.UnTouchItem">
+            <summary>
+            离开触摸道具
+            </summary>
+        </member>
+        <member name="F:Framework.Event.LogicEventType.FrameworkEventEnd">
+            <summary>
+            框架部分事件结束
+            </summary>
+        </member>
+        <member name="T:Framework.Http.HttpUtils">
+            <summary>
+            HTTP辅助类
+            </summary>
+        </member>
+        <member name="F:Framework.Http.HttpUtils.allDone">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Framework.Http.HttpUtils.SendPost(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String@)">
+            <summary>
+            同步发送http post请求
+            </summary>
+            <param name="url">地址</param>
+            <param name="parameters">查询参数集合</param>
+            <param name="varResult">接收到的数据</param>
+            <returns>返回false表示网络异常，true表示成功发送并接收数据</returns>
+        </member>
+        <member name="M:Framework.Http.HttpUtils.SendGet(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String@)">
+            <summary>
+            同步发送http get请求
+            </summary>
+            <param name="url">地址</param>
+            <param name="parameters">查询参数集合</param>
+            <param name="varResult">接收到的数据</param>
+            <returns>返回false表示网络异常，true表示成功发送并接收数据</returns>
+        </member>
+        <member name="M:Framework.Http.HttpUtils.SendPostHeader(System.String,System.Collections.Generic.IDictionary{System.Object,System.String},System.String@)">
+            <summary>
+            同步发送http post header请求
+            </summary>
+            <param name="url">地址</param>
+            <param name="parameters">查询参数集合</param>
+            <param name="varResult">接收到的数据</param>
+            <returns>返回false表示网络异常，true表示成功发送并接收数据</returns>
+        </member>
+        <member name="M:Framework.Http.HttpUtils.SendPostAnsyc(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Action{System.String})">
+            <summary>
+            异步发送post请求
+            </summary>
+            <param name="url">地址</param>
+            <param name="parameters">查询参数集合</param>
+            <param name="callback">回调函数</param>
+            <returns>返回false表示网络异常，true表示成功发送并接收数据</returns>
+        </member>
+        <member name="M:Framework.Http.HttpUtils.SendGetAnsyc(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Action{System.String})">
+            <summary>
+            异步发送get请求
+            </summary>
+            <param name="url">地址</param>
+            <param name="parameters">查询参数集合</param>
+            <param name="callback">回调函数</param>
+            <returns>返回false表示网络异常，true表示成功发送并接收数据</returns>
+        </member>
+        <member name="M:Framework.Http.HttpUtils.SendPostHeaderAnsyc(System.String,System.Collections.Generic.IDictionary{System.Object,System.String},System.Action{System.String})">
+            <summary>
+            异步发送http post header请求
+            </summary>
+            <param name="url">地址</param>
+            <param name="parameters">查询参数集合</param>
+            <param name="callback">回调函数</param>
+            <returns>返回false表示网络异常，true表示成功发送并接收数据</returns>
+        </member>
+        <member name="T:Framework.IO.FileUtils">
+            <summary>
+            文件帮助类
+            </summary>
+        </member>
+        <member name="M:Framework.IO.FileUtils.IsValidFileContent(System.String,System.String)">
+            <summary>
+            比较两个路径下的文件是否完全相同
+            </summary>
+            <param name="filePath1"></param>
+            <param name="filePath2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.IO.FileUtils.GetFileHash(System.String)">
+            <summary>
+            计算文件的hash值 用于比较两个文件是否相同
+            </summary>
+            <param name="filePath">文件路径</param>
+            <returns>文件hash值</returns>
+        </member>
+        <member name="M:Framework.IO.FileUtils.GetBytesHash(System.Byte[])">
+            <summary>
+            计算文件的hash值 用于比较两个文件是否相同
+            </summary>
+            <param name="varArray">文件字节数组</param>
+            <returns>文件hash值</returns>
+        </member>
+        <member name="T:Framework.Pattern.Singleton`1">
+            <summary>
+            C#单例模式
+            </summary>
+        </member>
+        <member name="P:Framework.Pattern.Singleton`1.Instance">
+            <summary>
+            单例属性
+            </summary>
+        </member>
+        <member name="M:Framework.Pattern.Singleton`1.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:Framework.Pattern.Singleton`1.Init">
+            <summary>
+            初始化方法
+            </summary>
+        </member>
+        <member name="T:Framework.Pattern.Singleton">
+            <summary>
+            扩展单例
+            </summary>
+        </member>
+        <member name="M:Framework.Pattern.Singleton.GetInstance``1">
+            <summary>
+            获取单例方法
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Pattern.State">
+            <summary>
+            抽象状态类
+            </summary>
+        </member>
+        <member name="T:Framework.Pattern.State.StateCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="F:Framework.Pattern.State.StateCode.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:Framework.Pattern.State.StateCode.Begin">
+            <summary>
+            状态开始
+            </summary>
+        </member>
+        <member name="F:Framework.Pattern.State.StateCode.End">
+            <summary>
+            状态结束
+            </summary>
+        </member>
+        <member name="P:Framework.Pattern.State.pStateCode">
+            <summary>
+            状态码属性
+            </summary>
+        </member>
+        <member name="M:Framework.Pattern.State.Restart">
+            <summary>
+            重新开始
+            </summary>
+        </member>
+        <member name="M:Framework.Pattern.State.Enter">
+            <summary>
+            进入
+            </summary>
+        </member>
+        <member name="M:Framework.Pattern.State.Leave">
+            <summary>
+            离开
+            </summary>
+        </member>
+        <member name="T:Framework.Pattern.StateManager">
+            <summary>
+            状态管理类
+            </summary>
+        </member>
+        <member name="P:Framework.Pattern.StateManager.CurrentState">
+            <summary>
+            当前状态属性
+            </summary>
+        </member>
+        <member name="M:Framework.Pattern.StateManager.EnterState``1">
+            <summary>
+            切换状态
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Framework.Pattern.StateManager.RestartState">
+            <summary>
+            重启当前状态
+            </summary>
+        </member>
+        <member name="T:Framework.PID.ProcessUtils">
+            <summary>
+            进程管理帮助类
+            </summary>
+        </member>
+        <member name="M:Framework.PID.ProcessUtils.ExecuteInCmd(System.String)">
+            <summary>
+            执行内部命令（cmd.exe 中的命令）, 注意unity .net3.5不支持，需要切换到.net4.6
+            </summary>
+            <param name="cmdline">命令行</param>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:Framework.PID.ProcessUtils.ExecuteOutCmd(System.String,System.String)">
+            <summary>
+            执行外部命令
+            </summary>
+            <param name="argument">命令参数</param>
+            <param name="application">命令程序路径</param>
+            <returns>执行结果</returns>
+        </member>
+        <member name="T:Framework.Procedure.AbstractLoadProcedure">
+            <summary>
+            抽象加载流程类
+            </summary>
+        </member>
+        <member name="M:Framework.Procedure.AbstractLoadProcedure.ProcedureBegin">
+            <summary>
+            流程开始
+            </summary>
+        </member>
+        <member name="M:Framework.Procedure.AbstractLoadProcedure.ProcedureEnd">
+            <summary>
+            流程结束
+            </summary>
+        </member>
+        <member name="M:Framework.Procedure.AbstractLoadProcedure.RegisterEndCallback(System.Action)">
+            <summary>
+            注册流程结束回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Framework.Procedure.AbstractLoadProcedure.UnRegisterEndCallback(System.Action)">
+            <summary>
+            解注册流程结束回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:Framework.Procedure.ILoadProcedure">
+            <summary>
+            数据加载流程
+            </summary>
+        </member>
+        <member name="T:Framework.Procedure.IProcedure">
+            <summary>
+            流程接口
+            </summary>
+        </member>
+        <member name="M:Framework.Procedure.IProcedure.ProcedureBegin">
+            <summary>
+            流程开始
+            </summary>
+        </member>
+        <member name="M:Framework.Procedure.IProcedure.ProcedureEnd">
+            <summary>
+            流程结束
+            </summary>
+        </member>
+        <member name="M:Framework.Procedure.IProcedure.RegisterEndCallback(System.Action)">
+            <summary>
+            注册结束回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Framework.Procedure.IProcedure.UnRegisterEndCallback(System.Action)">
+            <summary>
+            解注册结束回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:Framework.Registry.RegistryUtils">
+            <summary>
+            注册表辅助类, 只用于PC环境
+            </summary>
+        </member>
+        <member name="M:Framework.Registry.RegistryUtils.Get(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            获取注册表
+            </summary>
+            <param name="varRk">从指定注册表搜索，Registry.ClassesRoot或者Registry.CurrentUser或者Registry.LocalMachine或者Registry.Users或者Registry.CurrentConfig</param>
+            <param name="varPath">从指定路径下查找，以/分隔</param>
+            <returns>返回所有子项</returns>
+        </member>
+        <member name="M:Framework.Registry.RegistryUtils.GetRegistryKey(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            获取注册表
+            </summary>
+            <param name="varRk">从指定注册表搜索，Registry.ClassesRoot或者Registry.CurrentUser或者Registry.LocalMachine或者Registry.Users或者Registry.CurrentConfig</param>
+            <param name="varPath">从指定路径下查找，以/分隔</param>
+            <returns>返回注册项</returns>
+        </member>
+        <member name="T:Framework.Security.DES">
+            <summary>
+            DES加密类
+            </summary>
+        </member>
+        <member name="P:Framework.Security.DES.Iv">
+            <summary>
+            DES加密偏移量，必须是>=8位长的字符串
+            </summary>
+        </member>
+        <member name="P:Framework.Security.DES.Key">
+            <summary>
+            DES加密的私钥，必须是8位长的字符串
+            </summary>
+        </member>
+        <member name="M:Framework.Security.DES.DESEncrypt(System.String)">
+            <summary>
+            对字符串进行DES加密
+            </summary>
+            <param name="sourceString">待加密的字符串</param>
+            <returns>加密后的BASE64编码的字符串</returns>
+        </member>
+        <member name="M:Framework.Security.DES.DESDecrypt(System.String)">
+            <summary>
+            对DES加密后的字符串进行解密
+            </summary>
+            <param name="encryptedString">待解密的字符串</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="T:Framework.Security.MD5">
+            <summary>
+            MD5加密不可逆，不需要加密向量
+            </summary>
+        </member>
+        <member name="M:Framework.Security.MD5.MD5Encrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="normalTxt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Security.RSA">
+            <summary>
+            RSA加密类
+            </summary>
+        </member>
+        <member name="M:Framework.Security.RSA.RSAEncrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="normaltxt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Security.RSA.RSADecrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="securityTxt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Serialize.SerializeHelper">
+            <summary>
+            C#序列化帮助类
+            </summary>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToString(System.Byte[])">
+            <summary>
+            使用UTF8编码将byte数组转成字符串
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToString(System.Byte[],System.Text.Encoding)">
+            <summary>
+            使用指定字符编码将byte数组转成字符串
+            </summary>
+            <param name="data"></param>
+            <param name="encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToByte(System.String)">
+            <summary>
+            使用UTF8编码将字符串转成byte数组
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToByte(System.String,System.Text.Encoding)">
+            <summary>
+            使用指定字符编码将字符串转成byte数组
+            </summary>
+            <param name="str"></param>
+            <param name="encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.SerializeToBinary(System.Object)">
+            <summary>
+            将对象序列化为二进制数据 
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.SerializeObject(System.Object,System.Byte[]@,System.Int32)">
+            <summary>
+            将object序列化到数组
+            </summary>
+            <param name="obj">object</param>
+            <param name="buff">数组</param>
+            <param name="offset"></param>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary(System.Byte[])">
+            <summary>
+            将二进制数据反序列化
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            数组反序列化
+            </summary>
+            <param name="buff"></param>
+            <param name="index"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary``1(System.Byte[])">
+            <summary>
+            将二进制数据反序列化为指定类型对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Unity.Mouse.FollowMouseMove">
+            <summary>
+            根据鼠标点击位置改变物体朝向
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Mouse.FollowMouseMove.speed">
+            <summary>
+            运动速度
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Mouse.FollowMouseMove.effect">
+            <summary>
+            点击特效
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Mouse.FollowMouseMove.targetPosition">
+            <summary>
+            要移动到的位置
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Mouse.FollowMouseMove.isMoving">
+            <summary>
+            鼠标左键状态
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Mouse.FollowMouseMove.Awake">
+            <summary>
+            Awake函数
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Mouse.FollowMouseMove.Update">
+            <summary>
+            Update is called once per frame
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Mouse.FollowMouseMove.TriggerRaycastHit(UnityEngine.RaycastHit)">
+            <summary>
+            射线检测
+            </summary>
+            <param name="varHit"></param>
+        </member>
+        <member name="M:Framework.Unity.Mouse.FollowMouseMove.LookAtTarget(UnityEngine.Vector3)">
+            <summary>
+            朝向目标
+            </summary>
+            <param name="hitPoint"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.IMultiLanguage.LoadLanguage(Framework.Unity.MultiLanguage.LanguageType)">
+            <summary>
+            加载指定语言
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.IMultiLanguage.SwitchLanguage(Framework.Unity.MultiLanguage.LanguageType)">
+            <summary>
+            切换语言
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.IMultiLanguage.GetValue(Framework.Unity.MultiLanguage.LanguageType,System.String)">
+            <summary>
+            获取指定语言和键值对应的value
+            </summary>
+            <param name="type"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.IMultiLanguage.GetValue(System.String)">
+            <summary>
+            获取指定键值对应的value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.IMultiLanguage.RegisterSwitchCallback(System.Action)">
+            <summary>
+            注册切换语言回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.IMultiLanguage.UnRegisterSwitchCallback(System.Action)">
+            <summary>
+            解注册切换语言回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:Framework.Unity.MultiLanguage.LanguageManager">
+            <summary>
+            语言管理
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageManager.mLanguageTypes">
+            <summary>
+            当前支持的语言类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageManager.mLanguageTextAssets">
+            <summary>
+            对应的语言的配置文件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageManager.mInstance">
+            <summary>
+            实例
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageManager.mCurrentLanguageType">
+            <summary>
+            当前语言类型
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.MultiLanguage.LanguageManager.CurrentLanguageType">
+            <summary>
+            当前语言
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.LoadLanguage(Framework.Unity.MultiLanguage.LanguageType)">
+            <summary>
+            加载语言
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.SwitchLanguage(Framework.Unity.MultiLanguage.LanguageType)">
+            <summary>
+            切换语言
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.GetValue(Framework.Unity.MultiLanguage.LanguageType,System.String)">
+            <summary>
+            获取指定语言key对应的value
+            </summary>
+            <param name="type"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.GetValue(System.String)">
+            <summary>
+            获取当前语言key值对应的value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.RegisterSwitchCallback(System.Action)">
+            <summary>
+            注册加载回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.UnRegisterSwitchCallback(System.Action)">
+            <summary>
+            解注册加载回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.ProcedureBegin">
+            <summary>
+            加载流程开始
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageManager.LoadSprite(System.String)">
+            <summary>
+            从指定路径加载图片
+            </summary>
+            <param name="varPath"></param>
+        </member>
+        <member name="T:Framework.Unity.MultiLanguage.LanguageType">
+            <summary>
+            语言类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Afrikaans">
+            <summary>
+            南非
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Arabic">
+            <summary>
+            阿拉伯
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Basque">
+            <summary>
+            巴斯克
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Belarusian">
+            <summary>
+            白俄罗斯
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Bulgarian">
+            <summary>
+            保加利亚
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Catalan">
+            <summary>
+            加泰罗尼亚
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Chinese">
+            <summary>
+            中文
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Czech">
+            <summary>
+            捷克
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Danish">
+            <summary>
+            丹麦
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Dutch">
+            <summary>
+            荷兰
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.English">
+            <summary>
+            英语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Estonian">
+            <summary>
+            爱沙尼亚
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Faroese">
+            <summary>
+            法罗
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Finnish">
+            <summary>
+            芬兰
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.French">
+            <summary>
+            法语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.German">
+            <summary>
+            德语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Greek">
+            <summary>
+            希腊
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Hebrew">
+            <summary>
+            希伯来语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Hungarian">
+            <summary>
+            匈牙利语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Icelandic">
+            <summary>
+            冰岛语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Indonesian">
+            <summary>
+            印尼语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Italian">
+            <summary>
+            意大利语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Japanese">
+            <summary>
+            日语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Korean">
+            <summary>
+            韩国语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Latvian">
+            <summary>
+            拉脱维亚语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Lithuanian">
+            <summary>
+            立陶宛语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Norwegian">
+            <summary>
+            挪威语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Polish">
+            <summary>
+            波兰
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Portuguese">
+            <summary>
+            葡萄牙语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Romanian">
+            <summary>
+            罗马尼亚语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Russian">
+            <summary>
+            俄语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.SerboCroatian">
+            <summary>
+            塞尔维亚语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Slovak">
+            <summary>
+            斯洛伐克语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Slovenian">
+            <summary>
+            斯洛维尼亚语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Spanish">
+            <summary>
+            西班牙语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Swedish">
+            <summary>
+            瑞典语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Thai">
+            <summary>
+            泰国语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Turkish">
+            <summary>
+            土耳其语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Ukrainian">
+            <summary>
+            乌克兰语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Vietnamese">
+            <summary>
+            越南语
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.ChineseSimplified">
+            <summary>
+            简体中文
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.ChineseTraditional">
+            <summary>
+            繁体中文
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageType.Unknown">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.MultiLanguage.LanguageImage">
+            <summary>
+            针对UGUI Image解析文本
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageImage.mKey">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageImage.UpdateSprite">
+            <summary>
+            更新文本
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageImage.SwitchLanguage">
+            <summary>
+            语言切换
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.MultiLanguage.LanguageText">
+            <summary>
+            针对UGUI Text解析文本
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.MultiLanguage.LanguageText.mKey">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageText.UpdateText">
+            <summary>
+            更新文本
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.MultiLanguage.LanguageText.SwitchLanguage">
+            <summary>
+            语言切换
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Pattern.SingletonMono`1">
+            <summary>
+            MonoBehaviour单例模式
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Pattern.SingletonMono`1.Instance">
+            <summary>
+            单例属性
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Pattern.SingletonMono`1.applicationIsQuitting">
+            <summary>
+            程序是否退出
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Pattern.SingletonMono`1.OnDestroy">
+            <summary>  
+            When Unity quits, it destroys objects in a random order.  
+            In principle, a Singleton is only destroyed when application quits.  
+            If any script calls Instance after it have been destroyed,  
+              it will create a buggy ghost object that will stay on the Editor scene  
+              even after stopping playing the Application. Really bad!  
+            So, this was made to be sure we're not creating that buggy ghost object.  
+            </summary>  
+        </member>
+        <member name="T:Framework.Unity.Persist.AppPrefs">
+            <summary>
+            扩展Unity存档类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.Init(System.String)">
+            <summary>
+            初始化存档前缀
+            </summary>
+            <param name="keyPrefix"></param>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.GetFloat(System.String)">
+            <summary>
+            获取存档
+            </summary>
+            <param name="key">键</param>
+            <returns>返回存档</returns>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.GetFloat(System.String,System.Single)">
+            <summary>
+            获取存档
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns>返回存档</returns>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.GetInt(System.String)">
+            <summary>
+            获取存档
+            </summary>
+            <param name="key">键</param>
+            <returns>返回存档</returns>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.GetInt(System.String,System.Int32)">
+            <summary>
+            获取存档
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns>返回存档</returns>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.GetString(System.String)">
+            <summary>
+            获取存档
+            </summary>
+            <param name="key">键</param>
+            <returns>返回存档</returns>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.GetString(System.String,System.String)">
+            <summary>
+            获取存档
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns>返回存档</returns>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.HasKey(System.String)">
+            <summary>
+            是否存在存档
+            </summary>
+            <param name="key">键</param>
+            <returns>存在则返回true，否则返回false</returns>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.SetFloat(System.String,System.Single)">
+            <summary>
+            设置存档
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.SetInt(System.String,System.Int32)">
+            <summary>
+            设置存档
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.SetString(System.String,System.String)">
+            <summary>
+            设置存档
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.DeleteAll">
+            <summary>
+            删除所有存档
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.DeleteKey(System.String)">
+            <summary>
+            删除某个存档
+            </summary>
+            <param name="key">键</param>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.Save">
+            <summary>
+            保存存档
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Persist.AppPrefs.GetKey(System.String)">
+            <summary>
+            获取存档位置
+            </summary>
+            <param name="key">键</param>
+            <returns>返回前缀_key</returns>
+        </member>
+        <member name="T:Framework.Unity.Point">
+            <summary>
+            物体节点信息
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Point.mPosition">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Point.mEulerAngles">
+            <summary>
+            欧拉角
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Point.mScale">
+            <summary>
+            缩放
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Point.Init(UnityEngine.Transform)">
+            <summary>
+            初始化
+            </summary>
+            <param name="varTrans"></param>
+        </member>
+        <member name="M:Framework.Unity.Point.SetTransform(UnityEngine.Transform)">
+            <summary>
+            设置物体的位置，欧拉角，角度
+            </summary>
+            <param name="varTrans"></param>
+        </member>
+        <member name="T:Framework.Unity.ResourcesMgr">
+            <summary>
+            资源加载管理类
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.ResourcesMgr.hashtable">
+            <summary>
+            资源缓存集合
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.ResourcesMgr.Init">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.ResourcesMgr.Load``1(System.String,System.Boolean)">
+            <summary>
+            从Res中加载资源
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="path"></param>
+            <param name="cache"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.ResourcesMgr.CreateGameObject(System.String,System.Boolean)">
+            <summary>
+            从Res中创建一个GameObject对象
+            </summary>
+            <param name="path">路径</param>
+            <param name="cache">是否缓存</param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.ResourcesMgr.Release">
+            <summary>
+            释放缓存
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Serialize.Serialization`1">
+            <summary>
+            支持序列化泛型列表类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Framework.Unity.Serialize.Serialization`1.ToList">
+            <summary>
+            返回对应列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Serialize.Serialization`1.#ctor(System.Collections.Generic.List{`0})">
+            <summary>
+            序列化方法
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="T:Framework.Unity.Serialize.Serialization`2">
+            <summary>
+            支持序列化字典类
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="M:Framework.Unity.Serialize.Serialization`2.ToDictionary">
+            <summary>
+            返回对应字典
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Serialize.Serialization`2.#ctor(System.Collections.Generic.Dictionary{`0,`1})">
+            <summary>
+            序列化方法
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:Framework.Unity.Serialize.Serialization`2.OnBeforeSerialize">
+            <summary>
+            序列化前
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Serialize.Serialization`2.OnAfterDeserialize">
+            <summary>
+            序列化后
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Sound.Audio">
+            <summary>
+            声音类
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.audioID">
+            <summary>
+            The ID of the Audio
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.audioSource">
+            <summary>
+            The audio source that is responsible for this audio
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.clip">
+            <summary>
+            Audio clip to play/is playing
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.loop">
+            <summary>
+            Whether the audio will be lopped
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.persist">
+            <summary>
+            Whether the audio persists in between scene changes
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.fadeInSeconds">
+            <summary>
+            How many seconds it needs for the audio to fade in/ reach target volume (if higher than current)
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.fadeOutSeconds">
+            <summary>
+            How many seconds it needs for the audio to fade out/ reach target volume (if lower than current)
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.playing">
+            <summary>
+            Whether the audio is currently playing
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.paused">
+            <summary>
+            Whether the audio is paused
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.stopping">
+            <summary>
+            Whether the audio is stopping
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.Audio.activated">
+            <summary>
+            Whether the audio is created and updated at least once. 
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Sound.Audio.AudioType">
+            <summary>
+            声音类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Sound.Audio.AudioType.Music">
+            <summary>
+            音乐
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Sound.Audio.AudioType.Sound">
+            <summary>
+            音效
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Sound.Audio.AudioType.UISound">
+            <summary>
+            UI音效
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.#ctor(Framework.Unity.Sound.Audio.AudioType,UnityEngine.AudioClip,System.Boolean,System.Boolean,System.Single,System.Single,System.Single,UnityEngine.Transform)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="audioType"></param>
+            <param name="clip"></param>
+            <param name="loop"></param>
+            <param name="persist"></param>
+            <param name="volume"></param>
+            <param name="fadeInValue"></param>
+            <param name="fadeOutValue"></param>
+            <param name="sourceTransform"></param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Play">
+            <summary>
+            Start playing audio clip from the beggining
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Play(System.Single)">
+            <summary>
+            Start playing audio clip from the beggining
+            </summary>
+            <param name="volume">The target volume</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Stop">
+            <summary>
+            Stop playing audio clip
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Pause">
+            <summary>
+            Pause playing audio clip
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.UnPause">
+            <summary>
+            Resume playing audio clip
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Resume">
+            <summary>
+            Resume playing audio clip
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.SetVolume(System.Single)">
+            <summary>
+            Sets the audio volume
+            </summary>
+            <param name="volume">The target volume</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.SetVolume(System.Single,System.Single)">
+            <summary>
+            Sets the audio volume
+            </summary>
+            <param name="volume">The target volume</param>
+            <param name="fadeSeconds">How many seconds it needs for the audio to fade in/out to reach target volume. If passed, it will override the Audio's fade in/out seconds, but only for this transition</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.SetVolume(System.Single,System.Single,System.Single)">
+            <summary>
+            Sets the audio volume
+            </summary>
+            <param name="volume">The target volume</param>
+            <param name="fadeSeconds">How many seconds it needs for the audio to fade in/out to reach target volume. If passed, it will override the Audio's fade in/out seconds, but only for this transition</param>
+            <param name="startVolume">Immediately set the volume to this value before beginning the fade. If not passed, the Audio will start fading from the current volume towards the target volume</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Set3DMaxDistance(System.Single)">
+            <summary>
+            Sets the Audio 3D max distance
+            </summary>
+            <param name="max">the max distance</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Set3DMinDistance(System.Single)">
+            <summary>
+            Sets the Audio 3D min distance
+            </summary>
+            <param name="min">the min distance</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Set3DDistances(System.Single,System.Single)">
+            <summary>
+            Sets the Audio 3D distances
+            </summary>
+            <param name="min">the min distance</param>
+            <param name="max">the max distance</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.Audio.Update">
+            <summary>
+            更新，由SoundManager调用，用户不要手动调用
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Sound.SoundManager">
+            <summary>
+            声音管理类，unity单例类
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.SoundManager.ignoreDuplicateMusic">
+            <summary>
+            When set to true, new Audios that have the same audio clip as any other Audio, will be ignored
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.SoundManager.ignoreDuplicateSounds">
+            <summary>
+            When set to true, new Audios that have the same audio clip as any other Audio, will be ignored
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.SoundManager.ignoreDuplicateUISounds">
+            <summary>
+            When set to true, new Audios that have the same audio clip as any other Audio, will be ignored
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.SoundManager.globalVolume">
+            <summary>
+            Global volume
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.SoundManager.globalMusicVolume">
+            <summary>
+            Global music volume
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.SoundManager.globalSoundsVolume">
+            <summary>
+            Global sounds volume
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Sound.SoundManager.globalUISoundsVolume">
+            <summary>
+            Global UI sounds volume
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetAudio(System.Int32)">
+            <summary>
+            Returns the Audio that has as its id the audioID if one is found, returns null if no such Audio is found
+            </summary>
+            <param name="audioID">The id of the Audio to be retrieved</param>
+            <returns>Audio that has as its id the audioID, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetAudio(UnityEngine.AudioClip)">
+            <summary>
+            Returns the first occurrence of Audio that plays the given audioClip. Returns null if no such Audio is found
+            </summary>
+            <param name="audioClip">The audio clip of the Audio to be retrieved</param>
+            <returns>First occurrence of Audio that has as plays the audioClip, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetMusicAudio(System.Int32)">
+            <summary>
+            Returns the music Audio that has as its id the audioID if one is found, returns null if no such Audio is found
+            </summary>
+            <param name="audioID">The id of the music Audio to be returned</param>
+            <returns>Music Audio that has as its id the audioID if one is found, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetMusicAudio(UnityEngine.AudioClip)">
+            <summary>
+            Returns the first occurrence of music Audio that plays the given audioClip. Returns null if no such Audio is found
+            </summary>
+            <param name="audioClip">The audio clip of the music Audio to be retrieved</param>
+            <returns>First occurrence of music Audio that has as plays the audioClip, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetSoundAudio(System.Int32)">
+            <summary>
+            Returns the sound fx Audio that has as its id the audioID if one is found, returns null if no such Audio is found
+            </summary>
+            <param name="audioID">The id of the sound fx Audio to be returned</param>
+            <returns>Sound fx Audio that has as its id the audioID if one is found, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetSoundAudio(UnityEngine.AudioClip)">
+            <summary>
+            Returns the first occurrence of sound Audio that plays the given audioClip. Returns null if no such Audio is found
+            </summary>
+            <param name="audioClip">The audio clip of the sound Audio to be retrieved</param>
+            <returns>First occurrence of sound Audio that has as plays the audioClip, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetUISoundAudio(System.Int32)">
+            <summary>
+            Returns the UI sound fx Audio that has as its id the audioID if one is found, returns null if no such Audio is found
+            </summary>
+            <param name="audioID">The id of the UI sound fx Audio to be returned</param>
+            <returns>UI sound fx Audio that has as its id the audioID if one is found, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.GetUISoundAudio(UnityEngine.AudioClip)">
+            <summary>
+            Returns the first occurrence of UI sound Audio that plays the given audioClip. Returns null if no such Audio is found
+            </summary>
+            <param name="audioClip">The audio clip of the UI sound Audio to be retrieved</param>
+            <returns>First occurrence of UI sound Audio that has as plays the audioClip, null if no such Audio is found</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlayMusic(UnityEngine.AudioClip)">
+            <summary>
+            Play background music
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlayMusic(UnityEngine.AudioClip,System.Single)">
+            <summary>
+            Play background music
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="volume"> The volume the music will have</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlayMusic(UnityEngine.AudioClip,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            Play background music
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="volume"> The volume the music will have</param>
+            <param name="loop">Wether the music is looped</param>
+            <param name = "persist" > Whether the audio persists in between scene changes</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlayMusic(UnityEngine.AudioClip,System.Single,System.Boolean,System.Boolean,System.Single,System.Single)">
+            <summary>
+            Play background music
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="volume"> The volume the music will have</param>
+            <param name="loop">Wether the music is looped</param>
+            <param name="persist"> Whether the audio persists in between scene changes</param>
+            <param name="fadeInSeconds">How many seconds it needs for the audio to fade in/ reach target volume (if higher than current)</param>
+            <param name="fadeOutSeconds"> How many seconds it needs for the audio to fade out/ reach target volume (if lower than current)</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlayMusic(UnityEngine.AudioClip,System.Single,System.Boolean,System.Boolean,System.Single,System.Single,System.Single,UnityEngine.Transform)">
+            <summary>
+            Play background music
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="volume"> The volume the music will have</param>
+            <param name="loop">Wether the music is looped</param>
+            <param name="persist"> Whether the audio persists in between scene changes</param>
+            <param name="fadeInSeconds">How many seconds it needs for the audio to fade in/ reach target volume (if higher than current)</param>
+            <param name="fadeOutSeconds"> How many seconds it needs for the audio to fade out/ reach target volume (if lower than current)</param>
+            <param name="currentMusicfadeOutSeconds"> How many seconds it needs for current music audio to fade out. It will override its own fade out seconds. If -1 is passed, current music will keep its own fade out seconds</param>
+            <param name="sourceTransform">The transform that is the source of the music (will become 3D audio). If 3D audio is not wanted, use null</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlaySound(UnityEngine.AudioClip)">
+            <summary>
+            Play a sound fx
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlaySound(UnityEngine.AudioClip,System.Single)">
+            <summary>
+            Play a sound fx
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="volume"> The volume the music will have</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlaySound(UnityEngine.AudioClip,System.Boolean)">
+            <summary>
+            Play a sound fx
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="loop">Wether the sound is looped</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlaySound(UnityEngine.AudioClip,System.Single,System.Boolean,UnityEngine.Transform)">
+            <summary>
+            Play a sound fx
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="volume"> The volume the music will have</param>
+            <param name="loop">Wether the sound is looped</param>
+            <param name="sourceTransform">The transform that is the source of the sound (will become 3D audio). If 3D audio is not wanted, use null</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlayUISound(UnityEngine.AudioClip)">
+            <summary>
+            Play a UI sound fx
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PlayUISound(UnityEngine.AudioClip,System.Single)">
+            <summary>
+            Play a UI sound fx
+            </summary>
+            <param name="clip">The audio clip to play</param>
+            <param name="volume"> The volume the music will have</param>
+            <returns>The ID of the created Audio object</returns>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.StopAll">
+            <summary>
+            Stop all audio playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.StopAll(System.Single)">
+            <summary>
+            Stop all audio playing
+            </summary>
+            <param name="fadeOutSeconds"> How many seconds it needs for all music audio to fade out. It will override  their own fade out seconds. If -1 is passed, all music will keep their own fade out seconds</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.StopAllMusic">
+            <summary>
+            Stop all music playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.StopAllMusic(System.Single)">
+            <summary>
+            Stop all music playing
+            </summary>
+            <param name="fadeOutSeconds"> How many seconds it needs for all music audio to fade out. It will override  their own fade out seconds. If -1 is passed, all music will keep their own fade out seconds</param>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.StopAllSounds">
+            <summary>
+            Stop all sound fx playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.StopAllUISounds">
+            <summary>
+            Stop all UI sound fx playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PauseAll">
+            <summary>
+            Pause all audio playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PauseAllMusic">
+            <summary>
+            Pause all music playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PauseAllSounds">
+            <summary>
+            Pause all sound fx playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.PauseAllUISounds">
+            <summary>
+            Pause all UI sound fx playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.ResumeAll">
+            <summary>
+            Resume all audio playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.ResumeAllMusic">
+            <summary>
+            Resume all music playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.ResumeAllSounds">
+            <summary>
+            Resume all sound fx playing
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Sound.SoundManager.ResumeAllUISounds">
+            <summary>
+            Resume all UI sound fx playing
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.CameraExtension">
+            <summary>
+            相机扩展类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.CameraExtension.IsVisibleOn3dCamera(UnityEngine.GameObject,UnityEngine.Camera)">
+            <summary>
+            判断世界坐标系内的物体,摄像机是否可见
+            </summary>
+            <param name="obj"></param>
+            <param name="camera3d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.CameraExtension.IsVisibleOn3dCamera(UnityEngine.Vector3,UnityEngine.Camera)">
+            <summary>
+            判断世界坐标系内的一个点,摄像机是否可见
+            </summary>
+            <param name="pos"></param>
+            <param name="camera3d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.CameraExtension.Get3dCameraForward(UnityEngine.Camera)">
+            <summary>
+            获取摄像机的正前方向
+            </summary>
+            <param name="camera3d"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Unity.Tools.DistanceCamera">
+            <summary>
+            距离相机指定方向
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.DistanceCamera.mMinY">
+            <summary>
+            最低高度,防止物体插入地面看不到
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.DistanceCamera.mOffset">
+            <summary>
+            相机位置偏移
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.DistanceCamera.mForwardCamera">
+            <summary>
+            角度是否要朝向摄像机
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.DistanceCamera.mUpdate">
+            <summary>
+            是否每帧更新
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.DistanceCamera.GotoDistanceCamera">
+            <summary>
+            设置物体与摄像机指定距离
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.FitCamera">
+            <summary>
+            相机适配
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.FollowCamera">
+            <summary>
+            跟随相机活动
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.DebugUILine">
+            <summary>
+            将有点击事件的UI控件用蓝线框表示
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.FollowObj">
+            <summary>
+            完全与目标物重合
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.FollowObj.mFollowTrans">
+            <summary>
+            要跟随的物体
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.MonoUpdaterEvent">
+            <summary>
+            委托
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.MonoHelper">
+            <summary>
+            Mono帮助类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.MonoHelper.AddUpdateListener(Framework.Unity.Tools.MonoUpdaterEvent)">
+            <summary>
+            添加Update监听
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.MonoHelper.RemoveUpdateListener(Framework.Unity.Tools.MonoUpdaterEvent)">
+            <summary>
+            移除Update监听
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.MonoHelper.AddLateUpdateListener(Framework.Unity.Tools.MonoUpdaterEvent)">
+            <summary>
+            添加LateUpdate监听
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.MonoHelper.RemoveLateUpdateListener(Framework.Unity.Tools.MonoUpdaterEvent)">
+            <summary>
+            移除LateUpdate监听
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.MonoHelper.AddFixedUpdateListener(Framework.Unity.Tools.MonoUpdaterEvent)">
+            <summary>
+            添加FixedUpdate监听
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.MonoHelper.RemoveFixedUpdateListener(Framework.Unity.Tools.MonoUpdaterEvent)">
+            <summary>
+            移除FixedUpdate监听
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.MonoHelper.StartCoroutines(System.Collections.IEnumerator)">
+            <summary>
+            启动协同
+            </summary>
+            <param name="routine"></param>
+        </member>
+        <member name="T:Framework.Unity.Tools.Path">
+            <summary>
+            寻路类
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Path.waypoints">
+            <summary>
+            所有路点
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Path.index">
+            <summary>
+            当前路点索引
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Path.waypoint">
+            <summary>
+            当前的路点
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Path.deviation">
+            <summary>
+            到达误差
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Path.isFinish">
+            <summary>
+            是否完成
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.Path.IsReach(UnityEngine.Transform)">
+            <summary>
+            是否到达目的地
+            </summary>
+            <param name="trans"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.Path.NextWaypoint">
+            <summary>
+            设置为下一个路点
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.Path.InitByObj(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            根据场景标识物生成路点
+            </summary>
+            <param name="obj"></param>
+            <param name="isLoop"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.Path.InitByNavMeshPath(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            根据导航图初始化路径
+            </summary>
+            <param name="pos"></param>
+            <param name="targetPos"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.Path.DrawWaypoints">
+            <summary>
+            调试路径
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.BufferPool">
+            <summary>
+            缓存池类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.BufferPool.#ctor(UnityEngine.GameObject,UnityEngine.Transform,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="obj">被克隆的物体</param>
+            <param name="parent">指定克隆后的父物体</param>
+            <param name="count">指定初始化克隆几个</param>
+        </member>
+        <member name="M:Framework.Unity.Tools.BufferPool.GetObject">
+            <summary>
+            从缓存池拿对象，如果缓存池为空，则克隆新的物体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.BufferPool.Recycle(UnityEngine.GameObject)">
+            <summary>
+            回收对象
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.BufferPool.Clear">
+            <summary>
+            清空缓存池
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.Profile">
+            <summary>
+            性能分析类
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.Profile.ProfilePoint">
+            <summary>
+            性能分析测评点
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Profile.ProfilePoint.lastRecorded">
+            <summary>
+            上一次记录时间
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Profile.ProfilePoint.totalTime">
+            <summary>
+            总时间
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Profile.ProfilePoint.totalCalls">
+            <summary>
+            计数
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Tools.Profile.UtcNow">
+            <summary>
+            当前时间
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.Profile.StartProfile(System.String)">
+            <summary>
+            开始性能分析
+            </summary>
+            <param name="tag"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.Profile.EndProfile(System.String)">
+            <summary>
+            结束性能分析
+            </summary>
+            <param name="tag"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.Profile.Reset">
+            <summary>
+            重置
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.Profile.PrintResults">
+            <summary>
+            打印出性能分析结果
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.SceneChanger">
+            <summary>
+            场景快捷切换
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.SceneListener">
+            <summary>
+            场景加载类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.SceneListener.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.SceneListener.RefreshTime">
+            <summary>
+            重新计时
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.SceneListener.RegistSceneLoadedAction(System.Action{System.String})">
+            <summary>
+            添加加载完场景回调
+            </summary>
+            <param name="varAction"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.SceneListener.UnRegistSceneLoadedAction(System.Action{System.String})">
+            <summary>
+            移除加载完场景回调
+            </summary>
+            <param name="varAction"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.SceneListener.LoadScene(System.String,UnityEngine.SceneManagement.LoadSceneMode,System.Action)">
+            <summary>
+            同步加载场景
+            </summary>
+            <param name="varSceneName">场景名字</param>
+            <param name="varMode">加载模式</param>
+            <param name="onLoadComplete">加载回调</param>
+        </member>
+        <member name="M:Framework.Unity.Tools.SceneListener.LoadSceneAsync(System.String,UnityEngine.SceneManagement.LoadSceneMode,System.Action)">
+            <summary>
+            异步加载场景
+            </summary>
+            <param name="varSceneName">场景名字</param>
+            <param name="varMode">加载模式</param>
+            <param name="onLoadComplete">加载回调</param>
+        </member>
+        <member name="T:Framework.Unity.Tools.StreammingUtils">
+            <summary>
+            Unity Streamming文件夹扩展
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.StreammingUtils.CheckCopyAssets(System.String)">
+            <summary>
+            检查Streaming位置下的文件是否需要拷贝到可读可写文件夹，只有安卓需要拷贝
+            </summary>
+            <param name="varFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.StreammingUtils.GetStreamingPath">
+            <summary>
+            获取GetStreaming路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Unity.Tools.Teleport">
+            <summary>
+            传送门, 只暴露事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Teleport.mKeepTime">
+            <summary>
+            进入保持时间
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.Teleport.mEnterTeleport">
+            <summary>
+            进入事件
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.Teleport.OnTriggerEnter(UnityEngine.Collider)">
+            <summary>
+            当进入触发器
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.Teleport.OnTriggerExit(UnityEngine.Collider)">
+            <summary>
+            当离开触发器
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="T:Framework.Unity.Tools.DelayFunction">
+            <summary>
+            延迟函数委托
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Framework.Unity.Tools.DelayInvoker">
+            <summary>
+            延迟调用类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.DelayInvoker.DelayInvoke(System.Object,System.Single,Framework.Unity.Tools.DelayFunction,System.Object[])">
+            <summary>
+            延迟调用
+            </summary>
+            <param name="group"></param>
+            <param name="delay"></param>
+            <param name="func"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.DelayInvoker.DelayInvoke(System.Single,Framework.Unity.Tools.DelayFunction,System.Object[])">
+            <summary>
+            延迟调用
+            </summary>
+            <param name="delay"></param>
+            <param name="func"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.DelayInvoker.UnscaledDelayInvoke(System.Single,Framework.Unity.Tools.DelayFunction,System.Object[])">
+            <summary>
+            不受时间速度影响的延迟调用
+            </summary>
+            <param name="delay"></param>
+            <param name="func"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.DelayInvoker.RemoveInvoke(System.Object)">
+            <summary>
+            移除定时回调
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.DelayInvoker.DelayInvokerOnEndOfFrame(Framework.Unity.Tools.DelayFunction,System.Object[])">
+            <summary>
+            延迟到一帧结束调用
+            </summary>
+            <param name="func"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.DelayInvoker.FixedTimeInvoke(System.Int32,System.Int32)">
+            <summary>
+            Fiexd调用
+            </summary>
+            <param name="hours"></param>
+            <param name="minitue"></param>
+        </member>
+        <member name="T:Framework.Unity.Tools.TimeTaskDelegate">
+            <summary>
+            定时委托
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.TimeManager">
+            <summary>  
+            定时任务管理器  
+            </summary>  
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeManager.Init">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.Tools.TimeManager.taskList">
+            <summary>  
+            定时任务列表  
+            </summary>  
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeManager.AddTask(System.Single,System.Boolean,Framework.Unity.Tools.TimeTaskDelegate)">
+            <summary>  
+            添加定时任务  
+            </summary>  
+            <param name="timeDelay">延时执行时间间隔</param>  
+            <param name="repeat">是否可以重复执行</param>  
+            <param name="timeTaskCallback">执行回调</param>  
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeManager.AddTask(Framework.Unity.Tools.TimeTask)">
+            <summary>
+            添加定时任务
+            </summary>
+            <param name="taskToAdd"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeManager.RemoveTask(Framework.Unity.Tools.TimeTaskDelegate)">
+            <summary>  
+            移除定时任务  
+            </summary>  
+            <param name="taskToRemove"></param>  
+            <returns></returns>  
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeManager.Tick">
+            <summary>  
+            执行定时任务  
+            </summary>  
+        </member>
+        <member name="T:Framework.Unity.Tools.TimeTask">
+            <summary>  
+            定时任务封装类  
+            </summary>  
+        </member>
+        <member name="F:Framework.Unity.Tools.TimeTask._timeDelay">
+            <summary>  
+            延迟时间  
+            </summary>  
+        </member>
+        <member name="F:Framework.Unity.Tools.TimeTask._timeDelayOnly">
+            <summary>  
+            延迟时间  
+            </summary>  
+        </member>
+        <member name="F:Framework.Unity.Tools.TimeTask._repeat">
+            <summary>  
+            是否需要重复执行  
+            </summary>  
+        </member>
+        <member name="F:Framework.Unity.Tools.TimeTask._timeTaskCallBack">
+            <summary>  
+            回调函数  
+            </summary>  
+        </member>
+        <member name="P:Framework.Unity.Tools.TimeTask.timeDelay">
+            <summary>
+            延迟时间属性
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Tools.TimeTask.timeDelayOnly">
+            <summary>
+            延迟时间属性
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Tools.TimeTask.repeat">
+            <summary>
+            是否需要重复执行属性
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Tools.TimeTask.timeTaskCallBack">
+            <summary>
+            回调函数属性
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeTask.#ctor(System.Single,System.Boolean,Framework.Unity.Tools.TimeTaskDelegate)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="timeDelay"></param>
+            <param name="repeat"></param>
+            <param name="timeTaskCallBack"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeTask.#ctor(System.Single,Framework.Unity.Tools.TimeTaskDelegate)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="timeDelay"></param>
+            <param name="timeTaskCallBack"></param>
+        </member>
+        <member name="T:Framework.Unity.Tools.GameObjectUtils">
+            <summary>
+            GameObject工具类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.EnsureComponent``1(UnityEngine.GameObject)">
+            <summary>
+            确保对象上面挂有T类型脚本
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.EnsureComponent(UnityEngine.GameObject,System.Type)">
+            <summary>
+            确保对象上面挂有指定类型脚本
+            </summary>
+            <param name="target"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.FindComponent``1(UnityEngine.GameObject)">
+            <summary>
+            在指定对象上查找T类型脚本
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.FindComponent``1(UnityEngine.GameObject,System.String)">
+            <summary>
+            指定对象按照路径查找T类型脚本
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target"></param>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.RemoveComponentImmideate``1(UnityEngine.GameObject)">
+            <summary>
+            立即移除物体上的T类型脚本，只能在编辑器环境下使用
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.RemoveComponent``1(UnityEngine.GameObject)">
+            <summary>
+            移除物体上的T类型脚本
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.FindGameObject(UnityEngine.GameObject,System.String)">
+            <summary>
+            按照路径查找物体
+            </summary>
+            <param name="target"></param>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.FindGameObjbyName(System.String,UnityEngine.GameObject)">
+            <summary>
+            如果root不是空，从root的子物体查找名字匹配的物体；否则全局搜索
+            </summary>
+            <param name="name"></param>
+            <param name="root"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.FindFirstGameObjByPrefix(System.String,UnityEngine.GameObject)">
+            <summary>
+            如果root不是空，从root的子物体查找名字前缀匹配的物体；否则全局搜索
+            </summary>
+            <param name="prefix"></param>
+            <param name="root"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.SetActiveRecursively(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            递归设置目标物体和所有子物体是否可见
+            </summary>
+            <param name="target"></param>
+            <param name="bActive"></param>
+        </member>
+        <member name="M:Framework.Unity.Tools.GameObjectUtils.SetLayerRecursively(UnityEngine.GameObject,System.Int32)">
+            <summary>
+            递归设置目标物体和所有子物体层级
+            </summary>
+            <param name="target"></param>
+            <param name="layer"></param>
+        </member>
+        <member name="T:Framework.Unity.Tools.ImageUtils">
+            <summary>
+            Various functions and utilities to work with images, textures or sprites.
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.ImageUtils.LoadTexture(System.String)">
+            <summary>
+            Load an image from disk into a Texture2D
+            </summary>
+            <param name="path">The full path to the image file</param>
+            <returns>Texture2D</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.ImageUtils.LoadSprite(System.String)">
+            <summary>
+            Load an image from disk into a Sprite
+            </summary>
+            <param name="path">The full path to the image file</param>
+            <returns>Sprite</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.ImageUtils.GenerateSolidTexture(System.Int32,System.Int32,UnityEngine.Color)">
+            <summary>
+            Genenrates a solid texture of a specific color and size
+            </summary>
+            <param name="width">The width of the generated texture</param>
+            <param name="height">The height of the generated texture</param>
+            <param name="color">The color of the generated texture</param>
+            <returns>A solid texture2D</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.ImageUtils.GenerateSolidSprite(System.Int32,System.Int32,UnityEngine.Color)">
+            <summary>
+            Genenrates a solid sprite of a specific color and size
+            </summary>
+            <param name="width">The width of the generated sprite</param>
+            <param name="height">The height of the generated sprite</param>
+            <param name="color">The color of the generated sprite</param>
+            <returns>A solid Sprite</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.ImageUtils.TextureToSprite(UnityEngine.Texture2D)">
+            <summary>
+            Converts a Texture2D into a Sprite
+            </summary>
+            <param name="texture">The texture to be converted</param>
+            <returns>A sprite</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.ImageUtils.SpriteToTexture(UnityEngine.Sprite)">
+            <summary>
+            Converts a Sprite into a Texture2d
+            </summary>
+            <param name="sprite">The sprite to be converted</param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Unity.Tools.MeshUtils">
+            <summary>
+            Various functions and utilities to work with meshes, mesh renderers and mesh filters.
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.MeshUtils.GetSharedMaterialsList(UnityEngine.Transform)">
+            <summary>
+            Returns a list of all the shared materials used by the transform and its children
+            </summary>
+            <param name="transform"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.MeshUtils.GetSharedMaterialsList(UnityEngine.Transform,System.Boolean)">
+            <summary>
+            Returns a list of all the shared materials used by the transform and its children
+            </summary>
+            <param name="transform">The transform to be searched</param>
+            <param name="includeInactive">Whether to include inactiver gameobjects in the search</param>
+            <returns>A list of materials</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.MeshUtils.GetMaterialsList(UnityEngine.Transform)">
+            <summary>
+            Returns a list of all the materials used by the transform and its children
+            </summary>
+            <param name="transform"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.MeshUtils.GetMaterialsList(UnityEngine.Transform,System.Boolean)">
+            <summary>
+            Returns a list of all the materials used by the transform and its children
+            </summary>
+            <param name="transform">The transform to be searched</param>
+            <param name="includeInactive">Whether to include inactiver gameobjects in the search</param>
+            <returns>A list of materials</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.MeshUtils.GetMeshSize(UnityEngine.Transform)">
+            <summary>
+            获取物体上的网格尺寸
+            </summary>
+            <param name="transform"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Unity.Tools.NetUtils">
+            <summary>
+            网络工具类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.NetUtils.IsWifi">
+            <summary>
+            网络是否是Wifi
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.NetUtils.IsAvailable">
+            <summary>
+            是否连网
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Framework.Unity.Tools.NetUtils.SelfIP">
+            <summary>
+            ip地址
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.Tools.StringUtils">
+            <summary>
+            字符串扩展类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.StringUtils.StringToVector(System.String)">
+            <summary>
+            字符串转成向量
+            </summary>
+            <param name="varStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.StringUtils.GenerateUniqueString">
+            <summary>
+            Generates a unique string
+            </summary>
+            <returns>A unique alphanumeric string</returns>
+        </member>
+        <member name="M:Framework.Unity.Tools.StringUtils.IsUnique(System.String,System.String[])">
+            <summary>
+            Checks if a string is unique among a list of other strings
+            </summary>
+            <param name="str">The string to be checked for uniqueness</param>
+            <param name="otherStrings">An array of strings to check the provided str against</param>
+            <returns>True if it is unique, false if it is not</returns>
+        </member>
+        <member name="T:Framework.Unity.UGUI_Expand.NotScroll">
+            <summary>
+            UI不滑动类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.NotScroll.OnDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            拖动函数，空方法 
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="T:Framework.Unity.UGUI_Expand.UIButton">
+            <summary>
+            UIButton
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UGUI_Expand.UIButton.UIButtonEvent">
+            <summary>
+            Button事件类
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UGUI_Expand.UIButton.OnButtonClick">
+            <summary>
+            按钮点击事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UGUI_Expand.UIButton.OnButtonPress">
+            <summary>
+            按钮按下事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UGUI_Expand.UIButton.OnButtonRelease">
+            <summary>
+            按钮释放事件
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.UIButton.OnPointerClick(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            基类OnPointerClick方法重写
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="T:Framework.Unity.UGUI_Expand.Window">
+            <summary>
+            Includes a few fixes of my own, mainly to tidy up duplicates, remove unneeded stuff and testing. (nothing major, all the crew above did the hard work!)
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UGUI_Expand.Window.ResetCoords">
+            <summary>
+            是否需要重置位置
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UGUI_Expand.Window.KeepWindowInCanvas">
+            <summary>
+            # of pixels of the window that must stay inside the canvas view.
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.Window.OnDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            当拖动时
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.Window.OnBeginDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            开始拖动
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.Window.OnEndDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            结束拖动
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="T:Framework.Unity.UI.BasePanel">
+            <summary>
+            所有面板的公共基类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.BasePanel.OnEnter">
+            <summary>
+            页面进入显示，可交互
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.BasePanel.OnPause">
+            <summary>
+            页面暂停（弹出了其他页面），不可交互
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.BasePanel.OnResume">
+            <summary>
+            页面继续显示（其他页面关闭），可交互
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.BasePanel.OnExit">
+            <summary>
+            本页面被关闭（移除），不再显示在界面上
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.BasePanel.Destory">
+            <summary>
+            销毁页面
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UGUIPanel">
+            <summary>
+            UGUI面板
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UGUIPanel.mCanvasGroup">
+            <summary>
+            CanvasGroup
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UGUIPanel.OnEnter">
+            <summary>
+            页面进入显示，可交互
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UGUIPanel.OnPause">
+            <summary>
+            页面暂停（弹出了其他页面），不可交互
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UGUIPanel.OnResume">
+            <summary>
+            页面继续显示（其他页面关闭），可交互
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UGUIPanel.OnExit">
+            <summary>
+            本页面被关闭（移除），不再显示在界面上
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UGUIPanel.Destory">
+            <summary>
+            销毁页面
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UGUIPanel.EventEnable(System.Boolean)">
+            <summary>
+            页面是否响应点击
+            </summary>
+            <param name="enabled"></param>
+        </member>
+        <member name="T:Framework.Unity.UI.UIManager">
+            <summary>
+            单例模式的核心：
+            1.只在该类内定义一个静态的对象，该对象在外界访问，在内部构造
+            2.构造函数私有化
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIManager.CanvasType">
+            <summary>
+            画布类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIManager.CanvasType.Page">
+            <summary>
+            正常页面
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIManager.CanvasType.TopWindow">
+            <summary>
+            在Page前面显示的页面
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIManager.CanvasType.Loading">
+            <summary>
+            loading页面
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.Init">
+            <summary>
+            重写Init，初始化方法
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIManager.panelPathDict">
+            <summary>
+            存储所有Perfab面板的路径
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIManager.panelDict">
+            <summary>
+            借助BasePanel脚本保存所有实例化出来的面板物体（因为BasePanel脚本被所有面板预设物体的自己的脚本所继承，所以需要的时候可以根据BasePanel脚本来实例化每一个面板对象）
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIManager.panelStack">
+            <summary>
+            这是一个栈，用来保存实例化出来（显示出来）的面板
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.PushPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
+            <summary>
+            页面入栈，即把页面显示在界面上
+            </summary>
+            <param name="panelType"></param>
+            <param name="uiStayCanvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.PopPanel">
+            <summary>
+            页面出栈，把倒数第一个页面移除，显示倒数第二个页面
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.HideAllAndPushPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
+            <summary>
+            隐藏其他页面，显示指定的页面
+            </summary>
+            <param name="panelType"></param>
+            <param name="uiStayCanvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.PopPanel(Framework.Unity.UI.BasePanel)">
+            <summary>
+            判断栈顶页面是否和指定页面相同，如果相同出栈，慎用
+            </summary>
+            <param name="varPanel"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.ShowPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
+            <summary>
+            显示页面，栈不发生变化
+            </summary>
+            <param name="panelType"></param>
+            <param name="uiStayCanvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.HidePanel(System.String)">
+            <summary>
+            隐藏指定页面
+            </summary>
+            <param name="panelType"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.GetStackPeekPanel">
+            <summary>
+            获取栈顶页面
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.HideAll">
+            <summary>
+            所有显示的页面隐藏，但不出栈
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.PopAll">
+            <summary>
+            所有显示的页面隐藏并且出栈
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.DestroyAll">
+            <summary>
+            所有显示的页面销毁并且出栈
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.GetLoadObject(System.String)">
+            <summary>
+            加载指定类型页面，不入栈
+            </summary>
+            <param name="panelType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.GetParent(Framework.Unity.UI.UIManager.CanvasType)">
+            <summary>
+            获取指定类型的页面的父物体
+            </summary>
+            <param name="uiStayCanvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.GetPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
+            <summary>
+            根据面板类型UIPanelType得到实例化的面板
+            </summary>
+            <param name="panelType"></param>
+            <param name="uiStayCanvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.GetPanelFromCache(System.String)">
+            <summary>
+            从缓存获取页面
+            </summary>
+            <param name="panelType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.ParseUIPanelTypeJson">
+            <summary>
+            解析UIPanelType.json的信息, UIPanelType.json在Resource文件夹下
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.DebugUI">
+            <summary>
+            将栈中的UI输出日志，仅在开发者模式有效
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIEventTrigger">
+            <summary>
+            UIEventTrigger类，继承EventTrigger
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onClick">
+            <summary>
+            点击事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onClickWithObject">
+            <summary>
+            点击事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onClickWithEvent">
+            <summary>
+            点击事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onDown">
+            <summary>
+            按下事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onEnter">
+            <summary>
+            进入事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onExit">
+            <summary>
+            离开事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onUp">
+            <summary>
+            抬起事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onBeginDrag">
+            <summary>
+            开始拖动事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onDrag">
+            <summary>
+            拖动事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onEndDrag">
+            <summary>
+            结束拖动事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onSelect">
+            <summary>
+            选中事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onUpdateSelect">
+            <summary>
+            更新选中事件
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.Get(UnityEngine.GameObject)">
+            <summary>
+            如果物体没有UIEventTrigger脚本就添加UIEventTrigger脚本
+            </summary>
+            <param name="go"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.Get(UnityEngine.EventSystems.UIBehaviour)">
+            <summary>
+            如果物体没有UIEventTrigger脚本就添加UIEventTrigger脚本
+            </summary>
+            <param name="control"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.Get(UnityEngine.Transform)">
+            <summary>
+            如果物体没有UIEventTrigger脚本就添加UIEventTrigger脚本
+            </summary>
+            <param name="transform"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.HasExistOn(UnityEngine.Transform)">
+            <summary>
+            物体是否有UIEventTrigger脚本
+            </summary>
+            <param name="transform"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnPointerClick(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnPointerClick
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnPointerDown(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnPointerDown
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnPointerEnter(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnPointerEnter
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnPointerExit(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnPointerExit
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnPointerUp(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnPointerUp
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnSelect(UnityEngine.EventSystems.BaseEventData)">
+            <summary>
+            重写OnSelect
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnUpdateSelected(UnityEngine.EventSystems.BaseEventData)">
+            <summary>
+            重写OnUpdateSelected
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnBeginDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnBeginDrag
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnDrag
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventTrigger.OnEndDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            重写OnEndDrag
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="T:Framework.Unity.UI.UILoad">
+            <summary>
+            动态加载指定UI界面
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UILoad.mPanelType">
+            <summary>
+            panel类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UILoad.mUIStayCanvas">
+            <summary>
+            显示的层级
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIPanelInfo">
+            <summary>
+            配置页面类
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIPanelInfo.panelTypeString">
+            <summary>
+            面板类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIPanelInfo.path">
+            <summary>
+            面板路径
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIPanelTypeJson">
+            <summary>
+            配合解析, 多个页面
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIPanelTypeJson.infoList">
+            <summary>
+            所有页面信息
+            </summary>
+        </member>
+        <member name="T:Framework.Xml.XmlUtil">
+            <summary>  
+            <remarks>Xml常用功能</remarks>  
+            </summary>  
+        </member>
+        <member name="M:Framework.Xml.XmlUtil.Deserialize(System.Type,System.String)">
+            <summary>  
+            反序列化  
+            </summary>  
+            <param name="type">类型</param>  
+            <param name="xml">XML字符串</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:Framework.Xml.XmlUtil.Deserialize(System.Type,System.IO.Stream)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="type">类型</param>
+            <param name="stream">文件流</param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Xml.XmlUtil.Serializer(System.Type,System.Object)">
+            <summary>  
+            序列化  
+            </summary>  
+            <param name="type">类型</param>  
+            <param name="obj">对象</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:Framework.Xml.XmlUtil.GetRootElement(System.String)">
+            <summary>
+            获取xml文档根节点
+            </summary>
+            <param name="path">xml文档路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Debugger.Debuger">
+            <summary>
+            扩展Debug类
+            </summary>
+        </member>
+        <member name="F:Framework.Debugger.Debuger.EnableLog">
+            <summary>
+            是否开启Log
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.Debuger.Log(System.String)">
+            <summary>
+            输出日志
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:Framework.Debugger.Debuger.LogError(System.String)">
+            <summary>
+            输出错误日志
+            </summary>
+            <param name="logError"></param>
+        </member>
+        <member name="M:Framework.Debugger.Debuger.LogWarning(System.String)">
+            <summary>
+            输出警告日志
+            </summary>
+            <param name="logWarning"></param>
+        </member>
+        <member name="M:Framework.Debugger.Debuger.LogFormat(System.String,System.Object[])">
+            <summary>
+            格式化日志输出
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Framework.Debugger.Debuger.LogErrorFormat(System.String,System.Object[])">
+            <summary>
+            格式化错误日志输出
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Framework.Debugger.Debuger.LogWarningFormat(System.String,System.Object[])">
+            <summary>
+            格式化警告日志输出
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Framework.Debugger.DebuggerManager">
+            <summary>
+            调试管理器。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.#ctor">
+            <summary>
+            初始化调试管理器的新实例。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.DebuggerManager.ActiveWindow">
+            <summary>
+            获取或设置调试窗口是否激活。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.DebuggerManager.DebuggerWindowRoot">
+            <summary>
+            调试窗口根节点。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.Update(System.Single,System.Single)">
+            <summary>
+            调试管理器轮询。
+            </summary>
+            <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
+            <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.Shutdown">
+            <summary>
+            关闭并清理调试管理器。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.RegisterDebuggerWindow(System.String,Framework.Debugger.IDebuggerWindow,System.Object[])">
+            <summary>
+            注册调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <param name="debuggerWindow">要注册的调试窗口。</param>
+            <param name="args">初始化调试窗口参数。</param>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.GetDebuggerWindow(System.String)">
+            <summary>
+            获取调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <returns>要获取的调试窗口。</returns>
+        </member>
+        <member name="T:Framework.Debugger.DebuggerManager.DebuggerWindowGroup">
+            <summary>
+            调试窗口组。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.DebuggerWindowCount">
+            <summary>
+            获取调试窗口数量。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.SelectedIndex">
+            <summary>
+            获取或设置当前选中的调试窗口索引。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.SelectedWindow">
+            <summary>
+            获取当前选中的调试窗口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.Initialize(System.Object[])">
+            <summary>
+            初始化调试组。
+            </summary>
+            <param name="args">初始化调试组参数。</param>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.Shutdown">
+            <summary>
+            关闭调试组。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.OnEnter">
+            <summary>
+            进入调试窗口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.OnLeave">
+            <summary>
+            离开调试窗口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.OnUpdate(System.Single,System.Single)">
+            <summary>
+            调试组轮询。
+            </summary>
+            <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
+            <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.OnDraw">
+            <summary>
+            调试窗口绘制。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.GetDebuggerWindowNames">
+            <summary>
+            获取调试组的调试窗口名称集合。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.GetDebuggerWindow(System.String)">
+            <summary>
+            获取调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <returns>要获取的调试窗口。</returns>
+        </member>
+        <member name="M:Framework.Debugger.DebuggerManager.DebuggerWindowGroup.RegisterDebuggerWindow(System.String,Framework.Debugger.IDebuggerWindow)">
+            <summary>
+            注册调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <param name="debuggerWindow">要注册的调试窗口。</param>
+        </member>
+        <member name="T:Framework.Debugger.IDebuggerManager">
+            <summary>
+            调试管理器接口。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.IDebuggerManager.ActiveWindow">
+            <summary>
+            获取或设置调试窗口是否激活。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.IDebuggerManager.DebuggerWindowRoot">
+            <summary>
+            调试窗口根节点。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerManager.RegisterDebuggerWindow(System.String,Framework.Debugger.IDebuggerWindow,System.Object[])">
+            <summary>
+            注册调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <param name="debuggerWindow">要注册的调试窗口。</param>
+            <param name="args">初始化调试窗口参数。</param>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerManager.GetDebuggerWindow(System.String)">
+            <summary>
+            获取调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <returns>要获取的调试窗口。</returns>
+        </member>
+        <member name="T:Framework.Debugger.IDebuggerWindow">
+            <summary>
+            调试窗口接口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindow.Initialize(System.Object[])">
+            <summary>
+            初始化调试窗口。
+            </summary>
+            <param name="args">初始化调试窗口参数。</param>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindow.Shutdown">
+            <summary>
+            关闭调试窗口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindow.OnEnter">
+            <summary>
+            进入调试窗口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindow.OnLeave">
+            <summary>
+            离开调试窗口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindow.OnUpdate(System.Single,System.Single)">
+            <summary>
+            调试窗口轮询。
+            </summary>
+            <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
+            <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindow.OnDraw">
+            <summary>
+            调试窗口绘制。
+            </summary>
+        </member>
+        <member name="T:Framework.Debugger.IDebuggerWindowGroup">
+            <summary>
+            调试窗口组接口。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.IDebuggerWindowGroup.DebuggerWindowCount">
+            <summary>
+            获取调试窗口数量。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.IDebuggerWindowGroup.SelectedIndex">
+            <summary>
+            获取或设置当前选中的调试窗口索引。
+            </summary>
+        </member>
+        <member name="P:Framework.Debugger.IDebuggerWindowGroup.SelectedWindow">
+            <summary>
+            获取当前选中的调试窗口。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindowGroup.GetDebuggerWindowNames">
+            <summary>
+            获取调试组的调试窗口名称集合。
+            </summary>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindowGroup.GetDebuggerWindow(System.String)">
+            <summary>
+            获取调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <returns>要获取的调试窗口。</returns>
+        </member>
+        <member name="M:Framework.Debugger.IDebuggerWindowGroup.RegisterDebuggerWindow(System.String,Framework.Debugger.IDebuggerWindow)">
+            <summary>
+            注册调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <param name="debuggerWindow">要注册的调试窗口。</param>
+        </member>
+        <member name="T:Framework.Runtime.DebuggerActiveWindowType">
+            <summary>
+            调试器激活窗口类型。
+            </summary>
+        </member>
+        <member name="F:Framework.Runtime.DebuggerActiveWindowType.Auto">
+            <summary>
+            自动（发布版本状态关闭，开发版本状态打开）。
+            </summary>
+        </member>
+        <member name="F:Framework.Runtime.DebuggerActiveWindowType.Close">
+            <summary>
+            关闭。
+            </summary>
+        </member>
+        <member name="F:Framework.Runtime.DebuggerActiveWindowType.Open">
+            <summary>
+            打开。
+            </summary>
+        </member>
+        <member name="T:Framework.Runtime.DebuggerComponent">
+            <summary>
+            调试组件。
+            </summary>
+        </member>
+        <member name="F:Framework.Runtime.DebuggerComponent.DefaultIconRect">
+            <summary>
+            默认调试器漂浮框大小。
+            </summary>
+        </member>
+        <member name="F:Framework.Runtime.DebuggerComponent.DefaultWindowRect">
+            <summary>
+            默认调试器窗口大小。
+            </summary>
+        </member>
+        <member name="F:Framework.Runtime.DebuggerComponent.DefaultWindowScale">
+            <summary>
+            默认调试器窗口缩放比例。
+            </summary>
+        </member>
+        <member name="P:Framework.Runtime.DebuggerComponent.ActiveWindow">
+            <summary>
+            获取或设置调试窗口是否激活。
+            </summary>
+        </member>
+        <member name="P:Framework.Runtime.DebuggerComponent.ShowFullWindow">
+            <summary>
+            获取或设置是否显示完整调试器界面。
+            </summary>
+        </member>
+        <member name="P:Framework.Runtime.DebuggerComponent.IconRect">
+            <summary>
+            获取或设置调试器漂浮框大小。
+            </summary>
+        </member>
+        <member name="P:Framework.Runtime.DebuggerComponent.WindowRect">
+            <summary>
+            获取或设置调试器窗口大小。
+            </summary>
+        </member>
+        <member name="P:Framework.Runtime.DebuggerComponent.WindowScale">
+            <summary>
+            获取或设置调试器窗口缩放比例。
+            </summary>
+        </member>
+        <member name="P:Framework.Runtime.DebuggerComponent.ActiveWindowType">
+            <summary>
+            激活的窗口类型
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.DebuggerComponent.Awake">
+            <summary>
+            游戏框架组件初始化。
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.DebuggerComponent.RegisterDebuggerWindow(System.String,Framework.Debugger.IDebuggerWindow,System.Object[])">
+            <summary>
+            注册调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <param name="debuggerWindow">要注册的调试窗口。</param>
+            <param name="args">初始化调试窗口参数。</param>
+        </member>
+        <member name="M:Framework.Runtime.DebuggerComponent.GetDebuggerWindow(System.String)">
+            <summary>
+            获取调试窗口。
+            </summary>
+            <param name="path">调试窗口路径。</param>
+            <returns>要获取的调试窗口。</returns>
+        </member>
+        <member name="M:Framework.Runtime.DebuggerComponent.RegisterExtensionWindows">
+            <summary>
+            注册扩展窗口
+            </summary>
+        </member>
+        <member name="T:Framework.Runtime.ScrollableDebuggerWindowBase">
+            <summary>
+            抽象滑动的调试窗口基类
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.Initialize(System.Object[])">
+            <summary>
+            初始化方法
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.Shutdown">
+            <summary>
+            关闭方法
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.OnEnter">
+            <summary>
+            当进入
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.OnLeave">
+            <summary>
+            当离开
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.OnUpdate(System.Single,System.Single)">
+            <summary>
+            OnUpdate
+            </summary>
+            <param name="elapseSeconds"></param>
+            <param name="realElapseSeconds"></param>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.OnDraw">
+            <summary>
+            Draw函数
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.OnDrawScrollableWindow">
+            <summary>
+            抽象方法
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.ScrollableDebuggerWindowBase.DrawItem(System.String,System.String)">
+            <summary>
+            画Item
+            </summary>
+            <param name="title"></param>
+            <param name="content"></param>
+        </member>
+        <member name="T:Framework.Runtime.ExampleWindow">
+            <summary>
+            示例窗口，继承ScrollableDebuggerWindowBase
+            </summary>
+        </member>
+        <member name="M:Framework.Runtime.ExampleWindow.OnDrawScrollableWindow">
+            <summary>
+            重写OnDrawScrollableWindow
+            </summary>
+        </member>
+        <member name="T:SimpleJSON.JSONNodeType">
+            <summary>
+            Json节点类型
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.Array">
+            <summary>
+            数组
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.Object">
+            <summary>
+            Json对象
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.String">
+            <summary>
+            字符串
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.Number">
+            <summary>
+            数字
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.NullValue">
+            <summary>
+            空值
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.Boolean">
+            <summary>
+            布尔类型
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNodeType.Custom">
+            <summary>
+            Custom
+            </summary>
+        </member>
+        <member name="T:SimpleJSON.JSONTextMode">
+            <summary>
+            Json文本模式
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONTextMode.Compact">
+            <summary>
+            紧凑
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONTextMode.Indent">
+            <summary>
+            缩进
+            </summary>
+        </member>
+        <member name="T:SimpleJSON.JSONNode">
+            <summary>
+            Json节点
+            </summary>
+        </member>
+        <member name="T:SimpleJSON.JSONNode.Enumerator">
+            <summary>
+            结构体
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Enumerator.IsValid">
+            <summary>
+            是否有效
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Enumerator.#ctor(System.Collections.Generic.List{SimpleJSON.JSONNode}.Enumerator)">
+            <summary>
+            构造函数 
+            </summary>
+            <param name="aArrayEnum"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Enumerator.#ctor(System.Collections.Generic.Dictionary{System.String,SimpleJSON.JSONNode}.Enumerator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="aDictEnum"></param>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Enumerator.Current">
+            <summary>
+            当前键值对
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Enumerator.MoveNext">
+            <summary>
+            移动到下一个
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSONNode.ValueEnumerator">
+            <summary>
+            结构体
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.ValueEnumerator.#ctor(System.Collections.Generic.List{SimpleJSON.JSONNode}.Enumerator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="aArrayEnum"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.ValueEnumerator.#ctor(System.Collections.Generic.Dictionary{System.String,SimpleJSON.JSONNode}.Enumerator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="aDictEnum"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.ValueEnumerator.#ctor(SimpleJSON.JSONNode.Enumerator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="aEnumerator"></param>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.ValueEnumerator.Current">
+            <summary>
+            当前节点
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.ValueEnumerator.MoveNext">
+            <summary>
+            移动到下一个
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.ValueEnumerator.GetEnumerator">
+            <summary>
+            获取当前迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSONNode.KeyEnumerator">
+            <summary>
+            结构体
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.KeyEnumerator.#ctor(System.Collections.Generic.List{SimpleJSON.JSONNode}.Enumerator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="aArrayEnum"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.KeyEnumerator.#ctor(System.Collections.Generic.Dictionary{System.String,SimpleJSON.JSONNode}.Enumerator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="aDictEnum"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.KeyEnumerator.#ctor(SimpleJSON.JSONNode.Enumerator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="aEnumerator"></param>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.KeyEnumerator.Current">
+            <summary>
+            当前节点
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.KeyEnumerator.MoveNext">
+            <summary>
+            移动到下一个
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.KeyEnumerator.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSONNode.LinqEnumerator">
+            <summary>
+            LinqEnumerator迭代器
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.LinqEnumerator.Current">
+            <summary>
+            当前键值对
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.LinqEnumerator.MoveNext">
+            <summary>
+            移动到下一个
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.LinqEnumerator.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.LinqEnumerator.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.LinqEnumerator.Reset">
+            <summary>
+            重置
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNode.forceASCII">
+            <summary>
+            强制ASCII编码
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Tag">
+            <summary>
+            tag
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Item(System.Int32)">
+            <summary>
+            获取Json节点
+            </summary>
+            <param name="aIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Item(System.String)">
+            <summary>
+            获取Json节点
+            </summary>
+            <param name="aKey"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.IsNumber">
+            <summary>
+            是否是数字
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.IsString">
+            <summary>
+            是否是字符串
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.IsBoolean">
+            <summary>
+            是否是布尔类型
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.IsNull">
+            <summary>
+            是否是空值
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.IsArray">
+            <summary>
+            是否是集合
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.IsObject">
+            <summary>
+            是否是对象
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Inline">
+            <summary>
+            是否内联
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Add(System.String,SimpleJSON.JSONNode)">
+            <summary>
+            添加
+            </summary>
+            <param name="aKey"></param>
+            <param name="aItem"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Add(SimpleJSON.JSONNode)">
+            <summary>
+            添加
+            </summary>
+            <param name="aItem"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Remove(System.String)">
+            <summary>
+            移除
+            </summary>
+            <param name="aKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Remove(System.Int32)">
+            <summary>
+            移除
+            </summary>
+            <param name="aIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Remove(SimpleJSON.JSONNode)">
+            <summary>
+            移除
+            </summary>
+            <param name="aNode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Children">
+            <summary>
+            子节点
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.DeepChildren">
+            <summary>
+            获取迭代器
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.ToString">
+            <summary>
+            重写ToString方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.ToString(System.Int32)">
+            <summary>
+            ToString方法扩展
+            </summary>
+            <param name="aIndent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Linq">
+            <summary>
+            返回Linq迭代器
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Keys">
+            <summary>
+            获取Key迭代器
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.Values">
+            <summary>
+            获取Value迭代器
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.AsDouble">
+            <summary>
+            转成Double类型
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.AsInt">
+            <summary>
+            转成Int类型
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.AsFloat">
+            <summary>
+            转成Float类型
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.AsBool">
+            <summary>
+            转成Bool类型
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.AsArray">
+            <summary>
+            转成集合类型
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNode.AsObject">
+            <summary>
+            转成对象类型
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(System.String)~SimpleJSON.JSONNode">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(SimpleJSON.JSONNode)~System.String">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="d"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(System.Double)~SimpleJSON.JSONNode">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="n"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(SimpleJSON.JSONNode)~System.Double">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="d"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(System.Single)~SimpleJSON.JSONNode">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="n"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(SimpleJSON.JSONNode)~System.Single">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="d"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(System.Int32)~SimpleJSON.JSONNode">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="n"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(SimpleJSON.JSONNode)~System.Int32">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="d"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(System.Boolean)~SimpleJSON.JSONNode">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="b"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(SimpleJSON.JSONNode)~System.Boolean">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="d"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Implicit(System.Collections.Generic.KeyValuePair{System.String,SimpleJSON.JSONNode})~SimpleJSON.JSONNode">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="aKeyValue"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Equality(SimpleJSON.JSONNode,System.Object)">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.op_Inequality(SimpleJSON.JSONNode,System.Object)">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Equals(System.Object)">
+            <summary>
+            重载运算符
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.GetHashCode">
+            <summary>
+            重载运算符
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNode.Parse(System.String)">
+            <summary>
+            转成Json节点
+            </summary>
+            <param name="aJSON"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSONArray">
+            <summary>
+            Json集合
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONArray.Inline">
+            <summary>
+            是否内联
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONArray.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONArray.IsArray">
+            <summary>
+            是否是集合
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONArray.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONArray.Item(System.Int32)">
+            <summary>
+            获取Json节点
+            </summary>
+            <param name="aIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONArray.Item(System.String)">
+            <summary>
+            获取Json节点
+            </summary>
+            <param name="aKey"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONArray.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONArray.Add(System.String,SimpleJSON.JSONNode)">
+            <summary>
+            添加
+            </summary>
+            <param name="aKey"></param>
+            <param name="aItem"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONArray.Remove(System.Int32)">
+            <summary>
+            移除
+            </summary>
+            <param name="aIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONArray.Remove(SimpleJSON.JSONNode)">
+            <summary>
+            移除
+            </summary>
+            <param name="aNode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONArray.Children">
+            <summary>
+            子节点
+            </summary>
+        </member>
+        <member name="T:SimpleJSON.JSONObject">
+            <summary>
+            Json对象
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONObject.Inline">
+            <summary>
+            是否内联
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONObject.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONObject.IsObject">
+            <summary>
+            是否是对象
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONObject.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONObject.Item(System.String)">
+            <summary>
+            获取Json节点
+            </summary>
+            <param name="aKey"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONObject.Item(System.Int32)">
+            <summary>
+            获取Json节点
+            </summary>
+            <param name="aIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONObject.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONObject.Add(System.String,SimpleJSON.JSONNode)">
+            <summary>
+            添加
+            </summary>
+            <param name="aKey"></param>
+            <param name="aItem"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONObject.Remove(System.String)">
+            <summary>
+            移除
+            </summary>
+            <param name="aKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONObject.Remove(System.Int32)">
+            <summary>
+            移除
+            </summary>
+            <param name="aIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONObject.Remove(SimpleJSON.JSONNode)">
+            <summary>
+            移除
+            </summary>
+            <param name="aNode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONObject.Children">
+            <summary>
+            子节点
+            </summary>
+        </member>
+        <member name="T:SimpleJSON.JSONString">
+            <summary>
+            Json字符串
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONString.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONString.IsString">
+            <summary>
+            是否是字符串
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONString.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONString.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONString.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="aData"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONString.Equals(System.Object)">
+            <summary>
+            重写Equals方法
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONString.GetHashCode">
+            <summary>
+            重写GetHashCode方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSONNumber">
+            <summary>
+            Json数字
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNumber.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNumber.IsNumber">
+            <summary>
+            是否是数字
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNumber.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONNumber.Value">
+            <summary>
+            获取值
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNumber.AsDouble">
+            <summary>
+            转成Double类型
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNumber.#ctor(System.Double)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="aData"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNumber.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="aData"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONNumber.Equals(System.Object)">
+            <summary>
+            重写Equals方法
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNumber.GetHashCode">
+            <summary>
+            重写GetHashCode方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSONBool">
+            <summary>
+            JsonBool类型
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONBool.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONBool.IsBoolean">
+            <summary>
+            是否是布尔类型
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONBool.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONBool.Value">
+            <summary>
+            获取值
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONBool.AsBool">
+            <summary>
+            转成布尔类型
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONBool.#ctor(System.Boolean)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="aData"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONBool.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="aData"></param>
+        </member>
+        <member name="M:SimpleJSON.JSONBool.Equals(System.Object)">
+            <summary>
+            重写Equals方法
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONBool.GetHashCode">
+            <summary>
+            重写GetHashCode方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSONNull">
+            <summary>
+            JsonNull类型
+            </summary>
+        </member>
+        <member name="F:SimpleJSON.JSONNull.reuseSameInstance">
+            <summary>
+            是否重复使用相同实例
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNull.CreateOrGet">
+            <summary>
+            创建或者获取实例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONNull.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNull.IsNull">
+            <summary>
+            是否是Null类型
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNull.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJSON.JSONNull.Value">
+            <summary>
+            获取值
+            </summary>
+        </member>
+        <member name="P:SimpleJSON.JSONNull.AsBool">
+            <summary>
+            是布尔类型
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSONNull.Equals(System.Object)">
+            <summary>
+            重写Equals方法
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJSON.JSONNull.GetHashCode">
+            <summary>
+            重写GetHashCode方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJSON.JSON">
+            <summary>
+            Json静态类
+            </summary>
+        </member>
+        <member name="M:SimpleJSON.JSON.Parse(System.String)">
+            <summary>
+            解析字符串成Json节点
+            </summary>
+            <param name="aJSON"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EnumLabelAttribute">
+            <summary>
+            Unity枚举扩展，用于处理Header注释
+            </summary>
+        </member>
+        <member name="M:EnumLabelAttribute.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="header"></param>
+        </member>
+        <member name="T:TransformExtensions">
+            <summary>
+            Transform扩展类
+            </summary>
+        </member>
+        <member name="M:TransformExtensions.SetX(UnityEngine.Transform,System.Single)">
+            <summary>
+            	Sets the X position of this transform.
+            </summary>
+        </member>
+        <member name="M:TransformExtensions.SetY(UnityEngine.Transform,System.Single)">
+            <summary>
+              Sets the Y position of this transform.
+            </summary>
+        </member>
+        <member name="M:TransformExtensions.SetZ(UnityEngine.Transform,System.Single)">
+                    Sets the Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetXY(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the X and Y position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetXZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the X and Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetYZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the Y and Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetXYZ(UnityEngine.Transform,System.Single,System.Single,System.Single)">
+                    Sets the X, Y and Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.TranslateX(UnityEngine.Transform,System.Single)">
+                    Translates this transform along the X axis.
+        </member>
+        <member name="M:TransformExtensions.TranslateY(UnityEngine.Transform,System.Single)">
+                    Translates this transform along the Y axis.
+        </member>
+        <member name="M:TransformExtensions.TranslateZ(UnityEngine.Transform,System.Single)">
+                    Translates this transform along the Z axis.
+        </member>
+        <member name="M:TransformExtensions.TranslateXY(UnityEngine.Transform,System.Single,System.Single)">
+                    Translates this transform along the X and Y axes.
+        </member>
+        <member name="M:TransformExtensions.TranslateXZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Translates this transform along the X and Z axes.
+        </member>
+        <member name="M:TransformExtensions.TranslateYZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Translates this transform along the Y and Z axes.
+        </member>
+        <member name="M:TransformExtensions.TranslateXYZ(UnityEngine.Transform,System.Single,System.Single,System.Single)">
+                    Translates this transform along the X, Y and Z axis.
+        </member>
+        <member name="M:TransformExtensions.SetLocalX(UnityEngine.Transform,System.Single)">
+                    Sets the local X position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetLocalY(UnityEngine.Transform,System.Single)">
+                    Sets the local Y position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetLocalZ(UnityEngine.Transform,System.Single)">
+                    Sets the local Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetLocalXY(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the local X and Y position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetLocalXZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the local X and Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetLocalYZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the local Y and Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetLocalXYZ(UnityEngine.Transform,System.Single,System.Single,System.Single)">
+                    Sets the local X, Y and Z position of this transform.
+        </member>
+        <member name="M:TransformExtensions.ResetPosition(UnityEngine.Transform)">
+                    Sets the position to 0, 0, 0.
+        </member>
+        <member name="M:TransformExtensions.ResetLocalPosition(UnityEngine.Transform)">
+                    Sets the local position to 0, 0, 0.
+        </member>
+        <member name="M:TransformExtensions.SetScaleX(UnityEngine.Transform,System.Single)">
+            			Sets the local X scale of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetScaleY(UnityEngine.Transform,System.Single)">
+                    Sets the local Y scale of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetScaleZ(UnityEngine.Transform,System.Single)">
+                    Sets the local Z scale of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetScaleXY(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the local X and Y scale of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetScaleXZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the local X and Z scale of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetScaleYZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Sets the local Y and Z scale of this transform.
+        </member>
+        <member name="M:TransformExtensions.SetScaleXYZ(UnityEngine.Transform,System.Single,System.Single,System.Single)">
+                    Sets the local X, Y and Z scale of this transform.
+        </member>
+        <member name="M:TransformExtensions.ScaleByX(UnityEngine.Transform,System.Single)">
+                    Scale this transform in the X direction.
+        </member>
+        <member name="M:TransformExtensions.ScaleByY(UnityEngine.Transform,System.Single)">
+                    Scale this transform in the Y direction.
+        </member>
+        <member name="M:TransformExtensions.ScaleByZ(UnityEngine.Transform,System.Single)">
+                    Scale this transform in the Z direction.
+        </member>
+        <member name="M:TransformExtensions.ScaleByXY(UnityEngine.Transform,System.Single,System.Single)">
+                    Scale this transform in the X, Y direction.
+        </member>
+        <member name="M:TransformExtensions.ScaleByXZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Scale this transform in the X, Z directions.
+        </member>
+        <member name="M:TransformExtensions.ScaleByYZ(UnityEngine.Transform,System.Single,System.Single)">
+                    Scale this transform in the Y and Z directions.
+        </member>
+        <member name="M:TransformExtensions.ScaleByXY(UnityEngine.Transform,System.Single)">
+                    Scale this transform in the X and Y directions.
+        </member>
+        <member name="M:TransformExtensions.ScaleByXZ(UnityEngine.Transform,System.Single)">
+                    Scale this transform in the X and Z directions.
+        </member>
+        <member name="M:TransformExtensions.ScaleByYZ(UnityEngine.Transform,System.Single)">
+                    Scale this transform in the Y and Z directions.
+        </member>
+        <member name="M:TransformExtensions.ScaleByXYZ(UnityEngine.Transform,System.Single,System.Single,System.Single)">
+                    Scale this transform in the X, Y and Z directions.
+        </member>
+        <member name="M:TransformExtensions.ScaleByXYZ(UnityEngine.Transform,System.Single)">
+                    Scale this transform in the X, Y and Z directions.
+        </member>
+        <member name="M:TransformExtensions.ResetScale(UnityEngine.Transform)">
+                    Resets the local scale of this transform in to 1 1 1.
+        </member>
+        <member name="M:TransformExtensions.FlipX(UnityEngine.Transform)">
+            			Negates the X scale.
+        </member>
+        <member name="M:TransformExtensions.FlipY(UnityEngine.Transform)">
+                    Negates the Y scale.
+        </member>
+        <member name="M:TransformExtensions.FlipZ(UnityEngine.Transform)">
+                    Negates the Z scale.
+        </member>
+        <member name="M:TransformExtensions.FlipXY(UnityEngine.Transform)">
+                    Negates the X and Y scale.
+        </member>
+        <member name="M:TransformExtensions.FlipXZ(UnityEngine.Transform)">
+                    Negates the X and Z scale.
+        </member>
+        <member name="M:TransformExtensions.FlipYZ(UnityEngine.Transform)">
+                    Negates the Y and Z scale.
+        </member>
+        <member name="M:TransformExtensions.FlipXYZ(UnityEngine.Transform)">
+                    Negates the X, Y and Z scale.
+        </member>
+        <member name="M:TransformExtensions.FlipPostive(UnityEngine.Transform)">
+                    Sets all scale values to the absolute values.
+        </member>
+        <member name="M:TransformExtensions.RotateAroundX(UnityEngine.Transform,System.Single)">
+            			Rotates the transform around the X axis.
+        </member>
+        <member name="M:TransformExtensions.RotateAroundY(UnityEngine.Transform,System.Single)">
+                    Rotates the transform around the Y axis.
+        </member>
+        <member name="M:TransformExtensions.RotateAroundZ(UnityEngine.Transform,System.Single)">
+                    Rotates the transform around the Z axis.
+        </member>
+        <member name="M:TransformExtensions.SetRotationX(UnityEngine.Transform,System.Single)">
+                    Sets the X rotation.
+        </member>
+        <member name="M:TransformExtensions.SetRotationY(UnityEngine.Transform,System.Single)">
+                    Sets the Y rotation.
+        </member>
+        <member name="M:TransformExtensions.SetRotationZ(UnityEngine.Transform,System.Single)">
+                    Sets the Z rotation.
+        </member>
+        <member name="M:TransformExtensions.SetLocalRotationX(UnityEngine.Transform,System.Single)">
+                    Sets the local X rotation.
+        </member>
+        <member name="M:TransformExtensions.SetLocalRotationY(UnityEngine.Transform,System.Single)">
+                    Sets the local Y rotation.
+        </member>
+        <member name="M:TransformExtensions.SetLocalRotationZ(UnityEngine.Transform,System.Single)">
+                    Sets the local Z rotation.
+        </member>
+        <member name="M:TransformExtensions.ResetRotation(UnityEngine.Transform)">
+                    Resets the rotation to 0, 0, 0.
+        </member>
+        <member name="M:TransformExtensions.ResetLocalRotation(UnityEngine.Transform)">
+                    Resets the local rotation to 0, 0, 0.
+        </member>
+        <member name="M:TransformExtensions.ResetLocal(UnityEngine.Transform)">
+            			Resets the ;local position, local rotation, and local scale.
+        </member>
+        <member name="M:TransformExtensions.Reset(UnityEngine.Transform)">
+                    Resets the position, rotation, and local scale.
+        </member>
+        <member name="M:TransformExtensions.DestroyChildren(UnityEngine.Transform)">
+            <summary>
+            删除子物体
+            </summary>
+            <param name="transform"></param>
+        </member>
+        <member name="M:TransformExtensions.DestroyChildrenImmediate(UnityEngine.Transform)">
+            <summary>
+            立刻销毁子物体
+            </summary>
+            <param name="transform"></param>
+        </member>
+        <member name="M:TransformExtensions.GetChildren(UnityEngine.Transform)">
+            <summary>
+            获取子物体
+            </summary>
+            <param name="transform"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TransformExtensions.Sort(UnityEngine.Transform,System.Func{UnityEngine.Transform,System.IComparable})">
+            <summary>
+            对子物体按照指定规则排序
+            </summary>
+            <param name="transform"></param>
+            <param name="sortFunction"></param>
+        </member>
+        <member name="M:TransformExtensions.SortAlphabetically(UnityEngine.Transform)">
+            <summary>
+            对子物体按照名字排序
+            </summary>
+            <param name="transform"></param>
+        </member>
+        <member name="M:TransformExtensions.SelfAndAllChildren(UnityEngine.Transform)">
+                    A lazy enumerable of this objects transform, and all it's children down the hierarchy.
+            			
+                    @version_e_1_1
+        </member>
+        <member name="T:VectorExtensions">
+            <summary>
+            扩展Vector
+            </summary>
+        </member>
+        <member name="M:VectorExtensions.To3DXZ(UnityEngine.Vector2,System.Single)">
+            <summary>
+            将二维向量x,y存储在三维向量的x,z
+            </summary>
+            <param name="vector"></param>
+            <param name="y"></param>
+            <returns>Vector3(vector.x, y, vector.y)</returns>
+        </member>
+        <member name="M:VectorExtensions.To3DXZ(UnityEngine.Vector2)">
+            <summary>
+            将二维向量x,y存储在三维向量的x,z
+            </summary>
+            <param name="vector"></param>
+            <returns>Vector3(vector.x, 0, vector.y)</returns>
+        </member>
+        <member name="M:VectorExtensions.To3DXY(UnityEngine.Vector2,System.Single)">
+            <summary>
+            将二维向量x,y存储在三维向量的x,y
+            </summary>
+            <param name="vector"></param>
+            <param name="z"></param>
+            <returns>Vector3(vector.x, vector.y, z)</returns>
+        </member>
+        <member name="M:VectorExtensions.To3DXY(UnityEngine.Vector2)">
+            <summary>
+            将二维向量x,y存储在三维向量的x,y
+            </summary>
+            <param name="vector"></param>
+            <returns>Vector3(vector.x, vector.y, 0)</returns>
+        </member>
+        <member name="M:VectorExtensions.To3DYZ(UnityEngine.Vector2,System.Single)">
+            <summary>
+            将二维向量x,y存储在三维向量的y,z
+            </summary>
+            <param name="vector"></param>
+            <param name="x"></param>
+            <returns>Vector3(x, vector.x, vector.y)</returns>
+        </member>
+        <member name="M:VectorExtensions.To3DYZ(UnityEngine.Vector2)">
+            <summary>
+            将二维向量x,y存储在三维向量的y,z
+            </summary>
+            <param name="vector"></param>
+            <returns>Vector3(0, vector.x, vector.y)</returns>
+        </member>
+        <member name="M:VectorExtensions.To2DXZ(UnityEngine.Vector3)">
+            <summary>
+            将三维向量的x,z转化为二维向量
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VectorExtensions.To2DXY(UnityEngine.Vector3)">
+            <summary>
+            将三维向量的x,y转化为二维向量
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VectorExtensions.To2DYZ(UnityEngine.Vector3)">
+            <summary>
+            将三维向量的y,z转化为二维向量
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VectorExtensions.Perp(UnityEngine.Vector2)">
+                    Returns the vector rotated 90 degrees counter-clockwise. This vector is
+                    always perpendicular to the given vector.
+            
+                    The perp dot product can be caluclted using this:
+                        var perpDotPorpduct = Vector2.Dot(v1.Perp(), v2);
+        </member>
+        <member name="M:VectorExtensions.Proj(UnityEngine.Vector2,UnityEngine.Vector2)">
+                    Returns the projection of this vector onto the given base.
+        </member>
+        <member name="M:VectorExtensions.Rej(UnityEngine.Vector2,UnityEngine.Vector2)">
+                    Returns the rejection of this vector onto the given base.
+            
+                    The sum of a vector's projection and rejection on a base is
+                    equal to the original vector.
+        </member>
+        <member name="M:VectorExtensions.Proj(UnityEngine.Vector3,UnityEngine.Vector3)">
+                    Returns the projection of this vector onto the given base.
+        </member>
+        <member name="M:VectorExtensions.Rej(UnityEngine.Vector3,UnityEngine.Vector3)">
+                    Returns the rejection of this vector onto the given base.
+            
+                    The sum of a vector's projection and rejection on a base is
+                    equal to the original vector.
+        </member>
+        <member name="M:VectorExtensions.Proj(UnityEngine.Vector4,UnityEngine.Vector4)">
+                    Returns the projection of this vector onto the given base.
+        </member>
+        <member name="M:VectorExtensions.Rej(UnityEngine.Vector4,UnityEngine.Vector4)">
+                    Returns the rejection of this vector onto the given base.
+            
+                    The sum of a vector's projection and rejection on a base is
+                    equal to the original vector.
+        </member>
+        <member name="M:VectorExtensions.PerpXZ(UnityEngine.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <returns>Vector3(-v.z, v.y, v.x)</returns>
+        </member>
+        <member name="M:VectorExtensions.PerpXY(UnityEngine.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <returns>Vector3(-v.y, v.x, v.z)</returns>
+        </member>
+        <member name="M:VectorExtensions.GetStringValue(UnityEngine.Vector3)">
+            <summary>
+            将三维向量转化为x,y,z格式
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VectorExtensions.SetStringValue(UnityEngine.Vector3,System.String)">
+            <summary>
+            将x,y,z格式的字符串转为三维向量
+            </summary>
+            <param name="v"></param>
+            <param name="strValue"></param>
+        </member>
+    </members>
+</doc>
