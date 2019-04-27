@@ -63,13 +63,14 @@ namespace Stereo3D
         #endregion
 
         #region Private Methods
-        [MenuItem("Tools/3D/Polarize/Into Current Scene")]
+        [MenuItem("Tools/Stereo3D/Polarize/Into Current Scene")]
         static void AddPolarizeEffect()
         {
             Camera tempCamera = Camera.main;
             if (tempCamera != null)
             {
                 AddPolarizeEffect(tempCamera.gameObject);
+                ConfigMouse(tempCamera);
 
                 Scene tempScene = EditorSceneManager.GetActiveScene();
                 EditorSceneManager.SaveScene(tempScene, tempScene.path);
@@ -78,13 +79,14 @@ namespace Stereo3D
             }
         }
 
-        [MenuItem("Tools/3D/Mix3D/Into Current Scene")]
+        [MenuItem("Tools/Stereo3D/Mix3D/Into Current Scene")]
         static void AddMix3DEffect()
         {
             Camera tempCamera = Camera.main;
             if (tempCamera != null)
             {
                 AddMix3DEffect(tempCamera.gameObject);
+                ConfigMouse(tempCamera);
 
                 Scene tempScene = EditorSceneManager.GetActiveScene();
                 EditorSceneManager.SaveScene(tempScene, tempScene.path);
@@ -93,16 +95,17 @@ namespace Stereo3D
             }
         }
 
-        [MenuItem("Tools/3D/Polarize/Into Build Scene")]
+        [MenuItem("Tools/Stereo3D/Polarize/Into Build Scene")]
         static void AddPolarizeEffectToBuildScene()
         {
             List<Scene> tempLoadSceneList = null;
-            List<GameObject> tempGoList = GetBuildSceneObjs(out tempLoadSceneList);
+            List<Camera> tempGoList = GetBuildSceneObjs(out tempLoadSceneList);
             if (tempGoList != null && tempGoList.Count >= 0)
             {
-                foreach (GameObject tempObj in tempGoList)
+                foreach (Camera tempCamera in tempGoList)
                 {
-                    AddPolarizeEffect(tempObj);
+                    AddPolarizeEffect(tempCamera.gameObject);
+                    ConfigMouse(tempCamera);
                 }
                 EditorSceneManager.MarkAllScenesDirty();
                 EditorSceneManager.SaveOpenScenes();
@@ -113,16 +116,17 @@ namespace Stereo3D
             }
         }
 
-        [MenuItem("Tools/3D/Mix3D/Into Build Scene")]
+        [MenuItem("Tools/Stereo3D/Mix3D/Into Build Scene")]
         static void AddMix3DEffectToBuildScene()
         {
             List<Scene> tempLoadSceneList = null;
-            List<GameObject> tempGoList = GetBuildSceneObjs(out tempLoadSceneList);
+            List<Camera> tempGoList = GetBuildSceneObjs(out tempLoadSceneList);
             if (tempGoList != null && tempGoList.Count >= 0)
             {
-                foreach (GameObject tempObj in tempGoList)
+                foreach (Camera tempCamera in tempGoList)
                 {
-                    AddMix3DEffect(tempObj);
+                    AddMix3DEffect(tempCamera.gameObject);
+                    ConfigMouse(tempCamera);
                 }
 
                 EditorSceneManager.MarkAllScenesDirty();
@@ -133,10 +137,44 @@ namespace Stereo3D
                 }
             }
         }
+
+        /*
+        [MenuItem("Tools/Stereo3D/Update Canvas")]
+        static void UpdateCanvas()
+        {
+            var tempArray = Selection.gameObjects;
+            if (tempArray == null || tempArray.Length == 0)
+            {
+                return;
+            }
+            GameObject tempTemplateObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Framework/Stereo3D/Ext/Prefabs/CanvasMouse.prefab");
+            RectTransform tempTemplateRt = tempTemplateObj.GetComponent<RectTransform>();
+            Canvas tempTemplateCanvas = tempTemplateObj.GetComponent<Canvas>();
+
+            foreach (GameObject tempObj in tempArray)
+            {
+                Canvas tempCanvas = tempObj.GetComponent<Canvas>();
+                if (tempCanvas != null)
+                {
+                    tempCanvas.renderMode = tempTemplateCanvas.renderMode;
+
+                    RectTransform tempRt = tempObj.GetComponent<RectTransform>();
+                    tempRt.anchoredPosition3D = tempTemplateRt.anchoredPosition3D;
+                    tempRt.sizeDelta = tempTemplateRt.sizeDelta;
+
+                    tempRt.anchorMin = tempTemplateRt.anchorMin;
+                    tempRt.anchorMax = tempTemplateRt.anchorMax;
+                    tempRt.localRotation = tempTemplateRt.localRotation;
+                    tempRt.localScale = tempTemplateRt.localScale;
+                }
+            }
+        }
+        */
+
         #endregion
 
         #region Protected & Public Methods
-        static List<GameObject> GetBuildSceneObjs(out List<Scene> varLoadSceneList)
+        static List<Camera> GetBuildSceneObjs(out List<Scene> varLoadSceneList)
         {
             List<string> tempScenes = new List<string>();
             varLoadSceneList = new List<Scene>();
@@ -150,7 +188,7 @@ namespace Stereo3D
                 }
             }
 
-            List<GameObject> tempGoList = new List<GameObject>();
+            List<Camera> tempGoList = new List<Camera>();
             foreach (string tempScenePath in tempScenes)
             {
                 Scene tempScene = EditorSceneManager.GetSceneByPath(tempScenePath);
@@ -168,7 +206,7 @@ namespace Stereo3D
                     {
                         if (tempC.CompareTag("MainCamera"))
                         {
-                            tempGoList.Add(tempC.gameObject);
+                            tempGoList.Add(tempC);
                         }
                     }
                 }
@@ -188,7 +226,7 @@ namespace Stereo3D
             if (tempP == null)
             {
                 tempP = varObj.AddComponent<Polarize>();
-                tempP.stereoMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/stereoskopix3Dv026/Polarize/Material/Polarize.mat");
+                tempP.stereoMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/Framework/Stereo3D/Polarize/Material/Polarize.mat");
             }
             tempP.GuiVisible = false;
 
@@ -219,6 +257,22 @@ namespace Stereo3D
             if (tempSc == null)
             {
                 tempSc = varObj.AddComponent<SwitchCamera>();
+            }
+        }
+
+        static void ConfigMouse(Camera varC)
+        {
+            Transform tempTrans = varC.transform;
+            if (tempTrans != null)
+            {
+                var tempScript = tempTrans.GetComponentInChildren<MouseCtrl>();
+                if (tempScript == null)
+                {
+                    GameObject tempObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Framework/Stereo3D/Ext/Prefabs/CanvasMouse.prefab");
+                    GameObject tempClone = GameObject.Instantiate(tempObj, tempTrans);
+                    tempClone.name = tempObj.name;
+
+                }
             }
         }
         #endregion

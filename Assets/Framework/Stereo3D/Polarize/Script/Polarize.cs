@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 namespace Stereo3D
 {
@@ -92,6 +93,12 @@ namespace Stereo3D
             //leftCam.AddComponent<GUILayer>();
             //rightCam.AddComponent<GUILayer>();
 
+            PhysicsRaycaster tempLeftPr = leftCam.AddComponent<PhysicsRaycaster>();
+            tempLeftPr.eventMask = ~(1 << LayerMask.NameToLayer("UI"));  // 渲染除去层x的所有层 
+
+            PhysicsRaycaster temRightPr = rightCam.AddComponent<PhysicsRaycaster>();
+            temRightPr.eventMask = tempLeftPr.eventMask;
+
             leftCamRT = new RenderTexture(Screen.width, Screen.height, 24);
             rightCamRT = new RenderTexture(Screen.width, Screen.height, 24);
 
@@ -109,8 +116,7 @@ namespace Stereo3D
             leftCam.transform.parent = transform;
             rightCam.transform.parent = transform;
 
-            mMainCamera.cullingMask = 0;
-            //mMainCamera.cullingMask = (1 << LayerMask.NameToLayer("UI"));
+            ShowLayer(mMainCamera, null);
             mMainCamera.backgroundColor = new Color(0, 0, 0, 0);
             mMainCamera.clearFlags = CameraClearFlags.Nothing;
 
@@ -682,11 +688,53 @@ namespace Stereo3D
         private void SwitchSingleCamera()
         {
             enabled = false;
+
+            Camera tempCamera = mMainCamera;
+            if (tempCamera != null)
+            {
+                tempCamera.cullingMask = -1;
+                tempCamera.backgroundColor = new Color(0, 0, 0, 255);
+                tempCamera.clearFlags = CameraClearFlags.Skybox;
+            }
+
+            leftCam.SetActive(false);
+            rightCam.SetActive(false);
         }
 
         private void SwitchDoubleCamera()
         {
             enabled = true;
+
+            Camera tempCamera = mMainCamera;
+            if (tempCamera != null)
+            {
+                ShowLayer(mMainCamera, null);
+                tempCamera.backgroundColor = new Color(0, 0, 0, 0);
+                tempCamera.clearFlags = CameraClearFlags.Nothing;
+            }
+
+            leftCam.SetActive(true);
+            rightCam.SetActive(true);
+        }
+
+        private void ShowLayer(Camera camera, string[] array)
+        {
+            if (camera == null)
+            {
+                return;
+            }
+
+            int tempLayer = 0;
+            if (array != null)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    int tempR = LayerMask.NameToLayer(array[i]);
+                    tempLayer += (1 << tempR);
+                }
+            }
+            
+            camera.cullingMask = tempLayer;
         }
         #endregion
     }

@@ -14,6 +14,9 @@
 using System;
 using System.Collections.Generic;
 using Framework.Procedure;
+using Framework.Unity.MultiLanguage;
+using Framework.Unity.Tools;
+using Framework.Unity.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,11 +26,16 @@ namespace Framework.Unity
     {
         #region Fields
         public MonoBehaviour[] mLoadProcedures;
+        public UISimpleLoading initLoading;
+
         /// <summary>
         /// 初始化流程列表
         /// </summary>
         private List<ILoadProcedure> mProcedureList = new List<ILoadProcedure>();
-        private float mLoadTime;
+
+        private int totalProcedures;
+        private int curProcedures;
+
         #endregion
 
         #region Properties
@@ -46,8 +54,13 @@ namespace Framework.Unity
         //
         void Start()
         {
-            mLoadTime = Time.realtimeSinceStartup;
-            Invoke("ProcedureBegin", 0.2f);
+            if (initLoading != null)
+            {
+                initLoading.InitOpenArgs(null);
+                initLoading.ShowProgress(0f);
+            }
+            
+            TimeManager.Instance.AddOneFrameTask(false, ProcedureBegin);
         }
         //    
         //    void Update() 
@@ -72,6 +85,21 @@ namespace Framework.Unity
         {
             if (mProcedureList.Count > 0)
             {
+                curProcedures++;
+
+                if (initLoading != null)
+                {
+                    float tempProgress = (float)curProcedures / (float)totalProcedures;
+                    if (mProcedureList[0] as LanguageManager)
+                    {
+                        initLoading.ShowProgress(LanguageManager.mInstance.GetValue("加载数据"), tempProgress);
+                    }
+                    else
+                    {
+                        initLoading.ShowProgress(tempProgress);
+                    }
+                }
+                
                 mProcedureList.RemoveAt(0);
                 if (mProcedureList.Count > 0)
                 {
@@ -79,17 +107,11 @@ namespace Framework.Unity
                 }
                 else
                 {
-                    if (Time.realtimeSinceStartup - mLoadTime < 1f)
-                    {
-                        Invoke("ProcedureEnd", 1f - (Time.realtimeSinceStartup - mLoadTime));
-                    }
-                    else
-                    {
-                        ProcedureEnd();
-                    }
+                    ProcedureEnd();
                 }
             }
         }
+
         #endregion
 
         #region Protected & Public Methods
@@ -107,6 +129,9 @@ namespace Framework.Unity
                 }
             }
 
+            totalProcedures = mProcedureList.Count;
+            curProcedures = 0;
+
             if (mProcedureList.Count > 0)
             {
                 for (int i = 0; i < mProcedureList.Count; i++)
@@ -119,8 +144,13 @@ namespace Framework.Unity
 
         public void ProcedureEnd()
         {
+            if (initLoading != null)
+            {
+                initLoading.gameObject.SetActive(false);
+            }
+            
             Scene tempS = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(tempS.buildIndex + 1);
+            UIManager.GetInstance().LoadScene(tempS.buildIndex + 1);
         }
 
         public void RegisterEndCallback(Action action)

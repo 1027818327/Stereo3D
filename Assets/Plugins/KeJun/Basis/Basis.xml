@@ -4,6 +4,56 @@
         <name>Basis</name>
     </assembly>
     <members>
+        <member name="T:Framework.Event.Dispatcher`1">
+            <summary>
+            泛型事件管理接口
+            </summary>
+        </member>
+        <member name="M:Framework.Event.Dispatcher`1.AddEventListener(`0,System.Action{Framework.Event.EventData})">
+            <summary>
+            添加监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.Dispatcher`1.RemoveEventListener(`0,System.Action{Framework.Event.EventData})">
+            <summary>
+            移除监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.Dispatcher`1.RemoveEventListener(`0)">
+            <summary>
+            移除某一类型所有的监听事件
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.Dispatcher`1.RemoveAllEvent">
+            <summary>
+            移除所有事件
+            </summary>
+        </member>
+        <member name="M:Framework.Event.Dispatcher`1.DispatchEvent(`0,Framework.Event.EventData)">
+            <summary>
+            派发事件有数据
+            </summary>
+            <param name="type"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:Framework.Event.Dispatcher`1.DispatchEvent(`0)">
+            <summary>
+            派发事件无数据
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.Dispatcher`1.HasEventListener(`0)">
+            <summary>
+            查找是否有当前类型事件监听
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
         <member name="T:Framework.Event.EventData">
             <summary>
             事件数据类
@@ -112,6 +162,76 @@
             <param name="type"></param>
         </member>
         <member name="M:Framework.Event.EventManager.HasEventListener(System.String)">
+            <summary>
+            查找是否有当前类型事件监听
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Event.GlobalEventManager">
+            <summary>
+            全局事件管理类
+            </summary>
+        </member>
+        <member name="P:Framework.Event.GlobalEventManager.UintDispatcher">
+            <summary>
+            无符号整形事件管理器
+            </summary>
+        </member>
+        <member name="P:Framework.Event.GlobalEventManager.StrDispatcher">
+            <summary>
+            字符串事件管理器
+            </summary>
+        </member>
+        <member name="M:Framework.Event.GlobalEventManager.Init">
+            <summary>
+            初始化方法
+            </summary>
+        </member>
+        <member name="T:Framework.Event.IDispatcher`1">
+            <summary>
+            事件管理接口
+            </summary>
+        </member>
+        <member name="M:Framework.Event.IDispatcher`1.AddEventListener(`0,System.Action{Framework.Event.EventData})">
+            <summary>
+            添加监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.IDispatcher`1.RemoveEventListener(`0,System.Action{Framework.Event.EventData})">
+            <summary>
+            移除监听事件
+            </summary>
+            <param name="type"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Framework.Event.IDispatcher`1.RemoveEventListener(`0)">
+            <summary>
+            移除某一类型所有的监听事件
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.IDispatcher`1.RemoveAllEvent">
+            <summary>
+            移除所有事件
+            </summary>
+        </member>
+        <member name="M:Framework.Event.IDispatcher`1.DispatchEvent(`0,Framework.Event.EventData)">
+            <summary>
+            派发事件有数据
+            </summary>
+            <param name="type"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:Framework.Event.IDispatcher`1.DispatchEvent(`0)">
+            <summary>
+            派发事件无数据
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Framework.Event.IDispatcher`1.HasEventListener(`0)">
             <summary>
             查找是否有当前类型事件监听
             </summary>
@@ -244,6 +364,12 @@
             单例属性
             </summary>
         </member>
+        <member name="M:Framework.Pattern.Singleton`1.GetInstance">
+            <summary>
+            获取实例方法
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Framework.Pattern.Singleton`1.#ctor">
             <summary>
             构造方法
@@ -352,219 +478,67 @@
             <param name="application">命令程序路径</param>
             <returns>执行结果</returns>
         </member>
-        <member name="T:Framework.Procedure.AbstractLoadProcedure">
+        <member name="T:Framework.Unity.Procedure.AbstractLoadProcedure">
             <summary>
             抽象加载流程类
             </summary>
         </member>
-        <member name="M:Framework.Procedure.AbstractLoadProcedure.ProcedureBegin">
+        <member name="M:Framework.Unity.Procedure.AbstractLoadProcedure.ProcedureBegin">
             <summary>
             流程开始
             </summary>
         </member>
-        <member name="M:Framework.Procedure.AbstractLoadProcedure.ProcedureEnd">
+        <member name="M:Framework.Unity.Procedure.AbstractLoadProcedure.ProcedureEnd">
             <summary>
             流程结束
             </summary>
         </member>
-        <member name="M:Framework.Procedure.AbstractLoadProcedure.RegisterEndCallback(System.Action)">
+        <member name="M:Framework.Unity.Procedure.AbstractLoadProcedure.RegisterEndCallback(System.Action)">
             <summary>
             注册流程结束回调
             </summary>
             <param name="action"></param>
         </member>
-        <member name="M:Framework.Procedure.AbstractLoadProcedure.UnRegisterEndCallback(System.Action)">
+        <member name="M:Framework.Unity.Procedure.AbstractLoadProcedure.UnRegisterEndCallback(System.Action)">
             <summary>
             解注册流程结束回调
             </summary>
             <param name="action"></param>
         </member>
-        <member name="T:Framework.Procedure.ILoadProcedure">
+        <member name="T:Framework.Unity.Procedure.WaitProcedure">
             <summary>
-            数据加载流程
+            等待流程
             </summary>
         </member>
-        <member name="T:Framework.Procedure.IProcedure">
+        <member name="F:Framework.Unity.Procedure.WaitProcedure.mWaitTime">
             <summary>
-            流程接口
+            
             </summary>
         </member>
-        <member name="M:Framework.Procedure.IProcedure.ProcedureBegin">
+        <member name="M:Framework.Unity.Procedure.WaitProcedure.ProcedureBegin">
             <summary>
             流程开始
             </summary>
         </member>
-        <member name="M:Framework.Procedure.IProcedure.ProcedureEnd">
+        <member name="T:Framework.Unity.Event.LocalEventManager">
             <summary>
-            流程结束
+            局部事件管理器
             </summary>
         </member>
-        <member name="M:Framework.Procedure.IProcedure.RegisterEndCallback(System.Action)">
+        <member name="P:Framework.Unity.Event.LocalEventManager.UintDispatcher">
             <summary>
-            注册结束回调
-            </summary>
-            <param name="action"></param>
-        </member>
-        <member name="M:Framework.Procedure.IProcedure.UnRegisterEndCallback(System.Action)">
-            <summary>
-            解注册结束回调
-            </summary>
-            <param name="action"></param>
-        </member>
-        <member name="T:Framework.Registry.RegistryUtils">
-            <summary>
-            注册表辅助类, 只用于PC环境
+            无符号整形事件管理器
             </summary>
         </member>
-        <member name="M:Framework.Registry.RegistryUtils.Get(Microsoft.Win32.RegistryKey,System.String)">
+        <member name="P:Framework.Unity.Event.LocalEventManager.StrDispatcher">
             <summary>
-            获取注册表
-            </summary>
-            <param name="varRk">从指定注册表搜索，Registry.ClassesRoot或者Registry.CurrentUser或者Registry.LocalMachine或者Registry.Users或者Registry.CurrentConfig</param>
-            <param name="varPath">从指定路径下查找，以/分隔</param>
-            <returns>返回所有子项</returns>
-        </member>
-        <member name="M:Framework.Registry.RegistryUtils.GetRegistryKey(Microsoft.Win32.RegistryKey,System.String)">
-            <summary>
-            获取注册表
-            </summary>
-            <param name="varRk">从指定注册表搜索，Registry.ClassesRoot或者Registry.CurrentUser或者Registry.LocalMachine或者Registry.Users或者Registry.CurrentConfig</param>
-            <param name="varPath">从指定路径下查找，以/分隔</param>
-            <returns>返回注册项</returns>
-        </member>
-        <member name="T:Framework.Security.DES">
-            <summary>
-            DES加密类
+            字符串事件管理器
             </summary>
         </member>
-        <member name="P:Framework.Security.DES.Iv">
+        <member name="M:Framework.Unity.Event.LocalEventManager.OnDestroy">
             <summary>
-            DES加密偏移量，必须是>=8位长的字符串
+            重写销毁
             </summary>
-        </member>
-        <member name="P:Framework.Security.DES.Key">
-            <summary>
-            DES加密的私钥，必须是8位长的字符串
-            </summary>
-        </member>
-        <member name="M:Framework.Security.DES.DESEncrypt(System.String)">
-            <summary>
-            对字符串进行DES加密
-            </summary>
-            <param name="sourceString">待加密的字符串</param>
-            <returns>加密后的BASE64编码的字符串</returns>
-        </member>
-        <member name="M:Framework.Security.DES.DESDecrypt(System.String)">
-            <summary>
-            对DES加密后的字符串进行解密
-            </summary>
-            <param name="encryptedString">待解密的字符串</param>
-            <returns>解密后的字符串</returns>
-        </member>
-        <member name="T:Framework.Security.MD5">
-            <summary>
-            MD5加密不可逆，不需要加密向量
-            </summary>
-        </member>
-        <member name="M:Framework.Security.MD5.MD5Encrypt(System.String)">
-            <summary>
-            加密
-            </summary>
-            <param name="normalTxt"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Framework.Security.RSA">
-            <summary>
-            RSA加密类
-            </summary>
-        </member>
-        <member name="M:Framework.Security.RSA.RSAEncrypt(System.String)">
-            <summary>
-            加密
-            </summary>
-            <param name="normaltxt"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Security.RSA.RSADecrypt(System.String)">
-            <summary>
-            解密
-            </summary>
-            <param name="securityTxt"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Framework.Serialize.SerializeHelper">
-            <summary>
-            C#序列化帮助类
-            </summary>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.ConvertToString(System.Byte[])">
-            <summary>
-            使用UTF8编码将byte数组转成字符串
-            </summary>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.ConvertToString(System.Byte[],System.Text.Encoding)">
-            <summary>
-            使用指定字符编码将byte数组转成字符串
-            </summary>
-            <param name="data"></param>
-            <param name="encoding"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.ConvertToByte(System.String)">
-            <summary>
-            使用UTF8编码将字符串转成byte数组
-            </summary>
-            <param name="str"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.ConvertToByte(System.String,System.Text.Encoding)">
-            <summary>
-            使用指定字符编码将字符串转成byte数组
-            </summary>
-            <param name="str"></param>
-            <param name="encoding"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.SerializeToBinary(System.Object)">
-            <summary>
-            将对象序列化为二进制数据 
-            </summary>
-            <param name="obj"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.SerializeObject(System.Object,System.Byte[]@,System.Int32)">
-            <summary>
-            将object序列化到数组
-            </summary>
-            <param name="obj">object</param>
-            <param name="buff">数组</param>
-            <param name="offset"></param>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary(System.Byte[])">
-            <summary>
-            将二进制数据反序列化
-            </summary>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            数组反序列化
-            </summary>
-            <param name="buff"></param>
-            <param name="index"></param>
-            <param name="count"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary``1(System.Byte[])">
-            <summary>
-            将二进制数据反序列化为指定类型对象
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="data"></param>
-            <returns></returns>
         </member>
         <member name="T:Framework.Unity.Mouse.FollowMouseMove">
             <summary>
@@ -992,15 +966,36 @@
             语言切换
             </summary>
         </member>
+        <member name="T:Framework.Unity.Pattern.LocalSingletonMono`1">
+            <summary>
+            MonoBehaviour单例，切换场景销毁
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Pattern.LocalSingletonMono`1.GetInstance">
+            <summary>
+            实例方法
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Pattern.LocalSingletonMono`1.OnDestroy">
+            <summary>
+            销毁
+            </summary>
+        </member>
         <member name="T:Framework.Unity.Pattern.SingletonMono`1">
             <summary>
-            MonoBehaviour单例模式
+            MonoBehaviour单例模式不销毁
             </summary>
         </member>
         <member name="P:Framework.Unity.Pattern.SingletonMono`1.Instance">
             <summary>
             单例属性
             </summary>
+        </member>
+        <member name="M:Framework.Unity.Pattern.SingletonMono`1.GetInstance">
+            <summary>
+            获取实例方法
+            </summary>
+            <returns></returns>
         </member>
         <member name="F:Framework.Unity.Pattern.SingletonMono`1.applicationIsQuitting">
             <summary>
@@ -1954,6 +1949,16 @@
             打印出性能分析结果
             </summary>
         </member>
+        <member name="T:Framework.Unity.Tools.Quit">
+            <summary>
+            unity退出类
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.Quit.Excute">
+            <summary>
+            执行退出
+            </summary>
+        </member>
         <member name="T:Framework.Unity.Tools.SceneChanger">
             <summary>
             场景快捷切换
@@ -2001,6 +2006,29 @@
             <param name="varSceneName">场景名字</param>
             <param name="varMode">加载模式</param>
             <param name="onLoadComplete">加载回调</param>
+        </member>
+        <member name="M:Framework.Unity.Tools.SceneListener.LoadSceneAsync(System.Int32,UnityEngine.SceneManagement.LoadSceneMode,System.Action)">
+            <summary>
+            异步加载场景
+            </summary>
+            <param name="varSceneIndex">场景索引</param>
+            <param name="varMode">加载模式</param>
+            <param name="onLoadComplete">加载回调</param>
+        </member>
+        <member name="T:Framework.Unity.Tools.UnityVersion">
+            <summary>
+            unity版本获取类
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.Tools.UnityVersion.UnityVer">
+            <summary>
+            Unity版本
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.Tools.UnityVersion.Init">
+            <summary>
+            初始化
+            </summary>
         </member>
         <member name="T:Framework.Unity.Tools.StreammingUtils">
             <summary>
@@ -2130,6 +2158,13 @@
             <param name="timeDelay">延时执行时间间隔</param>  
             <param name="repeat">是否可以重复执行</param>  
             <param name="timeTaskCallback">执行回调</param>  
+        </member>
+        <member name="M:Framework.Unity.Tools.TimeManager.AddOneFrameTask(System.Boolean,Framework.Unity.Tools.TimeTaskDelegate)">
+            <summary>
+            延迟一帧执行
+            </summary>
+            <param name="repeat">是否可以重复执行</param>
+            <param name="timeTaskCallback">执行回调</param>
         </member>
         <member name="M:Framework.Unity.Tools.TimeManager.AddTask(Framework.Unity.Tools.TimeTask)">
             <summary>
@@ -2440,6 +2475,32 @@
             <param name="otherStrings">An array of strings to check the provided str against</param>
             <returns>True if it is unique, false if it is not</returns>
         </member>
+        <member name="T:Framework.Unity.UGUI_Expand.AtlasMap">
+            <summary>
+            用于存储制作好的动态图预设上的sprite信息
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.AtlasMap.GetSpriteByName(System.String)">
+            <summary>
+            从指定路径获取精灵
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.AtlasMap.AddSprite(UnityEngine.Sprite)">
+            <summary>
+            添加精灵到SpriteRenderer
+            </summary>
+            <param name="sp"></param>
+        </member>
+        <member name="M:Framework.Unity.UGUI_Expand.AtlasMap.GetSpriteByTypeAndName(System.String,System.String)">
+            <summary>
+            根据文件和路径名，找到对应sprite，
+            </summary>
+            <param name="prefab">对应存放节点的预制</param>
+            <param name="spriteName"> 名字</param>
+            <returns>返回搜索到的精灵</returns>
+        </member>
         <member name="T:Framework.Unity.UGUI_Expand.NotScroll">
             <summary>
             UI不滑动类
@@ -2515,223 +2576,703 @@
             </summary>
             <param name="eventData"></param>
         </member>
-        <member name="T:Framework.Unity.UI.BasePanel">
+        <member name="T:Framework.Unity.UI.IUIManager">
             <summary>
-            所有面板的公共基类
+            UI管理接口
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.BasePanel.OnEnter">
+        <member name="M:Framework.Unity.UI.IUIManager.ShowUI(System.String,System.EventArgs)">
             <summary>
-            页面进入显示，可交互
+            显示（打开）UI窗体
+            功能：
+            1: 根据UI窗体的名称，加载到“所有UI窗体”缓存集合中
+            2: 根据不同的UI窗体的“显示模式”，分别作不同的加载处理
+            </summary>
+            <param name="uiFormPath">UI窗体预设的路径</param>
+            <param name="varArgs"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.IUIManager.CloseUI(System.String)">
+            <summary>
+            关闭（返回上一个）窗体
+            </summary>
+            <param name="uiFormPath">UI窗体预设的路径</param>
+        </member>
+        <member name="M:Framework.Unity.UI.IUIManager.DestroyUI(System.String)">
+            <summary>
+            销毁窗体
+            </summary>
+            <param name="uiFormPath">UI窗体预设的路径</param>
+        </member>
+        <member name="M:Framework.Unity.UI.IUIManager.DestroyAllUI">
+            <summary>
+            删除所有界面
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.BasePanel.OnPause">
+        <member name="T:Framework.Unity.UI.UIBase">
             <summary>
-            页面暂停（弹出了其他页面），不可交互
+            窗口基类
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.BasePanel.OnResume">
+        <member name="P:Framework.Unity.UI.UIBase.CurrentUIType">
             <summary>
-            页面继续显示（其他页面关闭），可交互
+            当前UI窗体类型
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.BasePanel.OnExit">
+        <member name="P:Framework.Unity.UI.UIBase.UIFormPath">
             <summary>
-            本页面被关闭（移除），不再显示在界面上
+            资源具体路径
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.BasePanel.Destory">
+        <member name="M:Framework.Unity.UI.UIBase.Close">
             <summary>
-            销毁页面
+            关闭界面 ，不销毁
             </summary>
         </member>
-        <member name="T:Framework.Unity.UI.UGUIPanel">
+        <member name="M:Framework.Unity.UI.UIBase.Display">
             <summary>
-            UGUI面板
+            显示状态
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UGUIPanel.mCanvasGroup">
+        <member name="M:Framework.Unity.UI.UIBase.Hiding">
             <summary>
-            CanvasGroup
+            隐藏状态
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UGUIPanel.OnEnter">
+        <member name="M:Framework.Unity.UI.UIBase.Redisplay">
             <summary>
-            页面进入显示，可交互
+            重新显示状态
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UGUIPanel.OnPause">
+        <member name="M:Framework.Unity.UI.UIBase.Freeze">
             <summary>
-            页面暂停（弹出了其他页面），不可交互
+            冻结状态
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UGUIPanel.OnResume">
+        <member name="M:Framework.Unity.UI.UIBase.Destroy">
             <summary>
-            页面继续显示（其他页面关闭），可交互
+            销毁对象
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UGUIPanel.OnExit">
+        <member name="M:Framework.Unity.UI.UIBase.InitOpenArgs(System.EventArgs)">
             <summary>
-            本页面被关闭（移除），不再显示在界面上
+            初始化打开
+            </summary>
+            <param name="varArgs">打开参数</param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIBase.SetupConfig">
+            <summary>
+            配置UI
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UGUIPanel.Destory">
+        <member name="T:Framework.Unity.UI.UIFormType">
             <summary>
-            销毁页面
+            UI窗体（位置）类型
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UGUIPanel.EventEnable(System.Boolean)">
+        <member name="F:Framework.Unity.UI.UIFormType.Normal">
             <summary>
-            页面是否响应点击
+            普通窗体(一般指全屏窗体)
             </summary>
-            <param name="enabled"></param>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormType.Fixed">
+            <summary>
+            固定窗体（非全屏窗体，压在全屏窗体上面）
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormType.PopUp">
+            <summary>
+            弹出窗体（模态对话框或者消息提示框）
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormType.TopMost">
+            <summary>
+            最上层窗体（Loading界面）
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIFormShowMode">
+            <summary>
+            UI窗体的显示类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormShowMode.Normal">
+            <summary>
+            普通
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormShowMode.ReverseChange">
+            <summary>
+            反向切换（界面需要出入栈）
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormShowMode.HideOther">
+            <summary>
+            打开此界面隐藏其他界面
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIFormLucenyType">
+            <summary>
+            UI窗体透明度类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormLucenyType.Lucency">
+            <summary>
+            完全透明，不能穿透
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormLucenyType.Translucence">
+            <summary>
+            半透明，不能穿透
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormLucenyType.ImPenetrable">
+            <summary>
+            低透明度，不能穿透
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIFormLucenyType.Pentrate">
+            <summary>
+            可以穿透
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.SysDefine">
+            <summary>
+            常量定义
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SysDefine.SYS_UIMASK_LUCENCY_COLOR_RGB">
+            <summary>
+            完全透明RGB
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SysDefine.SYS_UIMASK_LUCENCY_COLOR_RGB_A">
+            <summary>
+            完全透明A
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SysDefine.SYS_UIMASK_TRANS_LUCENCY_COLOR_RGB">
+            <summary>
+            半透明RGB
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SysDefine.SYS_UIMASK_TRANS_LUCENCY_COLOR_RGB_A">
+            <summary>
+            半透明A
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SysDefine.SYS_UIMASK_IMPENETRABLE_COLOR_RGB">
+            <summary>
+            不透明RGB
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SysDefine.SYS_UIMASK_IMPENETRABLE_COLOR_RGB_A">
+            <summary>
+            不透明A
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIConfig">
+            <summary>
+            UI配置类
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIConfig.DestroyOnLoad">
+            <summary>
+            是否销毁
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIConfig.RootHasCanvas">
+            <summary>
+            根节点是否有Canvas
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIConfig.ShowMask">
+            <summary>
+            是否显示蒙板
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIConfig.CanvasRenderMode">
+            <summary>
+            单个Canvas的渲染模式
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIConfig.RootPath">
+            <summary>
+            UI根节点加载的路径
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIConfig.Init">
+            <summary>
+            覆盖基类方法
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIEventArgs`1">
+            <summary>
+            UI事件参数
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Framework.Unity.UI.UIEventArgs`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIEventArgs`1.#ctor(`0)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="varData"></param>
+        </member>
+        <member name="T:Framework.Unity.UI.UIMsgBox">
+            <summary>
+            模态对话框弹框
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIMsgBox.UIMsgBoxArgs">
+            <summary>
+            模态对话框参数
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIMsgBox.UIMsgBoxArgs.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIMsgBox.UIMsgBoxArgs.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.UIMsgBoxArgs.mBtnTexts">
+            <summary>
+            按钮上面的文字
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIMsgBox.UIMsgBoxArgs.Style">
+            <summary>
+            显示风格
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIMsgBox.UIMsgBoxArgs.CloseAction">
+            <summary>
+            关闭回调函数
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIMsgBox.Style">
+            <summary>
+            显示风格
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.Style.None">
+            <summary>
+            不显示按钮
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.Style.OK">
+            <summary>
+            显示确定按钮
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.Style.OKAndCancel">
+            <summary>
+            显示确定和取消按钮
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIMsgBox.Result">
+            <summary>
+            关闭结果
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.Result.OK">
+            <summary>
+            确定
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.Result.Cancel">
+            <summary>
+            取消
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.mTitleText">
+            <summary>
+            标题文本
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.mContentText">
+            <summary>
+            内容文本
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgBox.mButtons">
+            <summary>
+            所有按钮
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIMsgBox.InitOpenArgs(System.EventArgs)">
+            <summary>
+            重写InitOpenArgs
+            </summary>
+            <param name="varArgs"></param>
+        </member>
+        <member name="T:Framework.Unity.UI.UIMsgTips">
+            <summary>
+            消息提示框
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIMsgTips.ctlTextBar">
+            <summary>
+            文本控件的父物体
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIMsgTips.InitOpenArgs(System.EventArgs)">
+            <summary>
+            重写InitOpenArgs
+            </summary>
+            <param name="varArgs"></param>
+        </member>
+        <member name="T:Framework.Unity.UI.UISceneLoading">
+            <summary>
+            负责加载场景的UI
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UISceneLoading.mIntProgress">
+            <summary>
+            整数进度，范围[0，100]
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UISceneLoading.UpdateProgress">
+            <summary>
+            更新进度
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UISceneLoading.Display">
+            <summary>
+            重写Display
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UISceneLoading.InitOpenArgs(System.EventArgs)">
+            <summary>
+            初始化
+            </summary>
+            <param name="varArgs"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UISceneLoading.SetupConfig">
+            <summary>
+            重写配置UI
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UISimpleLoading">
+            <summary>
+            简单loading界面
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UISimpleLoading.txtTitle">
+            <summary>
+            标题文字
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UISimpleLoading.txtTips">
+            <summary>
+            小提示文字
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UISimpleLoading.progressBar">
+            <summary>
+            进度条
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UISimpleLoading.UpdateProgress">
+            <summary>
+            更新进度
+            </summary>
         </member>
         <member name="T:Framework.Unity.UI.UIManager">
             <summary>
-            单例模式的核心：
-            1.只在该类内定义一个静态的对象，该对象在外界访问，在内部构造
-            2.构造函数私有化
+            UI管理
             </summary>
         </member>
-        <member name="T:Framework.Unity.UI.UIManager.CanvasType">
+        <member name="F:Framework.Unity.UI.UIManager._TranRoot">
             <summary>
-            画布类型
+            根节点
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UIManager.CanvasType.Page">
+        <member name="F:Framework.Unity.UI.UIManager.mInitAction">
             <summary>
-            正常页面
+            唤醒事件
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UIManager.CanvasType.TopWindow">
+        <member name="F:Framework.Unity.UI.UIManager.LoadingUI">
             <summary>
-            在Page前面显示的页面
+            loadingUI用于切换场景
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UIManager.CanvasType.Loading">
+        <member name="P:Framework.Unity.UI.UIManager.TranRoot">
             <summary>
-            loading页面
+            根节点
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.Init">
+        <member name="P:Framework.Unity.UI.UIManager.TraPopUp">
             <summary>
-            重写Init，初始化方法
+            弹窗节点
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UIManager.panelPathDict">
+        <member name="M:Framework.Unity.UI.UIManager.LoadFormsToAllUIFormsCatch(System.String)">
             <summary>
-            存储所有Perfab面板的路径
+            根据UI窗体的名称，加载到“所有UI窗体”缓存集合中
+            功能： 检查“所有UI窗体”集合中，是否已经加载过，否则才加载。
             </summary>
-        </member>
-        <member name="F:Framework.Unity.UI.UIManager.panelDict">
-            <summary>
-            借助BasePanel脚本保存所有实例化出来的面板物体（因为BasePanel脚本被所有面板预设物体的自己的脚本所继承，所以需要的时候可以根据BasePanel脚本来实例化每一个面板对象）
-            </summary>
-        </member>
-        <member name="F:Framework.Unity.UI.UIManager.panelStack">
-            <summary>
-            这是一个栈，用来保存实例化出来（显示出来）的面板
-            </summary>
-        </member>
-        <member name="M:Framework.Unity.UI.UIManager.PushPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
-            <summary>
-            页面入栈，即把页面显示在界面上
-            </summary>
-            <param name="panelType"></param>
-            <param name="uiStayCanvas"></param>
+            <param name="uiFormsName">UI窗体（预设）的名称</param>
             <returns></returns>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.PopPanel">
+        <member name="M:Framework.Unity.UI.UIManager.LoadUIForm(System.String)">
             <summary>
-            页面出栈，把倒数第一个页面移除，显示倒数第二个页面
+            加载指定名称的“UI窗体”
+            功能：
+               1：根据“UI窗体路径”，加载预设克隆体。
+               2：根据不同预设克隆体中带的脚本中不同的“位置信息”，加载到“根窗体”下不同的节点。
+               3：隐藏刚创建的UI克隆体。
+               4：把克隆体，加入到“所有UI窗体”（缓存）集合中。
+            
             </summary>
+            <param name="uiFormPath">UI窗体路径</param>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.HideAllAndPushPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
+        <member name="M:Framework.Unity.UI.UIManager.LoadUIToCurrentCache(System.String)">
             <summary>
-            隐藏其他页面，显示指定的页面
+            把当前窗体加载到“当前窗体”集合中
             </summary>
-            <param name="panelType"></param>
-            <param name="uiStayCanvas"></param>
+            <param name="uiFormPath">窗体预设的路径</param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.PushUIFormToStack(System.String)">
+            <summary>
+            UI窗体入栈
+            </summary>
+            <param name="uiFormPath">窗体的名称</param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.ExitUIForms(System.String)">
+            <summary>
+            退出指定UI窗体
+            </summary>
+            <param name="uiFormPath"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.EnterUIFormsAndHideOther(System.String)">
+            <summary>
+            (“隐藏其他”属性)打开窗体，且隐藏其他窗体
+            </summary>
+            <param name="uiFormPath">打开的指定窗体名称</param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.ExitUIFormsAndDisplayOther(System.String)">
+            <summary>
+            (“隐藏其他”属性)关闭窗体，且显示其他窗体
+            </summary>
+            <param name="uiFormPath">打开的指定窗体名称</param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.DestroyUIForm(System.String)">
+            <summary>
+            删除指定UI窗体
+            </summary>
+            <param name="uiFormPath"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.DestroyUIFormsAndDisplayOther(System.String)">
+            <summary>
+            (“隐藏其他”属性)销毁窗体，且显示其他窗体
+            </summary>
+            <param name="uiFormPath">打开的指定窗体名称</param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.ClearStackArray">
+            <summary>
+            是否清空“栈集合”中得数据
+            </summary>
             <returns></returns>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.PopPanel(Framework.Unity.UI.BasePanel)">
+        <member name="M:Framework.Unity.UI.UIManager.ShowUI(System.String,System.EventArgs)">
             <summary>
-            判断栈顶页面是否和指定页面相同，如果相同出栈，慎用
+            显示（打开）UI窗体
+            功能：
+            1: 根据UI窗体的名称，加载到“所有UI窗体”缓存集合中
+            2: 根据不同的UI窗体的“显示模式”，分别作不同的加载处理
             </summary>
-            <param name="varPanel"></param>
+            <param name="uiFormPath">UI窗体预设的路径</param>
+            <param name="varArgs"></param>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.ShowPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
+        <member name="M:Framework.Unity.UI.UIManager.CloseUI(System.String)">
             <summary>
-            显示页面，栈不发生变化
+            关闭（返回上一个）窗体
             </summary>
-            <param name="panelType"></param>
-            <param name="uiStayCanvas"></param>
+            <param name="uiFormPath"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.DestroyUI(System.String)">
+            <summary>
+            销毁窗体
+            </summary>
+            <param name="uiFormPath"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.DestroyAllUI">
+            <summary>
+            删除所有界面
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIManager.GetALLUIFormCount">
+            <summary>
+            显示"所有UI窗体"集合的数量
+            </summary>
             <returns></returns>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.HidePanel(System.String)">
+        <member name="M:Framework.Unity.UI.UIManager.GetCurrentUIFormsCount">
             <summary>
-            隐藏指定页面
-            </summary>
-            <param name="panelType"></param>
-        </member>
-        <member name="M:Framework.Unity.UI.UIManager.GetStackPeekPanel">
-            <summary>
-            获取栈顶页面
+            显示"当前窗体"集合中数量
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.HideAll">
+        <member name="M:Framework.Unity.UI.UIManager.GetCurrentStackUIFormsCount">
             <summary>
-            所有显示的页面隐藏，但不出栈
+            显示“当前栈”集合中窗体数量
             </summary>
-        </member>
-        <member name="M:Framework.Unity.UI.UIManager.PopAll">
-            <summary>
-            所有显示的页面隐藏并且出栈
-            </summary>
-        </member>
-        <member name="M:Framework.Unity.UI.UIManager.DestroyAll">
-            <summary>
-            所有显示的页面销毁并且出栈
-            </summary>
-        </member>
-        <member name="M:Framework.Unity.UI.UIManager.GetLoadObject(System.String)">
-            <summary>
-            加载指定类型页面，不入栈
-            </summary>
-            <param name="panelType"></param>
             <returns></returns>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.GetParent(Framework.Unity.UI.UIManager.CanvasType)">
+        <member name="M:Framework.Unity.UI.UIManager.LoadScene(System.String)">
             <summary>
-            获取指定类型的页面的父物体
+            加载场景
             </summary>
-            <param name="uiStayCanvas"></param>
-            <returns></returns>
+            <param name="sceneName"></param>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.GetPanel(System.String,Framework.Unity.UI.UIManager.CanvasType)">
+        <member name="M:Framework.Unity.UI.UIManager.LoadScene(System.Int32)">
             <summary>
-            根据面板类型UIPanelType得到实例化的面板
+            加载场景
             </summary>
-            <param name="panelType"></param>
-            <param name="uiStayCanvas"></param>
-            <returns></returns>
+            <param name="sceneIndex"></param>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.GetPanelFromCache(System.String)">
+        <member name="T:Framework.Unity.UI.LoadingArg">
             <summary>
-            从缓存获取页面
-            </summary>
-            <param name="panelType"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Framework.Unity.UI.UIManager.ParseUIPanelTypeJson">
-            <summary>
-            解析UIPanelType.json的信息, UIPanelType.json在Resource文件夹下
+            加载参数
             </summary>
         </member>
-        <member name="M:Framework.Unity.UI.UIManager.DebugUI">
+        <member name="F:Framework.Unity.UI.LoadingArg.title">
             <summary>
-            将栈中的UI输出日志，仅在开发者模式有效
+            标题
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.LoadingArg.tips">
+            <summary>
+            提示
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.LoadingArg.progress">
+            <summary>
+            进度
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.SceneLoadingArg">
+            <summary>
+            场景加载参数
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SceneLoadingArg.scene">
+            <summary>
+            场景名字
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.SceneLoadingArg.index">
+            <summary>
+            场景索引
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.LoadingBase">
+            <summary>
+            Loading界面基类
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.LoadingBase.Args">
+            <summary>
+            加载参数
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.LoadingBase.UpdateProgress">
+            <summary>
+            更新进度
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.LoadingBase.ShowProgress(System.String,System.Single)">
+            <summary>
+            显示进度
+            </summary>
+            <param name="title"></param>
+            <param name="progress"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.LoadingBase.ShowProgress(System.Single)">
+            <summary>
+            显示进度
+            </summary>
+            <param name="progress"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.LoadingBase.InitOpenArgs(System.EventArgs)">
+            <summary>
+            初始化
+            </summary>
+            <param name="varArgs"></param>
+        </member>
+        <member name="T:Framework.Unity.UI.UIMaskMgr">
+            <summary>
+            UI遮罩类
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.UIMaskMgr.Instance">
+            <summary>
+            实例
+            </summary>
+        </member>
+        <member name="M:Framework.Unity.UI.UIMaskMgr.SetMaskWindow(UnityEngine.GameObject,Framework.Unity.UI.UIFormLucenyType)">
+            <summary>
+            设置遮罩状态
+            </summary>
+            <param name="goDisplayUIForms">需要显示的UI窗体</param>
+            <param name="lucenyType">显示透明度属性</param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIMaskMgr.CancelMaskWindow">
+            <summary>
+            取消遮罩状态
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.UIType">
+            <summary>
+            UI类型配置
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIType.IsClearStack">
+            <summary>
+            是否清空“栈集合”
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIType.UIForms_Type">
+            <summary>
+            UI窗体（位置）类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIType.UIForms_ShowMode">
+            <summary>
+            UI窗体的显示类型
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIType.UIForm_LucencyType">
+            <summary>
+            UI窗体透明度类型
+            </summary>
+        </member>
+        <member name="T:Framework.Unity.UI.IUIKit">
+            <summary>
+            UI接口
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.IUIKit.DestroyOnLoad">
+            <summary>
+            是否销毁
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.IUIKit.RootHasCanvas">
+            <summary>
+            根节点是否有Canvas
+            </summary>
+        </member>
+        <member name="P:Framework.Unity.UI.IUIKit.ShowMask">
+            <summary>
+            是否显示蒙板
             </summary>
         </member>
         <member name="T:Framework.Unity.UI.UIEventTrigger">
@@ -2745,6 +3286,11 @@
             </summary>
         </member>
         <member name="F:Framework.Unity.UI.UIEventTrigger.onClickWithObject">
+            <summary>
+            点击事件
+            </summary>
+        </member>
+        <member name="F:Framework.Unity.UI.UIEventTrigger.onClickWithName">
             <summary>
             点击事件
             </summary>
@@ -2887,44 +3433,259 @@
             </summary>
             <param name="eventData"></param>
         </member>
-        <member name="T:Framework.Unity.UI.UILoad">
+        <member name="T:Framework.Unity.UI.UIUtils">
             <summary>
-            动态加载指定UI界面
+            为UI操作提供基础封装，使UI操作更方便
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UILoad.mPanelType">
+        <member name="M:Framework.Unity.UI.UIUtils.SetActive(UnityEngine.EventSystems.UIBehaviour,System.Boolean)">
             <summary>
-            panel类型
+            设置一个UI元素是否可见
+            </summary>
+            <param name="ui"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIUtils.SetButtonText(UnityEngine.UI.Button,System.String)">
+            <summary>
+            设置按钮上的文字
+            </summary>
+            <param name="btn"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Framework.Unity.UI.UIUtils.GetButtonText(UnityEngine.UI.Button)">
+            <summary>
+            获取按钮上的文字
+            </summary>
+            <param name="btn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Unity.UI.UIUtils.SetChildText(UnityEngine.EventSystems.UIBehaviour,System.String)">
+            <summary>
+            设置组件的文字
+            </summary>
+            <param name="ui"></param>
+            <param name="text"></param>
+        </member>
+        <member name="T:Framework.Procedure.ILoadProcedure">
+            <summary>
+            数据加载流程
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UILoad.mUIStayCanvas">
+        <member name="T:Framework.Procedure.IProcedure">
             <summary>
-            显示的层级
+            流程接口
             </summary>
         </member>
-        <member name="T:Framework.Unity.UI.UIPanelInfo">
+        <member name="M:Framework.Procedure.IProcedure.ProcedureBegin">
             <summary>
-            配置页面类
+            流程开始
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UIPanelInfo.panelTypeString">
+        <member name="M:Framework.Procedure.IProcedure.ProcedureEnd">
             <summary>
-            面板类型
+            流程结束
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UIPanelInfo.path">
+        <member name="M:Framework.Procedure.IProcedure.RegisterEndCallback(System.Action)">
             <summary>
-            面板路径
+            注册结束回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Framework.Procedure.IProcedure.UnRegisterEndCallback(System.Action)">
+            <summary>
+            解注册结束回调
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:Framework.Registry.RegistryUtils">
+            <summary>
+            注册表辅助类, 只用于PC环境
             </summary>
         </member>
-        <member name="T:Framework.Unity.UI.UIPanelTypeJson">
+        <member name="M:Framework.Registry.RegistryUtils.Get(Microsoft.Win32.RegistryKey,System.String)">
             <summary>
-            配合解析, 多个页面
+            获取注册表
+            </summary>
+            <param name="varRk">从指定注册表搜索，Registry.ClassesRoot或者Registry.CurrentUser或者Registry.LocalMachine或者Registry.Users或者Registry.CurrentConfig</param>
+            <param name="varPath">从指定路径下查找，以/分隔</param>
+            <returns>返回所有子项</returns>
+        </member>
+        <member name="M:Framework.Registry.RegistryUtils.GetRegistryKey(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            获取注册表
+            </summary>
+            <param name="varRk">从指定注册表搜索，Registry.ClassesRoot或者Registry.CurrentUser或者Registry.LocalMachine或者Registry.Users或者Registry.CurrentConfig</param>
+            <param name="varPath">从指定路径下查找，以/分隔</param>
+            <returns>返回注册项</returns>
+        </member>
+        <member name="T:Framework.Security.DES">
+            <summary>
+            DES加密类
             </summary>
         </member>
-        <member name="F:Framework.Unity.UI.UIPanelTypeJson.infoList">
+        <member name="P:Framework.Security.DES.Iv">
             <summary>
-            所有页面信息
+            DES加密偏移量，必须是>=8位长的字符串
+            </summary>
+        </member>
+        <member name="P:Framework.Security.DES.Key">
+            <summary>
+            DES加密的私钥，必须是8位长的字符串
+            </summary>
+        </member>
+        <member name="M:Framework.Security.DES.DESEncrypt(System.String)">
+            <summary>
+            对字符串进行DES加密
+            </summary>
+            <param name="sourceString">待加密的字符串</param>
+            <returns>加密后的BASE64编码的字符串</returns>
+        </member>
+        <member name="M:Framework.Security.DES.DESDecrypt(System.String)">
+            <summary>
+            对DES加密后的字符串进行解密
+            </summary>
+            <param name="encryptedString">待解密的字符串</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="T:Framework.Security.MD5">
+            <summary>
+            MD5加密不可逆，不需要加密向量
+            </summary>
+        </member>
+        <member name="M:Framework.Security.MD5.MD5Encrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="normalTxt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Security.RSA">
+            <summary>
+            RSA加密类
+            </summary>
+        </member>
+        <member name="M:Framework.Security.RSA.RSAEncrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="normaltxt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Security.RSA.RSADecrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="securityTxt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Serialize.SerializeHelper">
+            <summary>
+            C#序列化帮助类
+            </summary>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToString(System.Byte[])">
+            <summary>
+            使用UTF8编码将byte数组转成字符串
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToString(System.Byte[],System.Text.Encoding)">
+            <summary>
+            使用指定字符编码将byte数组转成字符串
+            </summary>
+            <param name="data"></param>
+            <param name="encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToByte(System.String)">
+            <summary>
+            使用UTF8编码将字符串转成byte数组
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.ConvertToByte(System.String,System.Text.Encoding)">
+            <summary>
+            使用指定字符编码将字符串转成byte数组
+            </summary>
+            <param name="str"></param>
+            <param name="encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.SerializeToBinary(System.Object)">
+            <summary>
+            将对象序列化为二进制数据 
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.SerializeObject(System.Object,System.Byte[]@,System.Int32)">
+            <summary>
+            将object序列化到数组
+            </summary>
+            <param name="obj">object</param>
+            <param name="buff">数组</param>
+            <param name="offset"></param>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary(System.Byte[])">
+            <summary>
+            将二进制数据反序列化
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            数组反序列化
+            </summary>
+            <param name="buff"></param>
+            <param name="index"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Framework.Serialize.SerializeHelper.DeserializeWithBinary``1(System.Byte[])">
+            <summary>
+            将二进制数据反序列化为指定类型对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Framework.Version.SoftVersion">
+            <summary>
+            软件版本号结构体
+            </summary>
+        </member>
+        <member name="F:Framework.Version.SoftVersion.fullVersion">
+            <summary>
+            完整版本号
+            </summary>
+        </member>
+        <member name="F:Framework.Version.SoftVersion.mainVersion">
+            <summary>
+            主版本号
+            </summary>
+        </member>
+        <member name="F:Framework.Version.SoftVersion.subVersion">
+            <summary>
+            子版本号
+            </summary>
+        </member>
+        <member name="F:Framework.Version.SoftVersion.phaseVersion">
+            <summary>
+            阶段版本号
+            </summary>
+        </member>
+        <member name="F:Framework.Version.SoftVersion.dateVersion">
+            <summary>
+            日期版本号
+            </summary>
+        </member>
+        <member name="F:Framework.Version.SoftVersion.greeksVersion">
+            <summary>
+            希腊字母版本号
             </summary>
         </member>
         <member name="T:Framework.Xml.XmlUtil">

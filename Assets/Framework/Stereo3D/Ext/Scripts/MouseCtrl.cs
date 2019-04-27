@@ -68,6 +68,21 @@ namespace Stereo3D
         //
         //    }
 
+        private void OnApplicationFocus(bool focus)
+        {
+            if (focus)
+            {
+                if (mShowCursor)
+                {
+                    ShowCursor();
+                }
+                else
+                {
+                    HideCursor();
+                }
+            }
+        }
+
         #endregion
 
         #region Private Methods
