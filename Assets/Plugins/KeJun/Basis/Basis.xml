@@ -3363,14 +3363,14 @@
             <summary>
             如果物体没有UIEventTrigger脚本就添加UIEventTrigger脚本
             </summary>
-            <param name="transform"></param>
+            <param name="varTrans"></param>
             <returns></returns>
         </member>
         <member name="M:Framework.Unity.UI.UIEventTrigger.HasExistOn(UnityEngine.Transform)">
             <summary>
             物体是否有UIEventTrigger脚本
             </summary>
-            <param name="transform"></param>
+            <param name="varTrans"></param>
             <returns></returns>
         </member>
         <member name="M:Framework.Unity.UI.UIEventTrigger.OnPointerClick(UnityEngine.EventSystems.PointerEventData)">

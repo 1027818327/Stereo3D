@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 /*
 .-------------------------------------------------------------------
@@ -92,11 +93,6 @@ namespace Stereo3D
         private bool toggleTrackObj = false;
         private GameObject trackObject;
 
-        /// <summary>
-        /// 开启左右相机后的主相机层级
-        /// </summary>
-        public string[] mMainLayer = { "Default" };
-
         public void Start()
         {
             camStrings = new string[]
@@ -139,6 +135,21 @@ namespace Stereo3D
             //leftCam.AddComponent<GUILayer>();
             //rightCam.AddComponent<GUILayer>();
 
+            PhysicsRaycaster tempMainPr = GetComponent<PhysicsRaycaster>();
+            if (tempMainPr == null)
+            {
+                tempMainPr = gameObject.AddComponent<PhysicsRaycaster>();
+            }
+
+            tempMainPr.eventMask = ~(1 << LayerMask.NameToLayer("UI"));  // 渲染除去层x的所有层
+            tempMainPr.enabled = false;
+
+            PhysicsRaycaster tempLeftPr = leftCam.AddComponent<PhysicsRaycaster>();
+            tempLeftPr.eventMask = ~(1 << LayerMask.NameToLayer("UI"));  // 渲染除去层x的所有层 
+
+            PhysicsRaycaster temRightPr = rightCam.AddComponent<PhysicsRaycaster>();
+            temRightPr.eventMask = tempLeftPr.eventMask;
+
             leftCamRT = new RenderTexture(Screen.width, Screen.height, 24);
             rightCamRT = new RenderTexture(Screen.width, Screen.height, 24);
 
@@ -156,7 +167,7 @@ namespace Stereo3D
             leftCam.transform.parent = transform;
             rightCam.transform.parent = transform;
 
-            ShowLayer(tempCamera, mMainLayer);
+            ShowLayer(tempCamera, null);
             tempCamera.backgroundColor = new Color(0, 0, 0, 0);
             tempCamera.clearFlags = CameraClearFlags.Nothing;
 
@@ -797,6 +808,12 @@ namespace Stereo3D
                 tempCamera.clearFlags = CameraClearFlags.Skybox;
             }
 
+            PhysicsRaycaster tempPr = GetComponent<PhysicsRaycaster>();
+            if (tempPr != null)
+            {
+                tempPr.enabled = true;
+            }
+
             leftCam.SetActive(false);
             rightCam.SetActive(false);
         }
@@ -808,9 +825,15 @@ namespace Stereo3D
             Camera tempCamera = GetComponent<Camera>();
             if (tempCamera != null)
             {
-                ShowLayer(tempCamera, mMainLayer);
+                ShowLayer(tempCamera, null);
                 tempCamera.backgroundColor = new Color(0, 0, 0, 0);
                 tempCamera.clearFlags = CameraClearFlags.Nothing;
+            }
+
+            PhysicsRaycaster tempPr = GetComponent<PhysicsRaycaster>();
+            if (tempPr != null)
+            {
+                tempPr.enabled = false;
             }
 
             leftCam.SetActive(true);
@@ -819,17 +842,21 @@ namespace Stereo3D
 
         private void ShowLayer(Camera camera, string[] array)
         {
-            if (camera == null || array == null)
+            if (camera == null)
             {
                 return;
             }
 
             int tempLayer = 0;
-            for (int i = 0; i < array.Length; i++)
+            if (array != null)
             {
-                int tempR = LayerMask.NameToLayer(array[i]);
-                tempLayer += (1 << tempR);
+                for (int i = 0; i < array.Length; i++)
+                {
+                    int tempR = LayerMask.NameToLayer(array[i]);
+                    tempLayer += (1 << tempR);
+                }
             }
+
             camera.cullingMask = tempLayer;
         }
         #endregion

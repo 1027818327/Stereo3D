@@ -572,8 +572,6 @@ MonoBehaviour:
   cameraSelect: 0
   cameraAspect: 1.33
   saveCustomAspect: 0
-  mMainLayer:
-  - Default
 --- !u!1 &348648922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1112,7 @@ GameObject:
   - component: {fileID: 1481302064}
   - component: {fileID: 1481302063}
   - component: {fileID: 1481302062}
+  - component: {fileID: 1481302067}
   - component: {fileID: 1481302066}
   m_Layer: 0
   m_Name: Cube
@@ -1196,10 +1195,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1481302061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c4698938d0b5164a98d8f4100cc6c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8554d2f0c86731147b178c9963629ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
+--- !u!114 &1481302067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1481302061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1776925588, guid: 1418b8ebc03d3eb44b12e2c0a96779e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1481302066}
+          m_MethodName: Test1Click
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!1 &1497209216
 GameObject:
@@ -1644,7 +1671,6 @@ GameObject:
   - component: {fileID: 1910382711}
   - component: {fileID: 1910382710}
   - component: {fileID: 1910382709}
-  - component: {fileID: 1910382712}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1718,16 +1744,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1910382707}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1910382712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1910382707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c4698938d0b5164a98d8f4100cc6c7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
-  delegates: []

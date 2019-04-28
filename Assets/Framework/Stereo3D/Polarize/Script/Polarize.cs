@@ -93,6 +93,15 @@ namespace Stereo3D
             //leftCam.AddComponent<GUILayer>();
             //rightCam.AddComponent<GUILayer>();
 
+            PhysicsRaycaster tempMainPr = GetComponent<PhysicsRaycaster>();
+            if (tempMainPr == null)
+            {
+                tempMainPr = gameObject.AddComponent<PhysicsRaycaster>();
+            }
+
+            tempMainPr.eventMask = ~(1 << LayerMask.NameToLayer("UI"));  // 渲染除去层x的所有层
+            tempMainPr.enabled = false;
+
             PhysicsRaycaster tempLeftPr = leftCam.AddComponent<PhysicsRaycaster>();
             tempLeftPr.eventMask = ~(1 << LayerMask.NameToLayer("UI"));  // 渲染除去层x的所有层 
 
@@ -697,6 +706,12 @@ namespace Stereo3D
                 tempCamera.clearFlags = CameraClearFlags.Skybox;
             }
 
+            PhysicsRaycaster tempPr = GetComponent<PhysicsRaycaster>();
+            if (tempPr != null)
+            {
+                tempPr.enabled = true;
+            }
+
             leftCam.SetActive(false);
             rightCam.SetActive(false);
         }
@@ -711,6 +726,12 @@ namespace Stereo3D
                 ShowLayer(mMainCamera, null);
                 tempCamera.backgroundColor = new Color(0, 0, 0, 0);
                 tempCamera.clearFlags = CameraClearFlags.Nothing;
+            }
+
+            PhysicsRaycaster tempPr = GetComponent<PhysicsRaycaster>();
+            if (tempPr != null)
+            {
+                tempPr.enabled = false;
             }
 
             leftCam.SetActive(true);
