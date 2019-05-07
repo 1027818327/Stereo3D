@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleDoubleCameraKey: 120
-  toggleDoubleCamera: 1
+  toggleDoubleCamera: 0
 --- !u!114 &344336133
 MonoBehaviour:
   m_ObjectHideFlags: 0

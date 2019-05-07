@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Framework/Unity/Template/Init/Scenes/InitScene.unity
+    guid: 12d7ce14b1ee68d4bb02f18c047e4595
+  - enabled: 1
     path: Assets/Framework/Stereo3D/Ext/Scenes/UI.unity
     guid: abf1e9f8d6abaa14098e4d5059eb8756

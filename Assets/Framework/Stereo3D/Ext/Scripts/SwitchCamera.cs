@@ -5,7 +5,7 @@ namespace Stereo3D
     public class SwitchCamera : MonoBehaviour
     {
         public KeyCode toggleDoubleCameraKey = KeyCode.X;
-        public bool toggleDoubleCamera = true;
+        public static bool toggleDoubleCamera = false;
 
         // Update is called once per frame
         void Update()
