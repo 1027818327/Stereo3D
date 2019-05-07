@@ -48,6 +48,11 @@ namespace Stereo3D
         private Camera mLeftCamera;
         private Camera mRightCamera;
 
+        /// <summary>
+        /// 是否开启3d效果
+        /// </summary>
+        private static bool isOpen3d = false;
+
         public void Start()
         {
             camStrings = new string[]
@@ -133,6 +138,12 @@ namespace Stereo3D
             if (format3D == mode3D.Anaglyph)
             {
                 SetAnaglyphType();
+            }
+
+            if (!isOpen3d)
+            {
+                /// 默认双相机，如果不开启3d模式则显示单相机
+                SwitchSingleCamera();
             }
         }
 
@@ -696,7 +707,9 @@ namespace Stereo3D
         #region 单/双相机切换
         private void SwitchSingleCamera()
         {
+            isOpen3d = false;
             enabled = false;
+            
 
             Camera tempCamera = mMainCamera;
             if (tempCamera != null)
@@ -718,6 +731,7 @@ namespace Stereo3D
 
         private void SwitchDoubleCamera()
         {
+            isOpen3d = true;
             enabled = true;
 
             Camera tempCamera = mMainCamera;

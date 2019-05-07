@@ -17,6 +17,7 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
+using UnityEngine.EventSystems;
 
 namespace Stereo3D
 {
@@ -137,6 +138,46 @@ namespace Stereo3D
                 }
             }
         }
+
+        [MenuItem("Tools/Stereo3D/Remove 3D/From Current Scene")]
+        static void Remove3D()
+        {
+            Camera tempCamera = Camera.main;
+            if (tempCamera != null)
+            {
+                Remove3DEffect(tempCamera.gameObject);
+                RemoveMouse(tempCamera);
+
+                Scene tempScene = EditorSceneManager.GetActiveScene();
+                EditorSceneManager.SaveScene(tempScene, tempScene.path);
+
+                Debug.Log("Remove3D Success");
+            }
+        }
+
+
+        [MenuItem("Tools/Stereo3D/Remove 3D/From Build Scene")]
+        static void Remove3DFromBuildScene()
+        {
+            List<Scene> tempLoadSceneList = null;
+            List<Camera> tempGoList = GetBuildSceneObjs(out tempLoadSceneList);
+            if (tempGoList != null && tempGoList.Count >= 0)
+            {
+                foreach (Camera tempCamera in tempGoList)
+                {
+                    Remove3DEffect(tempCamera.gameObject);
+                    RemoveMouse(tempCamera);
+                }
+
+                EditorSceneManager.MarkAllScenesDirty();
+                EditorSceneManager.SaveOpenScenes();
+                foreach (Scene tempScene in tempLoadSceneList)
+                {
+                    EditorSceneManager.UnloadSceneAsync(tempScene);
+                }
+            }
+        }
+
 
         /*
         [MenuItem("Tools/Stereo3D/Update Canvas")]
@@ -260,6 +301,34 @@ namespace Stereo3D
             }
         }
 
+        static void Remove3DEffect(GameObject varObj)
+        {
+            var tempP = varObj.GetComponent<Polarize>();
+            if (tempP != null)
+            {
+                Object.DestroyImmediate(tempP);
+            }
+
+            Stereoskopix3D tempS3 = varObj.GetComponent<Stereoskopix3D>();
+            if (tempS3 != null)
+            {
+                Object.DestroyImmediate(tempS3);
+            }
+
+            SwitchCamera tempSc = varObj.GetComponent<SwitchCamera>();
+            if (tempSc != null)
+            {
+                Object.DestroyImmediate(tempSc);
+            }
+
+            PhysicsRaycaster tempPr = varObj.GetComponent<PhysicsRaycaster>();
+            if (tempPr == null)
+            {
+                tempPr = varObj.AddComponent<PhysicsRaycaster>();
+            }
+            tempPr.eventMask = ~(1 << LayerMask.NameToLayer("UI"));  // 渲染除去层x的所有层
+        }
+
         static void ConfigMouse(Camera varC)
         {
             Transform tempTrans = varC.transform;
@@ -275,6 +344,20 @@ namespace Stereo3D
                 }
             }
         }
+
+        static void RemoveMouse(Camera varC)
+        {
+            Transform tempTrans = varC.transform;
+            if (tempTrans != null)
+            {
+                var tempScript = tempTrans.GetComponentInChildren<MouseCtrl>();
+                if (tempScript != null)
+                {
+                    Object.DestroyImmediate(tempScript.gameObject);
+                }
+            }
+        }
+
         #endregion
     }
 }
